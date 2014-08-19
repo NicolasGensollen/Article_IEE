@@ -359,24 +359,24 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Bare Demo of IEEEtran.cls for Conferences}
+\title{Allowing Stable Groups of Prosumers to Enter the Market through Proper Aggregation}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
+\author{\IEEEauthorblockN{Nicolas Gensollen}
+\IEEEauthorblockA{Institut Mines Telecom\\Computer Engineering\\
 Georgia Institute of Technology\\
 Atlanta, Georgia 30332--0250\\
 Email: http://www.michaelshell.org/contact.html}
 \and
-\IEEEauthorblockN{Homer Simpson}
+\IEEEauthorblockN{Vincent Gauthier}
 \IEEEauthorblockA{Twentieth Century Fox\\
 Springfield, USA\\
 Email: homer@thesimpsons.com}
 \and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
+\IEEEauthorblockN{Michel Marot\\ and Monique Becker}
 \IEEEauthorblockA{Starfleet Academy\\
 San Francisco, California 96678-2391\\
 Telephone: (800) 555--1212\\
@@ -457,28 +457,52 @@ In this paper, our concern is on how prosumers should be aggregated in order to 
 
 \begin{itemize}
 \item Realistic representations (prosumers productions are non independent variables and come (indirectly) from real traces)
-\item Minimizing the standard deviations of coalitions production probability distributions through the use of a proper utility function (see section 2)
+\item Minimizing the standard deviations of coalitions production probability distributions through the use of a proper utility function (see section 3)
 \item Being (relatively) scalable with the number of prosumers
 \end{itemize}
 
-In more details, and as will be explained in section 2, we consider agents that, depending on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled).  We used real meteorological traces [13] to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
+In more details, and as will be explained in section 3, we consider agents that, depending on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled).  We used real meteorological traces [13] to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
 
-As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering [16] [17] (see section 3). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a slightly modified clique percolation algorithm (see section 4) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements (see results in section 5).
+As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering [16] [17] (see section 2). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a slightly modified clique percolation algorithm (see section 4) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements.
 
+The rest of the paper is organized as follows, section 2 locates our work in the related litterature. Section 3 explains the model we used to obtain realistic prosumers available power timeseries as well as some notations. Section 4 relates the method for building coalitions based on the agent timeseries. Finally, section 5 provides some results.
 
 
 \section{Related Work}
-Related work text here.
+Traditionally, forming coalitions in a pool of agents can be done either in a centralized way where a single central unit is responsible for all the computations or in a distributed way where agents have only local knowledges and take actions accordingly. There is a very nice and active smart grid litterature that covers the formation of coalitions trying to optimize various quantities (energy losses, communication bandwidth, cascade of failure sizes...). A common point being that a given quantity, usually transcribed by a utility function, should be optimized. In this paper, we restrict agents such that they do not take any actions in the coalition formation process. The focus is indeed not on the mechanism that drives the agents to an optimum structure, but rather on finding stable groups able to enter the power market for different levels of requirement. We will see in section 3 and 4 that, during the formation of coalitions, the agents are completely interchangeable with the timeseries representing their available production.
 
+The setting is thus similar with some fiancial studies on stock exchanges, where researchers tried to find relevant clusters of stocks based on their daily prices variations. The problem of clustering is usually approached by means of a similarity measure and completed by a clustering technique such as K-means or hierarchical clustering. Nevertheless, in [] [], stocks are represented by the timeseries of their daily log returns. Quite intuitive similarity measures based on Pearson correlation coefficient are established ($ d_{ij} = \dfrac{1}{2}\sqrt{2(1-\rho_{ij})}\ or\ d_{ij} = 1 - \rho_{ij}^{2} $ ) such that correleted stocks are close to each other. Such a situation can be represented by a complete graph $ G = (V,E,\omega) $ such that a vertex stands for a stock and the weight of the edge connecting two stocks i and j is equal to $ d_{ij} $. However, in this complete state, the graph G is of little use as precious information is flooded. Several filtering techniques have been proposed, among which, minimum spanning tree [], k-nearest graphs [], or $\epsilon$-graphs [][].
+
+The idea of $\epsilon$-graphs consists in filtering edges based on their weight, only keeping edges such that their weight is less than $ \epsilon $. Despite the procedure simplicity, the choice of $ \epsilon $ (or k for k-nearest graphs) is not trivial and may influence strongly the results. There is indeed to our knowledge no optimal rule for chosing $ \epsilon $. In [], the authors studied the topological properties (mainly average clustering and connectivity) of the correlation graph depending on the threshold $ \epsilon $. One of the conclusions was that "strong links" (i.e links between strongly correlated timeseries) are responsible for clustering while "weak links" provide network connectivity (in such a network, weak links are indeed connecting densely connected communities).
+
+Presented in this way, the timeseries clustering task is also very close to graph community detection. Communities in networks are indeed often seen as groups of nodes exhibiting high internal densities of links as well as a low density across communities [1]. Although several techniques exists (based on different graph properties : spectrum of Laplacian, modularity, edge betweeness...), the clique percolation algorithm uses directly this observation and the idea behind it is actually quite simple [2] [3]. It starts indeed by searching for cliques (a complete subgraph) in the given graph and considers them as potential seeds for the different communities.
+
+The next ingredient the algorithm needs in order to make the seeds grow is a fitness function that gives some value to a group of nodes. In community detection, it is of common use to employ topological functions that compare internal and external degree, but other functions can also be well suited depending on the problem. Seeds will then alternatively look in their respective neighborhood, select the node that yields the best increase in fitness, and finally incorporate it within the seed. The algorithm stops when seeds cease to grow or when all nodes are affected to at least one seed.
+At this point, some coalitions may be partially overlapping, which can be of great use especially in social networks where persons often belongs to several communities (family, friends, work colleagues...).
 
 \section{Model}
-Smart grid perspectives assume that smart meters populate the network, recording production/consumption values and reporting these to data centers. Any entities (DER, prosumers, microgrids, VPP and so on) would thereby be characterizable through timeseries expressing how much these entities produce or consume. 
+A major concern while designing our model was its ability to translate correctly realistic patterns (consumption and production) as well as realistic geographical correlations between patterns. Largely because of these reasons (but also because they are easily, and sometimes freely, available online) we chose to use meteorological traces as inputs. In this paper we used namely both french data from 2006 to 2012 sampled every 3 hours (see link), as well as Western USA data over 2010 sampled every hour (see link). The weather stations already offer a quite good sampling of a given territory, and, with the growth of personal weather stations constantly updating data bases, the mesh becomes finer and finer. As shown in the first part of figure 1, the first step consists in discretizing the studied zone around well chosen weather stations and gathering traces for these stations. In this paper, we consider that prosumers can only produce through wind turbines and photovoltaic panels (PV). On the other hand, we built their consumption patterns according to two major cycles :
+\begin{itemize}
+\item Daily cycles : Consumption is low during night, and higher during the day with two picks in the morning and evening. Some noise is added so that prosumers have similar but not identical cycles.
+\item Seasonal cycles : Consumption is higher in the winter because of heating and low in the summer (we did not consider air conditioning in this paper). Temperature traces were the principal ingredient for modeling these cycles.
+\end{itemize} 
 
-Through our model, we wish thus to be able to generate, for any prosumer, its available production over time, which depend both on its pure production and consumption. Naturally, these are far from random in the sense that there are recurring patterns (consumption or expected solar irradience for instance) or statistical properties (see wind speed studies) that shape these profiles. We thus used meteorological traces as base inputs because they naturaly provide these key ingredients (sources). On the production side, as we only consider wind turbines and photovoltaic panels as generators, we concentrate primarily on wind speed and solar irradience traces. Variables such as temperature or humidity that correlates very well with consumption were also of great use. 
+\begin{center}
+\includegraphics[scale=0.45]{figure2.jpg}
+\end{center}
 
-Basically, the user only has to indicate the number of prosumers and the simulation dates. Prosumers are then positioned randomly on a squared lattice. Any point of this lattice is linked to a meteorological profile derived from the input traces. A few parameters individualizing the prosumers (number and kind of DER owned, consumption habits, and so on...) are also picked randomly and account for diversity.
+We thus collect for all chosen weather stations three kind of traces (average wind speed, cloudiness, and average temperature), which we will call a climate vector in the following. We consider that cimate vectors are constant over their area, meaning that, if two agents are on the same area, they are exposed to the same climate vector.
 
-We denote by $ \mathcal{A} = \{ a_{1},...a_{N} \} $ the set of agents (the prosumers) and $ P_{i}(t) $ the instantaneous power value of agent i at instant t (its instantaneous production minus consumption, meaning that $ P_{i}(t) $ represents agent i available power at instant t). During the simulation (from $t_{0} $ to $ t_{K} $), all agents record their values with an hour time interval, we denote by $ \mathcal{T}_{i} = \{ P_{i}(t_{0}),...,P_{i}(t_{K}) \} $ the resulting timeserie of agent i. For any agent i, we note $ \mathcal{P}_{i} $ the probability distribution drawn from $ \mathcal{T}_{i} $ and by $ P_{i} $ a random variable following $ \mathcal{P}_{i} $.
+At this point, modeling agents consists in fixing a few parameters (most of the time drawn from random distributions) such as the geographical position, the number of wind turbines, PV, appliances, the temperature of confort, and so on... The objective is that, depending on the weather of her zone, the DER and appliances she owns, and the way she decides to heat her home, a given prosumer is able to compute her production/consumption at any time. We thus used simple and known power curve models for linking weather variables to output power, such that a wind turbine (or a PV for instance) takes a wind speed (a solar irradiance) as input and gives an instantaneous output power [] []. Any agent is thus able to compute at any time (within the traces bounds) how much she produces and consumes. 
+
+
+%Smart grid perspectives assume that smart meters populate the network, recording production/consumption values and reporting these to data centers. Any entities (DER, prosumers, microgrids, VPP and so on) would thereby be characterizable through timeseries expressing how much these entities produce or consume. 
+
+%Through our model, we wish thus to be able to generate, for any prosumer, its available production over time, which depend both on its pure production and consumption. Naturally, these are far from random in the sense that there are recurring patterns (consumption or expected solar irradience for instance) or statistical properties (see wind speed studies) that shape these profiles. We thus used meteorological traces as base inputs because they naturaly provide these key ingredients (sources). On the production side, as we only consider wind turbines and photovoltaic panels as generators, we concentrate primarily on wind speed and solar irradience traces. Variables such as temperature or humidity that correlates very well with consumption were also of great use. 
+
+%Basically, the user only has to indicate the number of prosumers and the simulation dates. Prosumers are then positioned randomly on a squared lattice. Any point of this lattice is linked to a meteorological profile derived from the input traces. A few parameters individualizing the prosumers (number and kind of DER owned, consumption habits, and so on...) are also picked randomly and account for diversity.
+
+More formally, we denote by $ \mathcal{A} = \{ a_{1},...a_{N} \} $ the set of agents (the prosumers) and $ P_{i}(t) $ the instantaneous power value of agent i at instant t (its instantaneous production minus consumption, meaning that $ P_{i}(t) $ represents agent i available power at instant t). During the simulation (from $t_{0} $ to $ t_{K} $), all agents record their values with an hour time interval. As expected (because we introduced them), the timeseries exhibit high seasonal patterns, but completely different from agent to agent because they depend both on the energetic mix and habits of a given prosumer. Nevertheless, these macro variations can hide the interesting information in the correlation coefficients and twist the rest of our process. Thereby, we remove these seasonal effects for all agents (see second block of figure 1). We denote by $ \mathcal{T}_{i} = \{ P_{i}(t_{0}),...,P_{i}(t_{K}) \} $ the resulting timeserie for  agent i. For any agent i, we note $ \mathcal{P}_{i} $ the probability distribution drawn from $ \mathcal{T}_{i} $ and by $ P_{i} $ a random variable following $ \mathcal{P}_{i} $.
 
 We now extand these notations to any coalition $ S \subset \mathcal{A} $ : 
 \begin{itemize}
@@ -491,7 +515,7 @@ In this paper, we consider that coalition announcements are constrained by the g
 
 \begin{itemize}
 \item the reliability (denoted by $ \phi \in [0,1] $)
-\item the minimum contract value under a given reliability ( $ P_{\phi}^{MIN} $). 
+\item the minimum contract value ( $ P_{\phi}^{MIN} $). 
 \end{itemize}
 
 The reliability stipulates that for any coalition S willing to join the market, the probability of S value (at any instant t) being below its contract value should at most be $ \phi $. That is, $ \forall S,\ \forall t,\ Pr[P_{S}(t) \leq P_{S}^{CRCT} ] \leq \phi $. Furthermore, for consistency, we restrict $ \phi $ to small values ( $ \phi << 0.5 $). The minimum contract value under $ \phi $ states that only coalitions with higher contract values ($ P_{S}^{CRCT} \geq P_{\phi}^{MIN} $) will be accepted.
@@ -527,18 +551,13 @@ What this paper investigates in the following is the developement of an algorith
 
 \section{Correlation Graphs}
 
-When dealing with numerous timeseries, a common objectiv consists in finding clusters whose elements exhibit high similarities while elements in different clusters are very dissimilar. This problem is usually approached by means of a similarity measure and completed by a clustering technique such as K-means or hierarchical clustering. In [] [], financial stocks are clustered according to their daily log return timeseries. Similarity measures based on Pearson correlation coefficient are established ($ d_{ij} = \dfrac{1}{2}\sqrt{2(1-\rho_{ij})}\ or\ d_{ij} = 1 - \rho_{ij}^{2} $ ) and a complete graph $ G = (V,E,\omega) $ is constructed such that a vertex stands for a stock and the weight of the edge connecting i and j is equal to $ d_{ij} $. In this complete state, the graph G is of little use, but several techniques for filtering information have been proposed such as minimum spanning tree [], k-nearest graphs [], or $\epsilon$-graphs [][].
 
-The idea of $\epsilon$-graphs consists in filtering edges based on their weight, meaning only keeping edges such that their weight is less than $ \epsilon $. Despite the procedure simplicity, the choice of $ \epsilon $ (or k for k-nearest graphs) is not trivial and may influence strongly the results. There is indeed to our knowledge no optimal rule for chosing $ \epsilon $. In [], the authors studied the topological properties (mainly average clustering and connectivity) of the correlation graph depending on the threshold $ \epsilon $. One of the conclusions was that "strong links" (i.e links between strongly correlated timeseries) are responsible for clustering while "weak links" provide network connectivity (in such a network, weak links are indeed connecting densely connected communities).
 
 Applying this technique to the production timeseries of our prosumers (after seasonal effects had been removed) leads to well defined clusters. Indeed, depending on where they are (work, home...), groups of people consume differently but similarly with others of the same group. In the same maner, groups of DER that are subject to similar meteorological conditions produce accordingly. Nevertheless, these clusters of strongly correlated prosumers are the exact opposite of what we are seeking. We thus opt for reversing the metric ($ d_{ij} = \rho_{ij}^{2} $) such that "strong links" become links between uncorrelated timeseries and "weak links", between (anti)correlated timeseries. As expected, independently of the $ \epsilon $ parameter, the graph exhibits henceforth much less clustering and communities are hardly visible. Therefore, using classical clustering or community detection algorithms do not provide very good results (little better than a random algorithm from the utility point of view). However, as it is intuitively understandable, cliques of this graph exhibit very good utility values. But, as some of them may be too small to reach the grid minimum value requirement or because some of them may benefit from additional agents even if they don't form a clique anymore, we used a slightly modified clique percolation algorithm in order to expand them while still controling their expansion. Next section provide some details on clique percolation. 
 
 \section{Clique Percolation}
 
-Communities in networks are often seen as groups of nodes exhibiting high internal densities of links as well as a low density across communities [1]. The clique percolation algorithm uses directly this observation and the idea behind it is actually quite simple [2] [3]. It starts indeed by searching for cliques (a complete subgraph) in the given graph and considers them as potential seeds for the different communities.
-
-The next ingredient the algorithm needs in order to make the seeds grow is a fitness function that gives some value to a group of nodes. In community detection, it is of common use to employ topological functions that compare internal and external degree, but other functions can also be well suited depending on the problem. Seeds will then alternatively look in their respective neighborhood, select the node that yields the best increase in fitness, and finally incorporate it within the seed. The algorithm stops when seeds cease to grow or when all nodes are affected to at least one seed.
-At this point, some coalitions may be partially overlapping, which can be of great use especially in social networks where persons often belongs to several communities (family, friends, work colleagues...). For simplicity, in this paper, we wish to keep the coalitions separated and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that consider nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition S and a node $ i \in S $, we define :
+ For simplicity, in this paper, we wish to keep the coalitions separated and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that consider nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition S and a node $ i \in S $, we define :
 
 \[ \tau_{i}(S) = \dfrac{\mathcal{U}_{\phi,\ P_{\phi}^{MIN}}(S) - \mathcal{U}_{\phi,\ P_{\phi}^{MIN}}(S-\{i\}) }{\mathcal{U}_{\phi,\ P_{\phi}^{MIN}}(S)} \]
 
@@ -553,12 +572,23 @@ Left graph is the Zachary karate club graph, shapes represents real communities 
 
 We now test the algorithm on a 200 prosumers example. Simulations were run from february 2006 to december 2010 such that we are dealing with 200 hourly sampled timeseries of available power over this period. The first step consists in removing seasonal effects attributable to wind, sun, and temperature natural patterns. We then construct the complete (un)correlation graph as explained in section 3. 
 
+\begin{center}
+\begin{tabular}{cc}
+   \includegraphics[scale=0.44]{./figure3/utility.eps} &
+   \includegraphics[scale=0.44]{./figure3/utility.eps} \\
+\end{tabular}
+\end{center}
+
 At this point, we have four degrees of freedom, namely the reliability ($ \phi $), the required power to enter the market ($P_{\phi}^{MIN}$), the prunning parameter ($\epsilon$) in order to obtain the $\epsilon$-graph, and the number of desired coalitions ($ N_{COAL} $). A first remark would be that $ \epsilon $ has a strong impact on the number of possible coalitions as it is directly responsible for the number and sizes of the cliques in the $ \epsilon$-graph. If $\epsilon $ is too low, the $\epsilon$-graph will not provide enough cliques, conversely, if $\epsilon $ is too high, we loose important information and cliques are able to percolate without topological constraints, leading to completely overlapping giant coalitions. Besides, high values on $\epsilon $ give rise to higher computational time as more complete graphs are considered. For $ N_{COAL}=n$, we thus choose $\epsilon $ as the smallest threshold such that the resulting graph contains at least n non overlaping cliques.
 
 The first two parameters ($\phi$ and $P_{\phi}^{MIN}$) shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high and only small values of $ P_{\phi}^{MIN}$ could lead to valid coalitions (and positive utility values). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and valid ones can arise for a larger spectrum of $ P_{\phi}^{MIN}$ (see figure 1, left plot). In the following, we fix the reliability to a given empirical value and observe how the coalitions evolves for different values of $P_{\phi}^{MIN}$.
 
 As is visible on the right plot of figure 1, when grid constraints are fixed and only the number of coalitions varies, we can see an increase in social welfare (sum of coalitions utilities) up to a maximum point before a decrease. The reason is that increasing the number of coalitions allow, with our algorithm, more coalitions to be stable and enter the market, but there is a point where nodes bringing stability are not sufficient in coalitions to make them pass the grid requirements, and some coalitions start to fail with zero utility. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to graphs where information is flooded, meaning that the algorithm performances decrease.
 Naturally, it is also visible that small values of $P_{\phi}^{MIN}$ lead to higher utilities because coalitions are able to announce higher contract values.
+
+\begin{center}
+   \includegraphics[scale=0.7]{./figure4/survival.eps}
+\end{center}
 
 Now that the behavior of the utility is more clear, we have a look at how the algorithm performs. As a comparison, we use a completely random algorithm that only ask for a number of coalitions and partition the agents in a random fashion. For consistency, we always average the results of this algorithm over 100 realization and the errorbars in the plots stands for the standard deviations of the results.
 

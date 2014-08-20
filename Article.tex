@@ -173,8 +173,6 @@
 \usepackage{subcaption}
 
 
-
-
 % *** MATH PACKAGES ***
 %
 %\usepackage[cmex10]{amsmath}
@@ -419,7 +417,7 @@ Fax: (888) 555--1212}}
 
 \begin{abstract}
 %\boldmath
-There is a growing interest for coalitional concepts in the smart grid, spanning multiple objectives such as power losses reduction, benefits maximization or market stability... In this paper, we study coalitions of prosumers (agents that produce but also consume depending on time) which aim at selling energy to the grid. We reckon that the grid is able to specify two requirements (stability and minimum production) that enable a coalition to enter the market. Based on probability distributions of units available power, coalitions which are able to achieve low standard deviations are considered as stable coalitions. As it seems intuitively understandable that maintaining stable coalitions would be less expensive in terms of communication load than highly versatible ones, our objective consists in forming coalitions that satisfy grid requirements both in terms of stability and minimum production. Our definition of stability being implicitely linked to correlation between agents timeseries (see section 2), we organize them over a correlation graph and use a variation of clique percolation to construct valid coalitions in reasonable time.
+There is a growing interest for coalitional concepts in the smart grid, spanning multiple objectives such as power losses reduction, benefits maximization or market stability... In this paper, we study coalitions of prosumers (agents that produce but also consume depending on time) which aim at selling energy to the grid. We reckon that the grid is able to specify two requirements (stability and minimum production) that enable a coalition to enter the market. Based on probability distributions of units available power, coalitions which are able to achieve low standard deviations are considered as stable coalitions. As it seems intuitively understandable that maintaining stable coalitions would be less expensive in terms of communication load than highly versatible ones, our objective consists in forming coalitions that satisfy grid requirements both in terms of stability and minimum production. Our definition of stability being implicitely linked to correlation between agents timeseries (see section 3), we organize them over a correlation graph and use a variation of clique percolation to construct valid coalitions in reasonable time.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -463,9 +461,9 @@ In this paper, our concern is on how prosumers should be aggregated in order to 
 
 In more details, and as will be explained in section 3, we consider agents that, depending on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled).  We used real meteorological traces [13] to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
 
-As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering [16] [17] (see section 2). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a slightly modified clique percolation algorithm (see section 4) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements.
+As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering [16] [17] (see section 2). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a modified clique percolation algorithm (see section 4) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements.
 
-The rest of the paper is organized as follows, section 2 locates our work in the related litterature. Section 3 explains the model we used to obtain realistic prosumers available power timeseries as well as some notations. Section 4 relates the method for building coalitions based on the agent timeseries. Finally, section 5 provides some results.
+The rest of the paper is organized as follows, section 2 locates our work in the related litterature. Section 3 explains the model we used to obtain realistic prosumers available power timeseries and introduces some notations. Section 4 relates the method for building coalitions based on the agent timeseries. Finally, section 5 provides some results.
 
 
 \section{Related Work}
@@ -473,7 +471,7 @@ Traditionally, forming coalitions in a pool of agents can be done either in a ce
 
 The setting is thus similar with some fiancial studies on stock exchanges, where researchers tried to find relevant clusters of stocks based on their daily prices variations. The problem of clustering is usually approached by means of a similarity measure and completed by a clustering technique such as K-means or hierarchical clustering. Nevertheless, in [] [], stocks are represented by the timeseries of their daily log returns. Quite intuitive similarity measures based on Pearson correlation coefficient are established ($ d_{ij} = \dfrac{1}{2}\sqrt{2(1-\rho_{ij})}\ or\ d_{ij} = 1 - \rho_{ij}^{2} $ ) such that correleted stocks are close to each other. Such a situation can be represented by a complete graph $ G = (V,E,\omega) $ such that a vertex stands for a stock and the weight of the edge connecting two stocks i and j is equal to $ d_{ij} $. However, in this complete state, the graph G is of little use as precious information is flooded. Several filtering techniques have been proposed, among which, minimum spanning tree [], k-nearest graphs [], or $\epsilon$-graphs [][].
 
-The idea of $\epsilon$-graphs consists in filtering edges based on their weight, only keeping edges such that their weight is less than $ \epsilon $. Despite the procedure simplicity, the choice of $ \epsilon $ (or k for k-nearest graphs) is not trivial and may influence strongly the results. There is indeed to our knowledge no optimal rule for chosing $ \epsilon $. In [], the authors studied the topological properties (mainly average clustering and connectivity) of the correlation graph depending on the threshold $ \epsilon $. One of the conclusions was that "strong links" (i.e links between strongly correlated timeseries) are responsible for clustering while "weak links" provide network connectivity (in such a network, weak links are indeed connecting densely connected communities).
+The idea of $\epsilon$-graphs consists in filtering edges based on their weight, only keeping edges whose weights are less than $ \epsilon $. Despite the procedure simplicity, the choice of $ \epsilon $ (or k for k-nearest graphs) is not trivial and may influence strongly the results. There is indeed to our knowledge no optimal rule for chosing $ \epsilon $. In [], the authors studied the topological properties (mainly average clustering and connectivity) of the correlation graph depending on the threshold $ \epsilon $. One of the conclusions was that "strong links" (i.e links between strongly correlated timeseries) are responsible for clustering while "weak links" provide network connectivity (in such a network, weak links are indeed connecting densely connected communities).
 
 Presented in this way, the timeseries clustering task is also very close to graph community detection. Communities in networks are indeed often seen as groups of nodes exhibiting high internal densities of links as well as a low density across communities [1]. Although several techniques exists (based on different graph properties : spectrum of Laplacian, modularity, edge betweeness...), the clique percolation algorithm uses directly this observation and the idea behind it is actually quite simple [2] [3]. It starts indeed by searching for cliques (a complete subgraph) in the given graph and considers them as potential seeds for the different communities.
 
@@ -483,15 +481,18 @@ At this point, some coalitions may be partially overlapping, which can be of gre
 \section{Model}
 A major concern while designing our model was its ability to translate correctly realistic patterns (consumption and production) as well as realistic geographical correlations between patterns. Largely because of these reasons (but also because they are easily, and sometimes freely, available online) we chose to use meteorological traces as inputs. In this paper we used namely both french data from 2006 to 2012 sampled every 3 hours (see link), as well as Western USA data over 2010 sampled every hour (see link). The weather stations already offer a quite good sampling of a given territory, and, with the growth of personal weather stations constantly updating data bases, the mesh becomes finer and finer. As shown in the first part of figure 1, the first step consists in discretizing the studied zone around well chosen weather stations and gathering traces for these stations. In this paper, we consider that prosumers can only produce through wind turbines and photovoltaic panels (PV). On the other hand, we built their consumption patterns according to two major cycles :
 \begin{itemize}
-\item Daily cycles : Consumption is low during night, and higher during the day with two picks in the morning and evening. Some noise is added so that prosumers have similar but not identical cycles.
-\item Seasonal cycles : Consumption is higher in the winter because of heating and low in the summer (we did not consider air conditioning in this paper). Temperature traces were the principal ingredient for modeling these cycles.
+\item \textbf{Daily cycles} : Consumption is low during night, and higher during the day with two picks in the morning and evening. Some noise is added so that prosumers have similar but not identical cycles.
+\item \textbf{Seasonal cycles} : Consumption is higher in the winter because of heating and low in the summer (we did not consider air conditioning in this paper). Temperature traces were the principal ingredient for modeling these cycles.
 \end{itemize} 
 
 \begin{center}
+\begin{figure}
 \includegraphics[scale=0.45]{figure2.jpg}
+\caption{Process diagram}
+\end{figure}
 \end{center}
 
-We thus collect for all chosen weather stations three kind of traces (average wind speed, cloudiness, and average temperature), which we will call a climate vector in the following. We consider that cimate vectors are constant over their area, meaning that, if two agents are on the same area, they are exposed to the same climate vector.
+We thus collect for all chosen weather stations three kind of traces (average wind speed, cloudiness, and average temperature), which we will call a climate vector in the following. We consider that cimate vectors are constant over their area, meaning that, if two agents are in the same area, they are exposed to the same climate vector.
 
 At this point, modeling agents consists in fixing a few parameters (most of the time drawn from random distributions) such as the geographical position, the number of wind turbines, PV, appliances, the temperature of confort, and so on... The objective is that, depending on the weather of her zone, the DER and appliances she owns, and the way she decides to heat her home, a given prosumer is able to compute her production/consumption at any time. We thus used simple and known power curve models for linking weather variables to output power, such that a wind turbine (or a PV for instance) takes a wind speed (a solar irradiance) as input and gives an instantaneous output power [] []. Any agent is thus able to compute at any time (within the traces bounds) how much she produces and consumes. 
 
@@ -514,8 +515,8 @@ We now extand these notations to any coalition $ S \subset \mathcal{A} $ :
 In this paper, we consider that coalition announcements are constrained by the grid. Namely, the grid has the possibility of fixing two parameters : 
 
 \begin{itemize}
-\item the reliability (denoted by $ \phi \in [0,1] $)
-\item the minimum contract value ( $ P_{\phi}^{MIN} $). 
+\item the \textbf{reliability} (denoted by $ \phi \in [0,1] $)
+\item the \textbf{minimum contract value} ( $ P_{\phi}^{MIN} $). 
 \end{itemize}
 
 The reliability stipulates that for any coalition S willing to join the market, the probability of S value (at any instant t) being below its contract value should at most be $ \phi $. That is, $ \forall S,\ \forall t,\ Pr[P_{S}(t) \leq P_{S}^{CRCT} ] \leq \phi $. Furthermore, for consistency, we restrict $ \phi $ to small values ( $ \phi << 0.5 $). The minimum contract value under $ \phi $ states that only coalitions with higher contract values ($ P_{S}^{CRCT} \geq P_{\phi}^{MIN} $) will be accepted.
@@ -549,48 +550,71 @@ The strategy of $ \{ij\} $ consists in maximizing its contract values as long as
 
 What this paper investigates in the following is the developement of an algorithm that organizes prosumers such that the synergy term of the standard deviation ( $ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) is minimized. In such settings, and through the clique percolation procedure (section 4), we will show that coalitions with low relative standard deviation, e.g high utility coalitions, can be computed.
 
-\section{Correlation Graphs}
+\section{Forming coalitions}
 
+This section explains the process with which we form the coalitions (see the third block of Fig. 1). First, we need to simulate the timeseries of available power (first two blocks of Fig. 1). We consider a pool $ \mathcal{A} $ of 200 agents, whose parameters were chosen randomly. The prosumers are positioned (also randomly) on a square lattice previously filled with climate vectors obtained from the french data sets (see section 3). Simulations were run from february 2006 to december 2010 such that we are dealing with 200 hourly sampled timeseries of available power over this period. Removing season trends finally leads us to the formation of coalitions. 
 
+The model we used in order to simulate timeseries of available production provide some diversity because of the energetic mix/climate vectors combo. Nevertheless, as the number of agents grows, the timeseries tend to exhibit similar patterns. This is particularly visible when creating a correlation graph $ G_{1}(\mathcal{A},E_{1},\omega_{1}) $ with the same kind of metric as [] or [] ($ d_{ij} = 1 - \rho_{ij}^{2} $). Very well defined clusters appear in the corresponding $ \epsilon $-graph for large range of $ \epsilon $. 
 
-Applying this technique to the production timeseries of our prosumers (after seasonal effects had been removed) leads to well defined clusters. Indeed, depending on where they are (work, home...), groups of people consume differently but similarly with others of the same group. In the same maner, groups of DER that are subject to similar meteorological conditions produce accordingly. Nevertheless, these clusters of strongly correlated prosumers are the exact opposite of what we are seeking. We thus opt for reversing the metric ($ d_{ij} = \rho_{ij}^{2} $) such that "strong links" become links between uncorrelated timeseries and "weak links", between (anti)correlated timeseries. As expected, independently of the $ \epsilon $ parameter, the graph exhibits henceforth much less clustering and communities are hardly visible. Therefore, using classical clustering or community detection algorithms do not provide very good results (little better than a random algorithm from the utility point of view). However, as it is intuitively understandable, cliques of this graph exhibit very good utility values. But, as some of them may be too small to reach the grid minimum value requirement or because some of them may benefit from additional agents even if they don't form a clique anymore, we used a slightly modified clique percolation algorithm in order to expand them while still controling their expansion. Next section provide some details on clique percolation. 
+However, these clusters of strongly correlated timeseries are the exact opposite of what we are seeking. We can indeed consider them directly as coalitions and compute their utilities, and the results show, as expected, terrible values (far worse than a random split of the agents in the same number of coalitions).
 
-\section{Clique Percolation}
+We thus opt for reversing the metric ($ d_{ij}^{'} = \rho_{ij}^{2} $) such that uncorrelated timeseries are close to each other and (anti)correlated timeseries are distant in $ G_{2}(\mathcal{A},E_{2},\omega_{2}) $. As expected [], independently of the $ \epsilon $ parameter, the resulting $ \epsilon $-graph exhibits henceforth much less clustering than in $ G_{1} $ and communities seem hardly visible. Therefore, using classical clustering or community detection algorithms do not provide very good results. 
 
- For simplicity, in this paper, we wish to keep the coalitions separated and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that consider nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition S and a node $ i \in S $, we define :
+However, as seems intuitively understandable, cliques of this graph tend to exhibit very good utility values. Such  structures contain ideed a link between every two nodes, meaning that the overall correlation is quite small. Obviously, the $ \epsilon $ parameter is indirectly responsible for the sizes of the cliques, if it is too low, the $\epsilon$-graph of $ G_{2} $ will not provide enough cliques, conversely, if $\epsilon $ is too high, we loose important information as the graph becomes very dense and cliques tend to overlap strongly. For large values of $ \epsilon $ and for non trivial number of agents, finding cliques can even becomes computationally repulsive. Despite being direct and simple, improving the sizes of the cliques by increasing $ \epsilon $ seems too brutal. Furthermore, as the utility function is also focused on maximizing $ P_{\phi}(S) $, it might be the case that some cliques benefit from additional agents even if they don't form a clique anymore.
+
+Cliques for small values of $ \epsilon $ appear thus as good seeds for stable coalitions, but we still have to find a way to bring them above the grid requirements as well as increasing the social welfare, both by incorporating more nodes. This is exactly where clique percolation proves useful for our concerns. The main idea of making the seeds grow as long as it increases a fitness function is exactly what we need. The only difference being that our fitness function is simply chosen as the utility function.  
+
+As explained in section 2, clique percolation leads generally to overlapping communities. For simplicity, in this paper, we wish to keep the coalitions separated and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that consider nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition S and a node $ i \in S $, we define :
 
 \[ \tau_{i}(S) = \dfrac{\mathcal{U}_{\phi,\ P_{\phi}^{MIN}}(S) - \mathcal{U}_{\phi,\ P_{\phi}^{MIN}}(S-\{i\}) }{\mathcal{U}_{\phi,\ P_{\phi}^{MIN}}(S)} \]
 
 If node i belongs to  multiple coalitions, the only coalition retaining node i is the one that maximizes $ \tau_{i} $.
 
-We now test our implementation of the clique percolation against well-known benchmark networks in community detection, namely the Zachary karate club, and the UK faculty network. Results can be seen in figure 1.
+At this point, we have three degrees of freedom, namely the reliability ($ \phi $), the required power to enter the market ($P_{\phi}^{MIN}$), and the prunning parameter ($\epsilon$). For conveniance, we introduce the number of desired coalitions ($ N_{COAL} $) and we fix $\epsilon $ as the smallest value such that the resulting $ \epsilon $-graph contains at least $ N_{COAL} $ non overlaping cliques. The overall utility depends now on the grid requirements and on the number of desired coalitions.
 
-Left graph is the Zachary karate club graph, shapes represents real communities and color the algorithm output. We can see that only one node was misclassified. Right graph is the UK faculty graph where the algorithm is able to split the graph in three distinct communities.
-
+The next section shows how the utility behave within the parameters space and provides the results of our 200 agents test.
 
 \section{Results}
 
-We now test the algorithm on a 200 prosumers example. Simulations were run from february 2006 to december 2010 such that we are dealing with 200 hourly sampled timeseries of available power over this period. The first step consists in removing seasonal effects attributable to wind, sun, and temperature natural patterns. We then construct the complete (un)correlation graph as explained in section 3. 
-
 \begin{center}
+\begin{figure}
 \begin{tabular}{cc}
    \includegraphics[scale=0.44]{./figure3/utility.eps} &
    \includegraphics[scale=0.44]{./figure3/utility.eps} \\
 \end{tabular}
+\caption{Utility function in parameters space}
+\end{figure}
 \end{center}
 
-At this point, we have four degrees of freedom, namely the reliability ($ \phi $), the required power to enter the market ($P_{\phi}^{MIN}$), the prunning parameter ($\epsilon$) in order to obtain the $\epsilon$-graph, and the number of desired coalitions ($ N_{COAL} $). A first remark would be that $ \epsilon $ has a strong impact on the number of possible coalitions as it is directly responsible for the number and sizes of the cliques in the $ \epsilon$-graph. If $\epsilon $ is too low, the $\epsilon$-graph will not provide enough cliques, conversely, if $\epsilon $ is too high, we loose important information and cliques are able to percolate without topological constraints, leading to completely overlapping giant coalitions. Besides, high values on $\epsilon $ give rise to higher computational time as more complete graphs are considered. For $ N_{COAL}=n$, we thus choose $\epsilon $ as the smallest threshold such that the resulting graph contains at least n non overlaping cliques.
+The first two parameters ($\phi$ and $P_{\phi}^{MIN}$) shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high and only small values of $ P_{\phi}^{MIN}$ could lead to valid coalitions (and positive utility values). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and valid ones can arise for a larger spectrum of $ P_{\phi}^{MIN}$ (see figure 1, left plot). 
 
-The first two parameters ($\phi$ and $P_{\phi}^{MIN}$) shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high and only small values of $ P_{\phi}^{MIN}$ could lead to valid coalitions (and positive utility values). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and valid ones can arise for a larger spectrum of $ P_{\phi}^{MIN}$ (see figure 1, left plot). In the following, we fix the reliability to a given empirical value and observe how the coalitions evolves for different values of $P_{\phi}^{MIN}$.
+In the following, we fix the reliability to a given empirical value and observe how the coalitions evolves for different values of $P_{\phi}^{MIN}$. Note that the opposite is also possible although a little less intuitive, but not shown here because it leads to similar conclusions. 
 
-As is visible on the right plot of figure 1, when grid constraints are fixed and only the number of coalitions varies, we can see an increase in social welfare (sum of coalitions utilities) up to a maximum point before a decrease. The reason is that increasing the number of coalitions allow, with our algorithm, more coalitions to be stable and enter the market, but there is a point where nodes bringing stability are not sufficient in coalitions to make them pass the grid requirements, and some coalitions start to fail with zero utility. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to graphs where information is flooded, meaning that the algorithm performances decrease.
+As is visible on the right plot of figure 1, when grid constraints are fixed and only the number of coalitions varies, we can see an increase in social welfare (sum of coalitions utilities) up to a maximum point before a decrease. The reason is that increasing the number of coalitions allows more coalitions to reach stability and enter the market, but there is a point where nodes bringing stability are not sufficient inside the coalitions to make them pass the grid requirements, and some coalitions start to fail with zero utility. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to graphs where information is flooded, meaning that the algorithm performances decrease.
 Naturally, it is also visible that small values of $P_{\phi}^{MIN}$ lead to higher utilities because coalitions are able to announce higher contract values.
 
 \begin{center}
-   \includegraphics[scale=0.7]{./figure4/survival.eps}
+\begin{figure}
+  \includegraphics[scale=0.8]{./figure5/coals.pdf}
+  \caption{Evolution of the coalitions for different values of grid requirement $ P_{MIN} $. Blue dots represents clique percolation results while red dots stands for random process results.}
+\end{figure}
 \end{center}
 
-Now that the behavior of the utility is more clear, we have a look at how the algorithm performs. As a comparison, we use a completely random algorithm that only ask for a number of coalitions and partition the agents in a random fashion. For consistency, we always average the results of this algorithm over 100 realization and the errorbars in the plots stands for the standard deviations of the results.
+For our 200 prosumers, we suppose that the grid fixes a reliability $ \phi = 0.1 $ (meaning that coalitions should produce more than their contract values at least $ 90 \% $ of the time. We also fix the number of coalitions to 10 and have a look at how these coalitions evolve as the grid changes the $ P_{MIN} $ requirement. As a comparison, we use a completely random algorithm that only asks for a number of coalitions and partitions the agents in a random fashion. Figure 3 shows this evolution for our algorithm (blue dots) and for the random process (red dots). The diameter of a dot is proportional to the number of agents in the coalition and the higher the dot is, the higher its utility. The $ P_{MIN} $ values of the x axis are expressed in tenth of MW for readability and the hatched zone corresponds to the "under-requirement space", meaning that whenever a coalition is in this zone, it has a null utility. 
+
+Looking at figure 3, we can see first that our algorithm seems to make generally a better job at finding high valued coalitions, but also that the results seem far more robust against how the grid positions its requirements. The blue dots allowed to enter the market seem indeed to outnumber the red dots, especially when the grid requirements are neither to low or to high ($ P_{MIN} = 5 $ in figure 3).
+
+In order to explore a little bit more in this direction, we have a look, on figure 4, at the percentage of coalitions able to enter the market for different values of $ P_{MIN} $. For consistency, we always average the results of the random procedure over 100 realizations (5 realizations for our algorithm, but the results are relatively stable), and the errorbars in the plots stands for the standard deviations of the results.
+
+When the grid requirements are very low ( $ P_{MIN} $ close to zero), all coalitions for both algorithms are able to enter the market, yielding an acceptance percentage of $ 100 \% $. But as $ P_{MIN} $ increases, we see the percentage of the random procedure quickly dropping while it stays constant for our algorithm. For $ P_{MIN} = 4 $, we see that only a little more than half of the coalitions for the random case are able to enter while all of them enters for the clique percolation algorithm. Finally, when the grid requirement becomes to high, the acceptance percentage of our algorithm tends slowly to zero (only partly shown in this plot for readability).
+
+\begin{center}
+\begin{figure}
+   \includegraphics[scale=0.7]{./figure4/survival.eps}
+   \caption{Percentage of coalitions able to enter the market for different values of grid requirement $ P_{MIN} $. Blue curve represents clique percolation results while red curve stands for random process results}
+\end{figure}
+\end{center}
+
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.

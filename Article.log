@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.17)  19 AUG 2014 17:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.17)  20 AUG 2014 15:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -502,67 +502,67 @@ Package: subcaption 2012/04/09 v1.1f Sub-captions (AR)
 ) (./Article.aux)
 \openout1 = `Article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 358.
-LaTeX Font Info:    ... okay on input line 358.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 358.
-LaTeX Font Info:    ... okay on input line 358.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 358.
-LaTeX Font Info:    ... okay on input line 358.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 358.
-LaTeX Font Info:    ... okay on input line 358.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 358.
-LaTeX Font Info:    ... okay on input line 358.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 358.
-LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 356.
+LaTeX Font Info:    ... okay on input line 356.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 356.
+LaTeX Font Info:    ... okay on input line 356.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 356.
+LaTeX Font Info:    ... okay on input line 356.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 356.
+LaTeX Font Info:    ... okay on input line 356.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 356.
+LaTeX Font Info:    ... okay on input line 356.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 356.
+LaTeX Font Info:    ... okay on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <5> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <7> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <8> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <11> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <11> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <17> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <20> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 358.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 356.
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <24> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 358.
-LaTeX Info: Redefining \degres on input line 358.
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 356.
+LaTeX Info: Redefining \degres on input line 356.
 
 
 Package frenchb.ldf Warning: The definition of \@makecaption has been changed,
 (frenchb.ldf)                frenchb will NOT customise it;
-(frenchb.ldf)                reported on input line 358.
+(frenchb.ldf)                reported on input line 356.
 
-LaTeX Info: Redefining \dots on input line 358.
-LaTeX Info: Redefining \up on input line 358.
+LaTeX Info: Redefining \dots on input line 356.
+LaTeX Info: Redefining \up on input line 356.
 (c:/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count111
@@ -626,12 +626,12 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 459.
+LaTeX Font Info:    Try loading font information for U+msa on input line 457.
 
 (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 459.
+LaTeX Font Info:    Try loading font information for U+msb on input line 457.
 
 (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -642,17 +642,14 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 <figure2.jpg, id=19, 582.67688pt x 711.4078pt>
 File: figure2.jpg Graphic file (type jpg)
  <use figure2.jpg>
-Package pdftex.def Info: figure2.jpg used on input line 491.
+Package pdftex.def Info: figure2.jpg used on input line 490.
 (pdftex.def)             Requested size: 262.20218pt x 320.13055pt.
 
-Overfull \hbox (10.20218pt too wide) in paragraph at lines 491--492
- [] 
+Overfull \hbox (10.20218pt too wide) in paragraph at lines 490--491
+[][] 
  []
 
-
-Underfull \vbox (badness 2005) has occurred while \output is active []
-
- [3 <./figure2.jpg>]
+[3 <./figure2.jpg>] [4]
 Package epstopdf Info: Source file: <./figure3/utility.eps>
 (epstopdf)                    date: 2014-08-19 16:39:00
 (epstopdf)                    size: 222388 bytes
@@ -661,14 +658,15 @@ Package epstopdf Info: Source file: <./figure3/utility.eps>
 (epstopdf)                    size: 27617 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure3/utility-eps-conv
 erted-to.pdf ./figure3/utility.eps>
-(epstopdf)             \includegraphics on input line 577.
+(epstopdf)             \includegraphics on input line 582.
 Package epstopdf Info: Output file is already uptodate.
- <./figure3/utility-eps-converted-to.pdf, id=23, 289.08pt x 216.81pt>
+
+<./figure3/utility-eps-converted-to.pdf, id=30, 289.08pt x 216.81pt>
 File: ./figure3/utility-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure3/utility-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure3/utility-eps-converted-to.pdf used on input l
-ine 577.
+ine 582.
 (pdftex.def)             Requested size: 127.19559pt x 95.39668pt.
 Package epstopdf Info: Source file: <./figure3/utility.eps>
 (epstopdf)                    date: 2014-08-19 16:39:00
@@ -678,49 +676,44 @@ Package epstopdf Info: Source file: <./figure3/utility.eps>
 (epstopdf)                    size: 27617 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure3/utility-eps-conv
 erted-to.pdf ./figure3/utility.eps>
-(epstopdf)             \includegraphics on input line 578.
+(epstopdf)             \includegraphics on input line 583.
 Package epstopdf Info: Output file is already uptodate.
 File: ./figure3/utility-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure3/utility-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure3/utility-eps-converted-to.pdf used on input l
-ine 578.
+ine 583.
 (pdftex.def)             Requested size: 127.19559pt x 95.39668pt.
 
-Overfull \hbox (26.39117pt too wide) in paragraph at lines 576--580
- [] 
+Overfull \hbox (26.39117pt too wide) in paragraph at lines 581--585
+[][] 
  []
 
+<./figure5/coals.pdf, id=31, 289.08pt x 216.81pt>
+File: ./figure5/coals.pdf Graphic file (type pdf)
+ <use ./figure5/coals.pdf>
+Package pdftex.def Info: ./figure5/coals.pdf used on input line 598.
+(pdftex.def)             Requested size: 231.2643pt x 173.44823pt.
 
-Underfull \vbox (badness 1490) has occurred while \output is active []
-
- [4]
+[5 <./figure3/utility-eps-converted-to.pdf> <./figure5/coals.pdf>]
 Package epstopdf Info: Source file: <./figure4/survival.eps>
 (epstopdf)                    date: 2014-08-19 17:19:03
 (epstopdf)                    size: 33835 bytes
 (epstopdf)             Output file: <./figure4/survival-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-08-19 17:13:50
-(epstopdf)                    size: 19125 bytes
+(epstopdf)                    date: 2014-08-19 17:19:26
+(epstopdf)                    size: 20970 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure4/survival-eps-con
 verted-to.pdf ./figure4/survival.eps>
-(epstopdf)             \includegraphics on input line 590.
-runsystem(repstopdf --outfile=./figure4/survival-eps-converted-to.pdf ./figure4
-/survival.eps)...executed safely (allowed).
+(epstopdf)             \includegraphics on input line 613.
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <./figure4/survival-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-08-19 17:19:26
-(epstopdf)                    size: 20970 bytes.
-
-<./figure4/survival-eps-converted-to.pdf, id=30, 289.08pt x 216.81pt>
+<./figure4/survival-eps-converted-to.pdf, id=190, 289.08pt x 216.81pt>
 File: ./figure4/survival-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure4/survival-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure4/survival-eps-converted-to.pdf used on input 
-line 590.
+line 613.
 (pdftex.def)             Requested size: 202.35461pt x 151.76596pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 
 ** Conference Paper **
@@ -733,33 +726,35 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5 <./figure3/utility-eps-converted-to.pdf> <./figure4/survival-eps-converted-t
-o.pdf>] (./Article.aux) ) 
+[6
+
+ <./figure4/survival-eps-converted-to.pdf>] (./Article.aux) ) 
 Here is how much of TeX's memory you used:
- 5368 strings out of 493488
- 78636 string characters out of 3144748
+ 5378 strings out of 493488
+ 78812 string characters out of 3144748
  147086 words of memory out of 3000000
- 8570 multiletter control sequences out of 15000+200000
- 114070 words of font info for 130 fonts, out of 3000000 for 9000
+ 8577 multiletter control sequences out of 15000+200000
+ 115177 words of font info for 131 fonts, out of 3000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,11n,38p,1486b,254s stack positions out of 5000i,500n,10000p,200000b,50000s
-{c:/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.en
-c}<c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2012/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2012/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/te
-xlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2012/texmf-d
-ist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/u
-rw/times/utmr8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on Article.pdf (5 pages, 308102 bytes).
+ 38i,12n,38p,1166b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
+{c:/texlive/2012/t
+exmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2012/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmex10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
+><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2012/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2012/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2012/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pf
+b><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/201
+2/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2012/texmf-dist/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on Article.pdf (6 pages, 359422 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 275 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

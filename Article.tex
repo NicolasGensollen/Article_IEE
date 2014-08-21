@@ -364,9 +364,7 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Nicolas Gensollen}
-\IEEEauthorblockA{Institut Mines Telecom\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
+\IEEEauthorblockA{Institut Mines Telecom\\
 Email: http://www.michaelshell.org/contact.html}
 \and
 \IEEEauthorblockN{Vincent Gauthier}
@@ -445,7 +443,7 @@ There is a growing interest for coalitional concepts in the smart grid, spanning
 
 \section{Introduction}
 % no \IEEEPARstart
-One of the most basic ideas in the smart grid revolves around the introduction of communication means in the power grids, which could enable complex improvements in the energy management and lead progressively to a greener energetic system [1] [2]. Distributed energy resources (DER) such as wind turbines or photovoltaic panels are supposed to emerge and populate not only spread out farms, but also classical residential neighborhoods. Together with electric vehicles, and demand side management tools, they constitute the building blocks which will help turn the today pure energy consumers into true actors of the grid operation [3]. Such energy aware agents that consume, produce, and are ready to make concessions (appliances delays, V2G…) to ensure grid stability are commonly called prosumers [4] [5].
+One of the most basic ideas in the smart grid revolves around the introduction of communication means in the power grids, which could enable complex improvements in the energy management and lead progressively to a greener energetic system [1] [2]. Distributed energy resources (DER) such as wind turbines or photovoltaic panels are supposed to emerge and populate not only spread out farms, but also classical residential neighborhoods. Together with electric vehicles, and demand side management tools, they constitute the building blocks which will help turn the today pure energy consumers into true actors of the grid operation [3]. Such energy aware agents that consume, produce, and are ready to make concessions (appliances delays, V2G…) to ensure grid stability are commonly called prosumers \cite{Rathnayaka2012}.
 
 It is rather clear that there should be communication flows between prosumers and the grid as most of the demand side management concepts suppose such a link [6] [7]. Nevertheless as the expected number of active prosumers in the future seems quite large, the literature assume more and more communication between prosumers as this is a key ingredient to maintain more complex structures (such as coalitions), and thereby decrease the communication load on the grid’s side [8]. Furthermore, it has been shown that coalitions in the smart grid provide nice ways of improving stability while posing exciting challenges in terms of network infrastructure and management. Self sufficient microgrids that can disconnect from the main grid [9], virtual power plants (VPP) that map small DER in sizeable and adjustable plants [10], or coalitions of electric vehicles that back up the grid in emergency situations (V2G) [11] are just a few examples of how coalitional concepts can enhance grid reliability.
 
@@ -467,19 +465,24 @@ The rest of the paper is organized as follows, section 2 locates our work in the
 
 
 \section{Related Work}
-Traditionally, forming coalitions in a pool of agents can be done either in a centralized way where a single central unit is responsible for all the computations or in a distributed way where agents have only local knowledges and take actions accordingly. There is a very nice and active smart grid litterature that covers the formation of coalitions trying to optimize various quantities (energy losses, communication bandwidth, cascade of failure sizes...). A common point being that a given quantity, usually transcribed by a utility function, should be optimized. In this paper, we restrict agents such that they do not take any actions in the coalition formation process. The focus is indeed not on the mechanism that drives the agents to an optimum structure, but rather on finding stable groups able to enter the power market for different levels of requirement. We will see in section 3 and 4 that, during the formation of coalitions, the agents are completely interchangeable with the timeseries representing their available production.
 
-The setting is thus similar with some fiancial studies on stock exchanges, where researchers tried to find relevant clusters of stocks based on their daily prices variations. The problem of clustering is usually approached by means of a similarity measure and completed by a clustering technique such as K-means or hierarchical clustering. Nevertheless, in [] [], stocks are represented by the timeseries of their daily log returns. Quite intuitive similarity measures based on Pearson correlation coefficient are established ($ d_{ij} = \dfrac{1}{2}\sqrt{2(1-\rho_{ij})}\ or\ d_{ij} = 1 - \rho_{ij}^{2} $ ) such that correleted stocks are close to each other. Such a situation can be represented by a complete graph $ G = (V,E,\omega) $ such that a vertex stands for a stock and the weight of the edge connecting two stocks i and j is equal to $ d_{ij} $. However, in this complete state, the graph G is of little use as precious information is flooded. Several filtering techniques have been proposed, among which, minimum spanning tree [], k-nearest graphs [], or $\epsilon$-graphs [][].
 
-The idea of $\epsilon$-graphs consists in filtering edges based on their weight, only keeping edges whose weights are less than $ \epsilon $. Despite the procedure simplicity, the choice of $ \epsilon $ (or k for k-nearest graphs) is not trivial and may influence strongly the results. There is indeed to our knowledge no optimal rule for chosing $ \epsilon $. In [], the authors studied the topological properties (mainly average clustering and connectivity) of the correlation graph depending on the threshold $ \epsilon $. One of the conclusions was that "strong links" (i.e links between strongly correlated timeseries) are responsible for clustering while "weak links" provide network connectivity (in such a network, weak links are indeed connecting densely connected communities).
+Traditionally, forming coalitions in a pool of agents can be done either in a centralized way where a single central unit is responsible for all the computations or in a distributed way where agents have only local knowledges and take actions accordingly. It is of common use to represent the situation and assess the stability of the solution by using game theoretic tools. Some papers focus on finding an optimal coalition structure giving a pool of autonomous self interested agents. In this direction, \cite{Saad2009} and \cite{Luan2014} design a distributed merge and split algorithm based on modified Pareto order with utility functions aiming at optimizing a parameter of interest such as energy losses or communication costs.
 
-Presented in this way, the timeseries clustering task is also very close to graph community detection. Communities in networks are indeed often seen as groups of nodes exhibiting high internal densities of links as well as a low density across communities [1]. Although several techniques exists (based on different graph properties : spectrum of Laplacian, modularity, edge betweeness...), the clique percolation algorithm uses directly this observation and the idea behind it is actually quite simple [2] [3]. It starts indeed by searching for cliques (a complete subgraph) in the given graph and considers them as potential seeds for the different communities.
+In \cite{Kota2011}, the authors study the formation of virtual power plants (VPP) composed of multiple self-interested DER. On the grid side, two requirements for the formation of virtual power plants are derived, namely the reliability of supply and the minimization of entities the grid has to deal with. From this, \cite{Kota2011} builds a pricing mechanism that encourages VPP to report true estimates of their aggregated production and penalizes prediction errors. A redistribution scheme of the VPP to the DER is also constructed such that the payoff allocation lies in the core of the game, meaning that no DER has an incentive to leave the coalition.
 
-The next ingredient the algorithm needs in order to make the seeds grow is a fitness function that gives some value to a group of nodes. In community detection, it is of common use to employ topological functions that compare internal and external degree, but other functions can also be well suited depending on the problem. Seeds will then alternatively look in their respective neighborhood, select the node that yields the best increase in fitness, and finally incorporate it within the seed. The algorithm stops when seeds cease to grow or when all nodes are affected to at least one seed.
-At this point, some coalitions may be partially overlapping, which can be of great use especially in social networks where persons often belongs to several communities (family, friends, work colleagues...).
+In this paper and as will be explained in section 3, coalitions utilities depend on statistical properties of historical values. The goal being to form coalitions that, statistically spealing, are more likely to exhibit stable behaviors. We will see that, when it comes to the formation of the coalitions, a prosumer is completely interchangeable with the timeserie representing its available production.
+
+The setting is thus similar with some fiancial studies on stock exchanges, where researchers tried to find relevant clusters of stocks based on their daily prices variations. The problem of clustering is usually approached by means of a similarity measure and completed by a clustering technique such as K-means or hierarchical clustering. Nevertheless, in \cite{Mantegna1999} \cite{Garas2008}, stocks are represented by the timeseries of their daily log returns. Quite intuitive similarity measures based on Pearson correlation coefficient are established ($ d_{ij} = \dfrac{1}{2}\sqrt{2(1-\rho_{ij})}\ or\ d_{ij} = 1 - \rho_{ij}^{2} $ ) such that correleted stocks are close to each other. Such a situation can be represented by a complete graph $ G = (V,E,\omega) $ such that a vertex stands for a stock and the weight of the edge connecting two stocks i and j is equal to $ d_{ij} $. However, in this complete state, the graph G is of little use as precious information is flooded. Several filtering techniques have been proposed, among which, minimum spanning tree \cite{Mantegna1999}, k-nearest graphs [], or $\epsilon$-graphs [][].
+
+The idea of $\epsilon$-graphs consists in filtering edges based on their weight, only keeping edges whose weights are less than $ \epsilon $. Despite the procedure simplicity, the choice of $ \epsilon $ (or k for k-nearest graphs) is not trivial and may influence strongly the results. There is indeed to our knowledge no optimal rule for chosing $ \epsilon $. In \cite{Garas2008}, the authors studied the topological properties (mainly average clustering and connectivity) of the correlation graph depending on the threshold $ \epsilon $. One of the conclusions was that "strong links" (i.e links between strongly correlated timeseries) are responsible for clustering while "weak links" provide network connectivity (in such a network, weak links are indeed connecting densely connected communities).
+
+Presented in this way, the timeseries clustering task is also very close to graph community detection. Communities in networks are indeed often seen as groups of nodes exhibiting high internal densities of links as well as a low density across communities \cite{Newmanb}. Although several techniques exists (based on different graph properties : modularity \cite{Newmanb}, edge betweeness \cite{Girvan2002}, spectrum of Laplacian \cite{Newman}...), the clique percolation algorithm \cite{Lancichinetti} uses directly this observation and the idea behind it is actually quite simple. It starts indeed by searching for cliques (a complete subgraph) in the given graph as potential community cores. Because other nodes can naturally belong to a community with a less strong connectivity requirement, the algorithm uses a fitness function that quantifies the quality (according to some criterions) of a community structure inside the graph. Expansed cliques alternatively look in their respective neighborhood, select the node that yields the best increase in fitness, and finally incorporate it. The percolation algorithm stops when seeds cease to grow or when all nodes are affected to at least one seed. At this point, some coalitions may be partially overlapping, meaning that a node can belong to multiple communities. Detection of overlapping communities is actually a very active field of research, especially in social networks where persons often belongs to several communities (family, friends, work colleagues...).
+
+The following section of this paper explains the model we built in order obtain sufficient historical values for our prosumers, such that forming coalitions based on statistics is actually meaningfull. 
 
 \section{Model}
-A major concern while designing our model was its ability to translate correctly realistic patterns (consumption and production) as well as realistic geographical correlations between patterns. Largely because of these reasons (but also because they are easily, and sometimes freely, available online) we chose to use meteorological traces as inputs. In this paper we used namely both french data from 2006 to 2012 sampled every 3 hours (see link), as well as Western USA data over 2010 sampled every hour (see link). The weather stations already offer a quite good sampling of a given territory, and, with the growth of personal weather stations constantly updating data bases, the mesh becomes finer and finer. As shown in the first part of figure 1, the first step consists in discretizing the studied zone around well chosen weather stations and gathering traces for these stations. In this paper, we consider that prosumers can only produce through wind turbines and photovoltaic panels (PV). On the other hand, we built their consumption patterns according to two major cycles :
+A major concern while designing our model was its ability to translate correctly realistic patterns (consumption and production) as well as realistic geographical correlations between patterns. Largely because of these reasons (but also because they are easily, and sometimes freely, available online) we chose to use meteorological traces as inputs. In this paper we used namely both french data from 2006 to 2012 sampled every 3 hours \cite{Infoclimat} (similar data for the United States covering year 2010 can also be found at \cite{NCDC}). The weather stations already offer a quite good sampling of a given territory, and, with the growth of personal weather stations constantly updating data bases, the mesh becomes finer and finer. As shown in the first part of figure 1, the first step consists in discretizing the studied zone around well chosen weather stations and gathering traces for these stations. In this paper, we consider that prosumers can only produce through wind turbines and photovoltaic panels (PV). On the other hand, we built their consumption patterns according to two major cycles :
 \begin{itemize}
 \item \textbf{Daily cycles} : Consumption is low during night, and higher during the day with two picks in the morning and evening. Some noise is added so that prosumers have similar but not identical cycles.
 \item \textbf{Seasonal cycles} : Consumption is higher in the winter because of heating and low in the summer (we did not consider air conditioning in this paper). Temperature traces were the principal ingredient for modeling these cycles.
@@ -579,7 +582,7 @@ The next section shows how the utility behave within the parameters space and pr
 \begin{center}
 \begin{figure}
 \begin{tabular}{cc}
-   \includegraphics[scale=0.44]{./figure3/utility.eps} &
+   \includegraphics[scale=0.44]{./figure1/util.eps} &
    \includegraphics[scale=0.44]{./figure3/utility.eps} \\
 \end{tabular}
 \caption{Utility function in parameters space}
@@ -701,7 +704,11 @@ When the grid requirements are very low ( $ P_{MIN} $ close to zero), all coalit
 
 
 \section{Conclusion}
-The conclusion goes here.
+In this paper we collected meteorological traces for weather stations sampling a given territory. After discetization of the space, each zone receives the climate vector corresponding to its mother weather station. Prosumers are then distributed randomly between zones and each prosumer receives a random number of DER and loads as well as diverse consumption habits. Simulations are then runned and allow us to obtain, for each prosumer, the timeserie describing the instantaneous power that he could potentially be wanted to sell on the market. Nevertheless, as entering on the energy market is constrained by the grid operator, such that only sufficiently reliable and sufficiently productive units are allowed to enter, prosumers have usually no other choice than forming coalitions. We then introduced a framework such that the grid requirements take a precise meaning and such that coalitions announce contract values accordingly. 
+
+Through this paper, our interest was on how we could circumscribe groups of prosumers that can rise above the grid requirements. In this direction, we removed seasonal variations from the prosumers timeseries and proposed to organize them over a correlation graph with a reversed metric. A greedy clique percolation process on the $ \epsilon $-graph enables us to finally establish coalitions of agents. We showed in the last section that our algorithm was actually finding coalitions with high utility values but also that it was far more robust than a random search over coalition structures when the grid operator increases his requirements (Fig. 4).
+
+An interresting lead for future work would be the introduction of a payoff allocation towards the prosumers such that the stability against player defection could be analysed. Besides, we believe that not restricting the algorithm to non overlapping coalitions and studying the strategies and weights of nodes with multiple options could lead to interesting works.
 
 
 
@@ -741,13 +748,17 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%\begin{thebibliography}{1}
 
-\end{thebibliography}
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+ 
+\bibliographystyle{IEEEtran}  
+\bibliography{Article}
+
+%\end{thebibliography}
 
 
 

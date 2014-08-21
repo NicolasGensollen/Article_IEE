@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.17)  20 AUG 2014 15:17
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.17)  21 AUG 2014 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -626,47 +626,50 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 457.
+LaTeX Font Info:    Try loading font information for U+msa on input line 455.
 
 (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 457.
+LaTeX Font Info:    Try loading font information for U+msb on input line 455.
 
 (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1{c:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] [2]
+]
+Underfull \vbox (badness 1259) has occurred while \output is active []
+
+ [2]
 <figure2.jpg, id=19, 582.67688pt x 711.4078pt>
 File: figure2.jpg Graphic file (type jpg)
  <use figure2.jpg>
-Package pdftex.def Info: figure2.jpg used on input line 490.
+Package pdftex.def Info: figure2.jpg used on input line 493.
 (pdftex.def)             Requested size: 262.20218pt x 320.13055pt.
 
-Overfull \hbox (10.20218pt too wide) in paragraph at lines 490--491
+Overfull \hbox (10.20218pt too wide) in paragraph at lines 493--494
 [][] 
  []
 
 [3 <./figure2.jpg>] [4]
-Package epstopdf Info: Source file: <./figure3/utility.eps>
-(epstopdf)                    date: 2014-08-19 16:39:00
-(epstopdf)                    size: 222388 bytes
-(epstopdf)             Output file: <./figure3/utility-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-08-19 16:40:58
-(epstopdf)                    size: 27617 bytes
-(epstopdf)             Command: <repstopdf --outfile=./figure3/utility-eps-conv
-erted-to.pdf ./figure3/utility.eps>
-(epstopdf)             \includegraphics on input line 582.
+Package epstopdf Info: Source file: <./figure1/util.eps>
+(epstopdf)                    date: 2014-08-21 18:04:04
+(epstopdf)                    size: 232524 bytes
+(epstopdf)             Output file: <./figure1/util-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-08-21 18:04:31
+(epstopdf)                    size: 28510 bytes
+(epstopdf)             Command: <repstopdf --outfile=./figure1/util-eps-convert
+ed-to.pdf ./figure1/util.eps>
+(epstopdf)             \includegraphics on input line 585.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figure3/utility-eps-converted-to.pdf, id=30, 289.08pt x 216.81pt>
-File: ./figure3/utility-eps-converted-to.pdf Graphic file (type pdf)
+<./figure1/util-eps-converted-to.pdf, id=30, 289.08pt x 216.81pt>
+File: ./figure1/util-eps-converted-to.pdf Graphic file (type pdf)
 
-<use ./figure3/utility-eps-converted-to.pdf>
-Package pdftex.def Info: ./figure3/utility-eps-converted-to.pdf used on input l
-ine 582.
+<use ./figure1/util-eps-converted-to.pdf>
+Package pdftex.def Info: ./figure1/util-eps-converted-to.pdf used on input line
+ 585.
 (pdftex.def)             Requested size: 127.19559pt x 95.39668pt.
 Package epstopdf Info: Source file: <./figure3/utility.eps>
 (epstopdf)                    date: 2014-08-19 16:39:00
@@ -676,26 +679,29 @@ Package epstopdf Info: Source file: <./figure3/utility.eps>
 (epstopdf)                    size: 27617 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure3/utility-eps-conv
 erted-to.pdf ./figure3/utility.eps>
-(epstopdf)             \includegraphics on input line 583.
+(epstopdf)             \includegraphics on input line 586.
 Package epstopdf Info: Output file is already uptodate.
+
+<./figure3/utility-eps-converted-to.pdf, id=31, 289.08pt x 216.81pt>
 File: ./figure3/utility-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure3/utility-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure3/utility-eps-converted-to.pdf used on input l
-ine 583.
+ine 586.
 (pdftex.def)             Requested size: 127.19559pt x 95.39668pt.
 
-Overfull \hbox (26.39117pt too wide) in paragraph at lines 581--585
+Overfull \hbox (26.39117pt too wide) in paragraph at lines 584--588
 [][] 
  []
 
-<./figure5/coals.pdf, id=31, 289.08pt x 216.81pt>
+<./figure5/coals.pdf, id=32, 289.08pt x 216.81pt>
 File: ./figure5/coals.pdf Graphic file (type pdf)
  <use ./figure5/coals.pdf>
-Package pdftex.def Info: ./figure5/coals.pdf used on input line 598.
+Package pdftex.def Info: ./figure5/coals.pdf used on input line 601.
 (pdftex.def)             Requested size: 231.2643pt x 173.44823pt.
 
-[5 <./figure3/utility-eps-converted-to.pdf> <./figure5/coals.pdf>]
+[5 <./figure1/util-eps-converted-to.pdf> <./figure3/utility-eps-converted-to.pd
+f> <./figure5/coals.pdf>]
 Package epstopdf Info: Source file: <./figure4/survival.eps>
 (epstopdf)                    date: 2014-08-19 17:19:03
 (epstopdf)                    size: 33835 bytes
@@ -704,17 +710,23 @@ Package epstopdf Info: Source file: <./figure4/survival.eps>
 (epstopdf)                    size: 20970 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure4/survival-eps-con
 verted-to.pdf ./figure4/survival.eps>
-(epstopdf)             \includegraphics on input line 613.
+(epstopdf)             \includegraphics on input line 616.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figure4/survival-eps-converted-to.pdf, id=190, 289.08pt x 216.81pt>
+<./figure4/survival-eps-converted-to.pdf, id=225, 289.08pt x 216.81pt>
 File: ./figure4/survival-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure4/survival-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure4/survival-eps-converted-to.pdf used on input 
-line 613.
+line 616.
 (pdftex.def)             Requested size: 202.35461pt x 151.76596pt.
+ (./Article.bbl
+Overfull \hbox (1.86987pt too wide) in paragraph at lines 38--44
+\T1/ptm/m/n/8 http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=677
+9040 
+ []
 
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -726,35 +738,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6
-
- <./figure4/survival-eps-converted-to.pdf>] (./Article.aux) ) 
+[6 <./figure4/survival-eps-converted-to.pdf>] (./Article.aux) ) 
 Here is how much of TeX's memory you used:
- 5378 strings out of 493488
- 78812 string characters out of 3144748
- 147086 words of memory out of 3000000
- 8577 multiletter control sequences out of 15000+200000
- 115177 words of font info for 131 fonts, out of 3000000 for 9000
+ 5380 strings out of 493488
+ 79010 string characters out of 3144748
+ 148133 words of memory out of 3000000
+ 8584 multiletter control sequences out of 15000+200000
+ 108608 words of font info for 115 fonts, out of 3000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,12n,38p,1166b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
-{c:/texlive/2012/t
-exmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2012/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
-><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texli
-ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2012/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2012/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2012/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pf
-b><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/201
-2/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2012/texmf-dist/fonts
-/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (6 pages, 359422 bytes).
+ 38i,12n,38p,1551b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
+{c:/texlive/2012
+/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2012/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmex10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
+fb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2012/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2012/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.
+pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2
+012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2012/texmf-dist/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on Article.pdf (6 pages, 391928 bytes).
 PDF statistics:
- 275 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 310 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

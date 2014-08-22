@@ -50,6 +50,11 @@ R.~Kota, A.~Rogers, and N.~R. Jennings, ``{Cooperatives of Distributed Energy
 \bibitem{Mantegna1999}
 R.~N. Mantegna, ``{P HYSICAL J OURNAL B},'' vol. 197, pp. 193--197, 1999.
 
+\bibitem{Onnela2004}
+J.-P. Onnela, K.~Kaski, and J.~Kertesz, ``{Clustering and information in
+  correlation based financial networks},'' \emph{The European Physical Journal
+  B - Condensed Matter}, vol.~38, no.~2, pp. 353--362, Mar. 2004.
+
 \bibitem{Garas2008}
 \BIBentryALTinterwordspacing
 a.~Garas, P.~Argyrakis, and S.~Havlin, ``{The structural role of weak and
@@ -82,6 +87,11 @@ A.~Lancichinetti, ``{Detecting the overlapping and hierarchical community
 \bibitem{NCDC}
 \BIBentryALTinterwordspacing
  [Online]. Available: \url{http://www.ncdc.noaa.gov/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{windturbinemodel}
+\BIBentryALTinterwordspacing
+ [Online]. Available: \url{http://www.wind-power-program.com}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

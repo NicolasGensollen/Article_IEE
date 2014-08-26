@@ -21,6 +21,16 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Ramchurn}
+S.~D. Ramchurn, P.~Vytelingum, A.~Rogers, and N.~R. Jennings, ``{Putting the
+  “ Smarts ” into the Smart Grid : A Grand Challenge for Artificial
+  Intelligence}.''
+
+\bibitem{WuHamedHuangBook2011}
+C.~Wu, A.-H. Mohsenian-Rad, and J.~Huang, \emph{Vehicle-to-grid systems:
+  ancillary services and communications}.\hskip 1em plus 0.5em minus
+  0.4em\relax Cambridge University Press, 2012.
+
 \bibitem{Rathnayaka2012}
 \BIBentryALTinterwordspacing
 a.~J.~D. Rathnayaka, V.~Potdar, and M.~H. Ou, ``{Prosumer management in
@@ -28,6 +38,17 @@ a.~J.~D. Rathnayaka, V.~Potdar, and M.~H. Ou, ``{Prosumer management in
   Information Technology Conference on - CUBE '12}, p. 483, 2012. [Online].
   Available: \url{http://dl.acm.org/citation.cfm?doid=2381716.2381808}
 \BIBentrySTDinterwordspacing
+
+\bibitem{Pahwa}
+S.~Pahwa, C.~Scoglio, and N.~Schulz, ``{Topological Analysis and Mitigation
+  Strategies for Cascading Failures in Power Grid Networks}.''
+
+\bibitem{Braun}
+M.~Braun, ``{Virtual Power Plants in Real Applications Pilot Demonstrations in
+  Spain and England as part of the European project FENIX},'' vol.~49, no. 561.
+
+\bibitem{Mantegna1999}
+R.~N. Mantegna, ``{P HYSICAL J OURNAL B},'' vol. 197, pp. 193--197, 1999.
 
 \bibitem{Saad2009}
 W.~Saad and Z.~Han, ``{A Distributed Coalition Formation Framework for Fair
@@ -42,13 +63,13 @@ X.~Luan, J.~Wu, S.~Ren, and H.~Xiang, ``{Cooperative power consumption in the
   \url{http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6779040}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Europe}
+D.~Europe, ``{Integrating Wind}.''
+
 \bibitem{Kota2011}
 R.~Kota, A.~Rogers, and N.~R. Jennings, ``{Cooperatives of Distributed Energy
   Resources for Efficient Virtual Power Plants},'' no. Aamas, pp. 787--794,
   2011.
-
-\bibitem{Mantegna1999}
-R.~N. Mantegna, ``{P HYSICAL J OURNAL B},'' vol. 197, pp. 193--197, 1999.
 
 \bibitem{Onnela2004}
 J.-P. Onnela, K.~Kaski, and J.~Kertesz, ``{Clustering and information in

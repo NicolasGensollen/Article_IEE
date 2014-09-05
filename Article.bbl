@@ -28,16 +28,11 @@ S.~D. Ramchurn, P.~Vytelingum, A.~Rogers, and N.~R. Jennings, ``{Putting the
 
 \bibitem{WuHamedHuangBook2011}
 C.~Wu, A.-H. Mohsenian-Rad, and J.~Huang, \emph{Vehicle-to-grid systems:
-  ancillary services and communications}.\hskip 1em plus 0.5em minus
-  0.4em\relax Cambridge University Press, 2012.
+  ancillary services and communications}, 2012.
 
 \bibitem{Rathnayaka2012}
-\BIBentryALTinterwordspacing
 a.~J.~D. Rathnayaka, V.~Potdar, and M.~H. Ou, ``{Prosumer management in
-  socio-technical smart grid},'' \emph{Proceedings of the CUBE International
-  Information Technology Conference on - CUBE '12}, p. 483, 2012. [Online].
-  Available: \url{http://dl.acm.org/citation.cfm?doid=2381716.2381808}
-\BIBentrySTDinterwordspacing
+  socio-technical smart grid},'' 2012.
 
 \bibitem{Pahwa}
 S.~Pahwa, C.~Scoglio, and N.~Schulz, ``{Topological Analysis and Mitigation
@@ -45,7 +40,7 @@ S.~Pahwa, C.~Scoglio, and N.~Schulz, ``{Topological Analysis and Mitigation
 
 \bibitem{Braun}
 M.~Braun, ``{Virtual Power Plants in Real Applications Pilot Demonstrations in
-  Spain and England as part of the European project FENIX},'' vol.~49, no. 561.
+  Spain and England as part of the European project FENIX}.''
 
 \bibitem{Mantegna1999}
 R.~N. Mantegna, ``{P HYSICAL J OURNAL B},'' vol. 197, pp. 193--197, 1999.
@@ -55,42 +50,30 @@ W.~Saad and Z.~Han, ``{A Distributed Coalition Formation Framework for Fair
   User Cooperation in Wireless Networks},'' no. May 2008, 2009.
 
 \bibitem{Luan2014}
-\BIBentryALTinterwordspacing
 X.~Luan, J.~Wu, S.~Ren, and H.~Xiang, ``{Cooperative power consumption in the
-  smart grid based on coalition formation game},'' \emph{16th International
-  Conference on Advanced Communication Technology}, pp. 640--644, Feb. 2014.
-  [Online]. Available:
-  \url{http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6779040}
-\BIBentrySTDinterwordspacing
+  smart grid based on coalition formation game},'' 2014.
 
 \bibitem{Europe}
 D.~Europe, ``{Integrating Wind}.''
 
 \bibitem{Kota2011}
 R.~Kota, A.~Rogers, and N.~R. Jennings, ``{Cooperatives of Distributed Energy
-  Resources for Efficient Virtual Power Plants},'' no. Aamas, pp. 787--794,
-  2011.
+  Resources for Efficient Virtual Power Plants},'' 2011.
 
 \bibitem{Onnela2004}
 J.-P. Onnela, K.~Kaski, and J.~Kertesz, ``{Clustering and information in
-  correlation based financial networks},'' \emph{The European Physical Journal
-  B - Condensed Matter}, vol.~38, no.~2, pp. 353--362, Mar. 2004.
+  correlation based financial networks},'' 2004.
 
 \bibitem{Garas2008}
-\BIBentryALTinterwordspacing
 a.~Garas, P.~Argyrakis, and S.~Havlin, ``{The structural role of weak and
-  strong links in a financial market network},'' \emph{The European Physical
-  Journal B}, vol.~63, no.~2, pp. 265--271, Jun. 2008. [Online]. Available:
-  \url{http://www.springerlink.com/index/10.1140/epjb/e2008-00237-3}
-\BIBentrySTDinterwordspacing
+  strong links in a financial market network},'' 2008.
 
 \bibitem{Newmanb}
 M.~E.~J. Newman, ``{Modularity and community structure in networks}.''
 
 \bibitem{Girvan2002}
 M.~Girvan and M.~E.~J. Newman, ``{Community structure in social and biological
-  networks.}'' \emph{Proceedings of the National Academy of Sciences of the
-  United States of America}, vol.~99, no.~12, pp. 7821--6, Jun. 2002.
+  networks.}'' 2002.
 
 \bibitem{Newman}
 M.~E.~J. Newman, ``{Finding community structure in networks using the

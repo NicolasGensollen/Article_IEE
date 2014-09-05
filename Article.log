@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.17)  26 AUG 2014 13:41
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.17)  5 SEP 2014 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -626,12 +626,12 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 456.
+LaTeX Font Info:    Try loading font information for U+msa on input line 459.
 
 (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 456.
+LaTeX Font Info:    Try loading font information for U+msb on input line 459.
 
 (c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -639,17 +639,17 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 
 ]
-Underfull \hbox (badness 1502) in paragraph at lines 473--474
+Underfull \hbox (badness 1502) in paragraph at lines 476--477
 []\T1/ptm/m/n/10 Attacking the sta-bil-ity is-sues of re-new-able DER, the
  []
 
 [2] <figure2.jpg, id=19, 582.67688pt x 711.4078pt>
 File: figure2.jpg Graphic file (type jpg)
  <use figure2.jpg>
-Package pdftex.def Info: figure2.jpg used on input line 498.
+Package pdftex.def Info: figure2.jpg used on input line 501.
 (pdftex.def)             Requested size: 262.20218pt x 320.13055pt.
 
-Overfull \hbox (10.20218pt too wide) in paragraph at lines 498--499
+Overfull \hbox (10.20218pt too wide) in paragraph at lines 501--502
 [][] 
  []
 
@@ -662,7 +662,7 @@ Package epstopdf Info: Source file: <./figure1/util.eps>
 (epstopdf)                    size: 27016 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure1/util-eps-convert
 ed-to.pdf ./figure1/util.eps>
-(epstopdf)             \includegraphics on input line 594.
+(epstopdf)             \includegraphics on input line 611.
 Package epstopdf Info: Output file is already uptodate.
 
 <./figure1/util-eps-converted-to.pdf, id=30, 289.08pt x 216.81pt>
@@ -670,7 +670,7 @@ File: ./figure1/util-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure1/util-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure1/util-eps-converted-to.pdf used on input line
- 594.
+ 611.
 (pdftex.def)             Requested size: 144.53964pt x 108.40472pt.
 Package epstopdf Info: Source file: <./figure6/util2.eps>
 (epstopdf)                    date: 2014-08-22 12:38:44
@@ -680,7 +680,7 @@ Package epstopdf Info: Source file: <./figure6/util2.eps>
 (epstopdf)                    size: 29328 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure6/util2-eps-conver
 ted-to.pdf ./figure6/util2.eps>
-(epstopdf)             \includegraphics on input line 595.
+(epstopdf)             \includegraphics on input line 612.
 Package epstopdf Info: Output file is already uptodate.
 
 <./figure6/util2-eps-converted-to.pdf, id=31, 289.08pt x 216.81pt>
@@ -688,26 +688,26 @@ File: ./figure6/util2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure6/util2-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure6/util2-eps-converted-to.pdf used on input lin
-e 595.
+e 612.
 (pdftex.def)             Requested size: 144.53964pt x 108.40472pt.
 
-Overfull \hbox (9.0794pt too wide) in paragraph at lines 593--597
+Overfull \hbox (9.0794pt too wide) in paragraph at lines 610--614
 [][] 
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 597--597
+Underfull \hbox (badness 1540) in paragraph at lines 614--614
 []\T1/ptm/m/n/10 Figure 2: |Util-ity func-tion in pa-ram-e-ters space. Left in
  []
 
 <./figure5/coals.pdf, id=32, 289.08pt x 216.81pt>
 File: ./figure5/coals.pdf Graphic file (type pdf)
  <use ./figure5/coals.pdf>
-Package pdftex.def Info: ./figure5/coals.pdf used on input line 611.
+Package pdftex.def Info: ./figure5/coals.pdf used on input line 628.
 (pdftex.def)             Requested size: 231.2643pt x 173.44823pt.
 
 [5 <./figure1/util-eps-converted-to.pdf> <./figure6/util2-eps-converted-to.pdf>
-]
+ <./figure5/coals.pdf>]
 Package epstopdf Info: Source file: <./figure7/uti.eps>
 (epstopdf)                    date: 2014-08-25 12:51:50
 (epstopdf)                    size: 34631 bytes
@@ -716,14 +716,15 @@ Package epstopdf Info: Source file: <./figure7/uti.eps>
 (epstopdf)                    size: 22069 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure7/uti-eps-converte
 d-to.pdf ./figure7/uti.eps>
-(epstopdf)             \includegraphics on input line 631.
+(epstopdf)             \includegraphics on input line 648.
 Package epstopdf Info: Output file is already uptodate.
- <./figure7/uti-eps-converted-to.pdf, id=111, 289.08pt x 216.81pt>
+
+<./figure7/uti-eps-converted-to.pdf, id=228, 289.08pt x 216.81pt>
 File: ./figure7/uti-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure7/uti-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure7/uti-eps-converted-to.pdf used on input line 
-631.
+648.
 (pdftex.def)             Requested size: 130.0848pt x 97.56358pt.
 Package epstopdf Info: Source file: <./figure4/survival.eps>
 (epstopdf)                    date: 2014-08-19 17:19:03
@@ -733,29 +734,22 @@ Package epstopdf Info: Source file: <./figure4/survival.eps>
 (epstopdf)                    size: 20970 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figure4/survival-eps-con
 verted-to.pdf ./figure4/survival.eps>
-(epstopdf)             \includegraphics on input line 632.
+(epstopdf)             \includegraphics on input line 649.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figure4/survival-eps-converted-to.pdf, id=112, 289.08pt x 216.81pt>
+<./figure4/survival-eps-converted-to.pdf, id=229, 289.08pt x 216.81pt>
 File: ./figure4/survival-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./figure4/survival-eps-converted-to.pdf>
 Package pdftex.def Info: ./figure4/survival-eps-converted-to.pdf used on input 
-line 632.
+line 649.
 (pdftex.def)             Requested size: 130.0848pt x 97.56358pt.
 
-Overfull \hbox (8.16959pt too wide) in paragraph at lines 630--634
+Overfull \hbox (8.16959pt too wide) in paragraph at lines 647--651
 [][] 
  []
 
-[6 <./figure5/coals.pdf> <./figure7/uti-eps-converted-to.pdf> <./figure4/surviv
-al-eps-converted-to.pdf>] (./Article.bbl
-Overfull \hbox (1.86987pt too wide) in paragraph at lines 59--65
-\T1/ptm/m/n/8 http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=677
-9040 
- []
-
-)
+(./Article.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -767,34 +761,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7
-
-] (./Article.aux) ) 
+[6 <./figure7/uti-eps-converted-to.pdf> <./figure4/survival-eps-converted-to.pd
+f>] (./Article.aux) ) 
 Here is how much of TeX's memory you used:
- 5403 strings out of 493488
- 79365 string characters out of 3144748
- 149253 words of memory out of 3000000
- 8605 multiletter control sequences out of 15000+200000
- 108608 words of font info for 115 fonts, out of 3000000 for 9000
+ 5409 strings out of 493488
+ 79418 string characters out of 3144748
+ 148293 words of memory out of 3000000
+ 8610 multiletter control sequences out of 15000+200000
+ 109744 words of font info for 116 fonts, out of 3000000 for 9000
  960 hyphenation exceptions out of 8191
- 38i,12n,38p,1549b,363s stack positions out of 5000i,500n,10000p,200000b,50000s
-{c:/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/
-texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2
-012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2012/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2012/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c
-:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/
-2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2012/texmf
--dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/
-urw/times/utmbi8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.
-pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (7 pages, 414527 bytes).
+ 38i,12n,38p,1544b,363s stack positions out of 5000i,500n,10000p,200000b,50000s
+{c:/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}<c
+:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2012/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2012/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2012/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr10.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texliv
+e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2012/tex
+mf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2012/texmf-dist/fonts/type
+1/urw/times/utmbi8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Article.pdf (6 pages, 408355 bytes).
 PDF statistics:
- 356 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 351 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

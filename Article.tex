@@ -354,114 +354,68 @@
 
 
 \begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
+% Title
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Allowing Stable Groups of Prosumers to Enter the Market through Proper Aggregation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Authors
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Nicolas Gensollen, Vincent Gauthier, Michel Marot and Monique Becker \\
+\IEEEauthorblockA{CNRS UMR 5157 SAMOVAR, \\
+Telecom SudParis/Institut Mines Telecom\\
+Email: \{nicolas.gensollen, vincent.gauthier, michel.marot, monique.becker\}@telecom-sudparis.eu}}
 
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
-\author{\IEEEauthorblockN{Nicolas Gensollen}
-\IEEEauthorblockA{CNRS SAMOVAR, \\
-Institut Mines Telecom}
-\and
-\IEEEauthorblockN{Vincent Gauthier}
-\IEEEauthorblockA{CNRS SAMOVAR, \\
-Institut Mines Telecom}
-\and
-\IEEEauthorblockN{Michel Marot\\ and Monique Becker}
-\IEEEauthorblockA{CNRS SAMOVAR, \\
-Institut Mines Telecom}}
-
-% conference papers do not typically use \thanks and this command
-% is locked out in conference mode. If really needed, such as for
-% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
-% after \documentclass
-
-% for over three affiliations, or if they all won't fit within the width
-% of the page, use this alternative format:
-% 
-%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
-%Homer Simpson\IEEEauthorrefmark{2},
-%James Kirk\IEEEauthorrefmark{3}, 
-%Montgomery Scott\IEEEauthorrefmark{3} and
-%Eldon Tyrell\IEEEauthorrefmark{4}}
-%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
-%Georgia Institute of Technology,
-%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
-%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
-%Email: homer@thesimpsons.com}
-%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
-%Telephone: (800) 555--1212, Fax: (888) 555--1212}
-%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
-
-
-
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
-
-% make the title area
 \maketitle
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Abstract
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-%\boldmath
-
 In a smart grid environment, we study coalitions formation of prosumers that aim at selling energy to the grid. It is paramount for the grid operation that the energy producers are able to sustain the grid requirements in term of stability and minimum production requirement in order to enter the energy market. We design an algorithm that seeks to form coalitions that will meet both of these requirements:  a minium energy level for the coalition and a production of an uncorrelated source of energy in order to have stable production level during the course of the bidding. We proposed an algorithm that uses graph tools such as correlation graphs or clique percolation to form coalition that meet such complex constraints. We validate the algorithm against a random procedure and show that, it not only performs better in term of social welfare for the power grid, but also that it is more robust against unforeseen production variations to due to changing weather condition for instance. 
-
-
-%There is a growing interest for coalitional concepts in the smart grid, spanning multiple objectives such as power losses reduction, benefits maximization or market stability... In this paper, we study coalitions of prosumers (agents that produce but also consume depending on time) which aim at selling energy to the grid. We reckon that the grid is able to specify two requirements (stability and minimum production) that enable a coalition to enter the market. Based on probability distributions of units available power, coalitions which are able to achieve low standard deviations are considered as stable coalitions. As it seems intuitively understandable that maintaining stable coalitions would be less expensive in terms of communication load than highly versatible ones, our objective consists in forming coalitions that satisfy grid requirements both in terms of stability and minimum production. Our definition of stability being implicitely linked to correlation between agents timeseries (see section \ref{sec:model}), we organize them over a correlation graph and use a variation of clique percolation to construct valid coalitions in reasonable time.
 \end{abstract}
-% IEEEtran.cls defaults to using nonbold math in the Abstract.
-% This preserves the distinction between vectors and scalars. However,
-% if the conference you are submitting to favors bold math in the abstract,
-% then you can use LaTeX's standard command \boldmath at the very start
-% of the abstract to achieve this. Many IEEE journals/conferences frown on
-% math in the abstract anyway.
 
-% no keywords
-
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-% Mantegna
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Section I: Introduction
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{sec:introduction}
-% no \IEEEPARstart
+
 One of the key ideas in the smart grid revolves around the introduction of communication means inside the power grids. This could enable complex improvements in the energy management and lead progressively to a greener energetic system \cite{Ramchurn} \cite{WuHamedHuangBook2011}. Distributed energy resources (DER) such as wind turbines or photovoltaic panels are not supposed to emerge only in remote farms, but also in residential areas. Together with electric vehicles, and demand side management tools, they will constitute the building blocks which will help to turn the today pure energy consumers into true actors of the grid operation \cite{Ramchurn}. Such agents that both consume and produce energy are ready to make concessions (appliances delays, V2G…) to ensure grid stability, and are commonly called prosumers \cite{Rathnayaka2012} \cite{Ramchurn}.
 
 There seems to have a clear consensus on the benefit of having bidirectional communication flows between prosumers and the grid as most of the demand side management concepts have proposed such an architecture \cite{WuHamedHuangBook2011}. Nevertheless as the number of active prosumers is expected to rise, it is safe to assume there is a need for more complex communication patterns (such as coalitions) that will help to decrease the communication burden and in the mean time satisfy the multiple requirements of the power grid management. The formation of coalitions inside the smart grid environment could be applied to various types of agents such as self sufficient micro-grids \cite{Pahwa}, sizable and adjustable virtual power plants (VPP) \cite{Braun} \cite{Ramchurn}, or fleet of electric vehicles that back up the grid in some emergency situations (V2G) \cite{Ramchurn}. These are just a few use cases where the coalition of multiple agents can enhance the grid reliability and in the mean time reduce the communication burden.
 
 In this paper, we focus on how to statistically improve the production stability by carefully forming coalitions of prosumers that have greater probability of staying in acceptable range of production. By using prediction techniques, we form coalitions that meet the contract values ranges proposed by the grid, enabling it to schedule its production accordingly. Meeting contract values for the prosumer are especially relevant in power trade conditions, where energy is traded based on day-ahead predictions. In this context, participants should try to minimize their prediction errors in order to maintain a stable state for the grid. They may even occur some penalties if the productions deviate from the initial contract values. However, it is pertinent for both side to maintain the production as stable as possible : for the prosumer, the stability (with renewable energy source) will impact its net gain, and for the power grid, it will helps to maintain its reliability.
 
-In this paper, we seek at optimizing this tradeoff, that is forming coalitions able to announce “high contract values with high reliability”. We thus aim at:
+In this paper, we seek to form coalitions that are able to announce "high contract values with high reliability". We thus aim at:
 \begin{itemize}
-\item Realistic prosumers productions with renewable production sources from real traces base from weather measure.
-\item Minimizing the standard deviations of coalitions production probability distributions through the use of a proper utility function (see section \ref{sec:model})
-\item Being (relatively) scalable with the number of prosumers
+\item Build a realistic prosumers model with renewable production sources based on weather data (see section \ref{subsec:ProsumerModel}).
+\item Define coalitions formation model that enale the grisd that minimize production probability distributions through the use of a proper utility function (see section \ref{subsec:Coalition})
+\item finaly we defined and overall utiliy function to account for the  (see section \ref{subsec:UtilityFunc})
+\item (see section \ref{sec:forming})
 \end{itemize}
 
-In more details, and as will be explained in section \ref{sec:model}, we have consider agents that depend on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled). We used real meteorological traces (see section \ref{sec:model}) to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
+In more details, and as will be explained in section \ref{sec:model}, we have consider agents that depend on meteorological conditions, various energy mix and  preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled). We used real meteorological traces (see section \ref{sec:model}) to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
 
-As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering since \cite{Mantegna1999} (see section \ref{sec:related}). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a modified clique percolation algorithm (see section \ref{sec:results}) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements. Finally, section \ref{sec:results} provides some results.
+As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering since \cite{Mantegna1999} (see section \ref{sec:related}). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a modified clique percolation algorithm (see section \ref{sec:results}) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements. Finally, in section \ref{sec:results} provides some results and a conclusion in section \ref{sec:conclusion}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Section II: Related Work
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Related Work}
 \label{sec:related}
@@ -482,9 +436,15 @@ Presented in this way, the timeseries clustering task seems very close to graph 
 
 The following section of this paper explains the model we built in order to obtain sufficient historical values for our prosumers, such that forming coalitions based on statistics is actually meaningfull. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Section III: Model
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Model}
 \label{sec:model}
-\subsection{Prosumer model}
+\subsection{Prosumer model}\label{subsec:ProsumerModel}
 
 A major concern while designing our model was its ability to translate correctly realistic patterns (consumption and production) as well as realistic geographical correlations between patterns. Largely because of these reasons (but also because they are easily, and sometimes freely, available online) we chose to use meteorological traces as inputs. In this paper we used namely both french data from 2006 to 2012 sampled every 3 hours \cite{Infoclimat} (similar data for the United States covering 2010 can also be found at \cite{NCDC}). The weather stations already offer a quite good sampling of a given territory, and, with the growth of personal weather stations constantly updating data bases, the mesh becomes finer and finer. As shown in the first part of figure 1, the first step consists in discretizing the studied zone around well chosen weather stations and gathering traces for these stations. In this paper, we consider that prosumers can only produce through wind turbines and photovoltaic panels (PV). On the other hand, we built their consumption patterns according to two major cycles :
 \begin{itemize}
@@ -504,14 +464,7 @@ We thus collect for all chosen weather stations three kind of traces (average wi
 
 At this point, modeling agents consists in fixing a few parameters (most of the time drawn from random distributions) such as the geographical position, the number of wind turbines, PV, appliances, the temperature of confort, and so on... The objective is that, depending on the weather of his zone, the DER and appliances he owns, and the way he decides to heat his home, a given prosumer is able to compute his production/consumption at any time. We thus used simple and known power curve models for linking weather variables to output power, such that a wind turbine (or a PV for instance) takes a wind speed (a solar irradiance) as input and gives an instantaneous output power \cite{Kota2011} \cite{windturbinemodel}. Any agent is thus able to compute at any time how much he produces and consumes. 
 
-
-%Smart grid perspectives assume that smart meters populate the network, recording production/consumption values and reporting these to data centers. Any entities (DER, prosumers, microgrids, VPP and so on) would thereby be characterizable through timeseries expressing how much these entities produce or consume. 
-
-%Through our model, we wish thus to be able to generate, for any prosumer, its available production over time, which depend both on its pure production and consumption. Naturally, these are far from random in the sense that there are recurring patterns (consumption or expected solar irradience for instance) or statistical properties (see wind speed studies) that shape these profiles. We thus used meteorological traces as base inputs because they naturaly provide these key ingredients (sources). On the production side, as we only consider wind turbines and photovoltaic panels as generators, we concentrate primarily on wind speed and solar irradience traces. Variables such as temperature or humidity that correlates very well with consumption were also of great use. 
-
-%Basically, the user only has to indicate the number of prosumers and the simulation dates. Prosumers are then positioned randomly on a squared lattice. Any point of this lattice is linked to a meteorological profile derived from the input traces. A few parameters individualizing the prosumers (number and kind of DER owned, consumption habits, and so on...) are also picked randomly and account for diversity.
-
-\subsection{Coalition formation model}
+\subsection{Coalition formation model}\label{subsec:Coalition}
 More formally, we denote by $ \mathcal{A} = \{ a_{1},...a_{N} \} $ the set of agents (the prosumers) and $ P_{i}(t) $ the instantaneous power value of agent i at instant t (its instantaneous production minus consumption, meaning that $ P_{i}(t) $ represents agent i available power at instant t). During the simulation (from $t_{0} $ to $ t_{K} $), all agents record their values with an hour time interval. As expected (because we introduced them), the timeseries exhibit high seasonal patterns, but completely different from agent to agent because they depend both on the energetic mix and habits of a given prosumer. Nevertheless, these macro variations can hide the interesting information in the correlation coefficients and twist the rest of our process. Thereby, we remove these seasonal effects for all agents (see second block of figure \ref{Fig1}). We denote by $ \mathcal{T}_{i} = \{ P_{i}(t_{0}),...,P_{i}(t_{K}) \} $ the resulting timeserie for  agent i. For any agent i, we note $ \mathcal{P}_{i} $ the probability distribution drawn from $ \mathcal{T}_{i} $ and by $ P_{i} $ a random variable following $ \mathcal{P}_{i} $.
 
 We now extand these notations to any coalition $ S \subset \mathcal{A} $ : 
@@ -541,7 +494,7 @@ Basically, a coalition S is valid if and only if :
 \label{rules}
 \end{equation}
 
-\subsection{Utility function}
+\subsection{Utility function}\label{subsec:UtilityFunc}
 We now choose a very simple utility function (eq. \ref{utility}) that derives directly from the above remarks. If a coalition cannot provide a valid contract value, it receives naturally a utility of zero. Furthermore, it seems obvious that the utility should increase with the contract value. The $ 1/|S| $ term in eq. \ref{utility} indicates that we favorise small coalitions, mainly because they are easier to maintain in terms of communications.
 
 \begin{equation}
@@ -572,7 +525,14 @@ The strategy of $ \{ij\} $ consists in maximizing its contract value as long as 
 
 What this paper investigates in the following is the developement of an algorithm that organizes prosumers such that the synergy term of the standard deviation ( $ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) is minimized. In such settings, and through the clique percolation procedure (section \ref{sec:forming}), we will show that coalitions with low relative standard deviation, e.g high utility coalitions, can be computed.
 
-\section{Forming coalitions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Section V: Coalition Formation
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Coalition Formation}
 \label{sec:forming}
 
 This section explains the process with which we form the coalitions (see the third block of Figure \ref{Fig1}). First, we need to simulate the timeseries of available power (first two blocks of Figure \ref{Fig1}). We consider a pool $ \mathcal{A} $ of 200 agents, whose parameters were chosen randomly. The prosumers are positioned (also randomly) on a square lattice previously filled with climate vectors obtained from the french data sets (see section \ref{sec:model}). Simulations were run from february 2006 to december 2010 such that we are dealing with 200 hourly sampled timeseries of available power over this period. Removing season trends finally leads us to the formation of coalitions. 
@@ -645,147 +605,31 @@ When the grid requirements vary, for very low $ P_{\phi}^{MIN} $, all coalitions
 \label{Fig4}
 \end{figure}
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
+% Section VI: Conclusion
 %
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation Results}
-%\label{fig_sim}
-%\end{figure}
-
-% Note that IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command, the
-% \label for the overall figure must come after \caption.
-% \hfil must be used as a separator to get equal spacing.
-% The subfigure.sty package works much the same way, except \subfigure is
-% used instead of \subfloat.
-%
-%\begin{figure*}[!t]
-%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
-%\label{fig_second_case}}}
-%\caption{Simulation results}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-
-
-% An example of a floating table. Note that, for IEEE style tables, the 
-% \caption command should come BEFORE the table. Table text will default to
-% \footnotesize as IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-% Note that IEEE does not put floats in the very first column - or typically
-% anywhere on the first page for that matter. Also, in-text middle ("here")
-% positioning is not used. Most IEEE journals/conferences use top floats
-% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
-% command of the stfloats package.
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-\label{sec: conclusion}
+\label{sec:conclusion}
 
 We believe that the originality of this paper lies in its willingness to exploit the de-correlation of prosumer profiles in order to build stable coalitions. In this direction, we presented a model based on meteorological traces, that captures the complex "\textit{energetic mix/climate vectors}" combination and generates realistic production and consumption patterns. We then built a framework that enables the grid to specify stability and minimum production requirements for filtering the coalitions. On this basis, we proposed a simple algorithm that seeks for uncorrelated prosumer patterns as potential seeds and expand them in coalitions able to rise above the grid requirements.
 
 The algorithm is validated against a random process, where we show that it performs better (coalitions are more stable and the overall production is more important) and that it exhibits a higher robustness/flexibility against grid requirements changes.
 
-%In this paper we collected meteorological traces for weather stations sampling a given territory. After discetization of the space, each zone receives the climate vector corresponding to its mother weather station. Prosumers are then distributed randomly between zones and each prosumer receives a random number of DER and loads as well as diverse consumption habits. Simulations are then runned and allow us to obtain, for each prosumer, the timeserie describing the instantaneous power that he could potentially be wanted to sell on the market. Nevertheless, as entering on the energy market is constrained by the grid operator, such that only sufficiently reliable and sufficiently productive units are allowed to enter, prosumers have usually no other choice than forming coalitions. We then introduced a framework such that the grid requirements take a precise meaning and such that coalitions announce contract values accordingly. 
-
-%Through this paper, our interest was on how we could circumscribe groups of prosumers that can rise above the grid requirements. In this direction, we removed seasonal variations from the prosumers timeseries and proposed to organize them over a correlation graph with a reversed metric. A greedy clique percolation process on the $ \epsilon $-graph enables us to finally establish coalitions of agents. We showed in section \ref{sec:results} that our algorithm was actually finding coalitions with high utility values but also that it was far more robust than a random search over coalition structures when the grid operator increases his requirements (Figure \ref{Fig4}).
-
-Interresting leads for future works would be the use of correlated clusters to reduce the number of entities the algorithm has to deal with, or the introduction of a payoff allocation towards the prosumers such that the stability against player defection could be analysed through game theory. Showing that maintaining the coalitions formed with our algorithm necessitates less communication and less storage capacity could also conduct to a stimulating project. Besides, we believe that not restricting the algorithm to non overlapping coalitions and studying the strategies and weights of nodes with multiple options could lead to interesting works.
+Interesting leads for future works would be the use of correlated clusters to reduce the number of entities the algorithm has to deal with, or the introduction of a payoff allocation towards the prosumers such that the stability against player defection could be analyzed through game theory. Showing that maintaining the coalitions formed with our algorithm necessitates less communication and less storage capacity could also conduct to a stimulating project. Besides, we believe that not restricting the algorithm to non overlapping coalitions and studying the strategies and weights of nodes with multiple options could lead to interesting works.
 
 
 
-
-% conference papers do not normally have an appendix
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-
-%\begin{thebibliography}{1}
-
-%\bibitem{IEEEhowto:kopka}
-%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+% Bibliography
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \bibliographystyle{IEEEtran}  
 \bibliography{Article}
-
-%\end{thebibliography}
-
-
-
-
-% that's all folks
 \end{document}
 
 

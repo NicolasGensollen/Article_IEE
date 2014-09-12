@@ -453,12 +453,12 @@ In this paper, we focus on how to statistically improve the production stability
 
 In this paper, we seek at optimizing this tradeoff, that is forming coalitions able to announce “high contract values with high reliability”. We thus aim at:
 \begin{itemize}
-\item Realistic prosumers productions with renewable production sources  from real traces base from weather measure.
+\item Realistic prosumers productions with renewable production sources from real traces base from weather measure.
 \item Minimizing the standard deviations of coalitions production probability distributions through the use of a proper utility function (see section \ref{sec:model})
 \item Being (relatively) scalable with the number of prosumers
 \end{itemize}
 
-In more details, and as will be explained in section \ref{sec:model}, we consider agents that, depending on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled).  We used real meteorological traces (see section \ref{sec:model}) to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
+In more details, and as will be explained in section \ref{sec:model}, we have consider agents that depend on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled). We used real meteorological traces (see section \ref{sec:model}) to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
 
 As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering since \cite{Mantegna1999} (see section \ref{sec:related}). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a modified clique percolation algorithm (see section \ref{sec:results}) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements. Finally, section \ref{sec:results} provides some results.
 

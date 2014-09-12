@@ -222,7 +222,7 @@ This section explains the process with which we form the coalitions (see the thi
 
 The model we used in order to simulate timeseries of available production provides some diversity because of the combination between the energetic mix and the climate vectors. Nevertheless, as the number of agents grows, the timeseries tend to exhibit similar patterns. This is apparent when creating a correlation graph $ G_{1}(\mathcal{A},E_{1},\omega_{1}) $ with the same kind of metric as \cite{Garas2008} or \cite{Onnela2004} ($ d_{ij} = 1 - \rho_{ij}^{2} $), where well defined clusters appear in the $ \epsilon $-graph for any values of $ \epsilon $. 
 
-However, these clusters of strongly correlated timeseries are the exact opposite of what we are seeking. We can indeed consider them directly as coalitions and compute their utilities, and the results show, as expected, terrible values (far worse than a random split of the agents in the same number of coalitions).
+However, these clusters of strongly correlated timeseries are the exact opposite of what we are seeking. We can indeed consider them directly as coalitions and compute their utilities, and the results show (see the green curves on figure \ref{Fig4}), as expected, terrible values (far worse than a random split of the agents in the same number of coalitions).
 
 We thus opt for reversing the metric ($ d_{ij}^{'} = \rho_{ij}^{2} $) such that uncorrelated timeseries are close to each other and (anti)correlated timeseries are distant in $ G_{2}(\mathcal{A},E_{2},\omega_{2}) $. As expected \cite{Onnela2004}, independently of the $ \epsilon $ parameter, the resulting $ \epsilon $-graph exhibits henceforth much less clustering than in $ G_{1} $ and communities seem hardly visible. Therefore, using classical clustering or community detection algorithms seem to provide poor results. 
 
@@ -273,18 +273,18 @@ For our 200 prosumers, we suppose that the grid fixes a reliability $ \phi = 0.1
 
 Looking at figure \ref{Fig3}, we can see first that our algorithm seems to make generally a better job at finding high valued coalitions, but also that the results seem far more robust against how the grid positions its requirements. The blue dots allowed to enter the market seem indeed to outnumber the red dots, especially when the grid requirements are neither too low or too high ($ P_{\phi}^{MIN} = 5 $ in figure \ref{Fig3}).
 
-In more details, figure \ref{fig4:a} presents the evolution of social welfare as the number of coalitions increases (all other parameters are kept constant) for both random (red curve) and clique percolation (blue curve). As for the right plot, it shows the percentage of coalitions able to enter the market for different values of $ P_{\phi}^{MIN} $. For consistency, we average the results of both plots of the random procedure over 100 realizations (5 realizations for clique percolation, but the results are relatively stable), and the errorbars in the plots stands for the standard deviations of the results.
+In more details, figure \ref{fig4:a} presents the evolution of social welfare as the number of coalitions increases (all other parameters are kept constant) for random (red curve), clique percolation (blue curve), and correlated coalitions (green curves) that stands for a worst case scenario. As for figure \ref{fig4:b}, it shows the percentage of coalitions able to enter the market for different values of $ P_{\phi}^{MIN} $. For consistency, we average the results of both plots of the random procedure over 100 realizations, and the errorbars in the plots stands for the standard deviations of the results.
 
 When the grid requirements are constant (figure \ref{fig4:b}), and the number of desired coalitions is low, clique percolation generally performs only a little better than random. Nevetheless, when $ N_{COAL} $ gets bigger, the performance of a random split tumble down rapidely while clique percolation social welfare decreases slowly.
 
-When the grid requirements vary, for very low $ P_{\phi}^{MIN} $, all coalitions for both algorithms are able to enter the market, yielding an acceptance percentage of $ 100 \% $. But as $ P_{\phi}^{MIN} $ increases, we see the percentage of the random procedure quickly dropping while it stays constant for our algorithm. For $ P_{\phi}^{MIN} = 4 $, we see that only a little more than half of the coalitions for the random case are able to enter while all of them enters for the clique percolation algorithm. Finally, when the grid requirement becomes too high, the acceptance percentage of our algorithm tends slowly to zero (only partly shown in this plot for readability).
+When the grid requirements vary, for very low $ P_{\phi}^{MIN} $, all coalitions for all algorithms are able to enter the market, yielding an acceptance percentage of $ 100 \% $. But as $ P_{\phi}^{MIN} $ increases, we see the percentage of the correlated coalitions crashing down very quickly. After a few increases in $ P_{\phi}^{MIN} $, the percentage of the random procedure starts droping while it stays almost constant for our algorithm. For $ P_{\phi}^{MIN} = 8 $, we see that only a little more than half of the coalitions for the random case are able to enter while approximately $ 85 \%$ of them enters for the clique percolation algorithm. Finally, when the grid requirement becomes too high, the acceptance percentage of our algorithm tends slowly to zero (not shown in this plot for readability).
 
 
 \begin{figure}
  \centering
-  \subcaptionbox{Social Welfare\label{fig4:a}}{\includegraphics[width=1.6in]{figure7/uti}}\hspace{1em}%
-  \subcaptionbox{Market entering percentage\label{fig4:b}}{\includegraphics[width=1.6in]{figure4/survival}}
-\caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves represent clique percolation and the red ones, the random process.}
+  \subcaptionbox{Social Welfare\label{fig4:a}}{\includegraphics[width=1.6in]{figure7_with_green_curve_v1/uti5}}\hspace{1em}%
+  \subcaptionbox{Market entering percentage\label{fig4:b}}{\includegraphics[width=1.6in]{figure4_with_green_curve/survival2_old}}
+\caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves represent clique percolation, red curves, the random process, and the green ones, correlated coalitions.}
 \label{Fig4}
 \end{figure}
 

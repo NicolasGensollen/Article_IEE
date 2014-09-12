@@ -484,6 +484,7 @@ The following section of this paper explains the model we built in order to obta
 
 \section{Model}
 \label{sec:model}
+\subsection{Prosumer model}
 
 A major concern while designing our model was its ability to translate correctly realistic patterns (consumption and production) as well as realistic geographical correlations between patterns. Largely because of these reasons (but also because they are easily, and sometimes freely, available online) we chose to use meteorological traces as inputs. In this paper we used namely both french data from 2006 to 2012 sampled every 3 hours \cite{Infoclimat} (similar data for the United States covering 2010 can also be found at \cite{NCDC}). The weather stations already offer a quite good sampling of a given territory, and, with the growth of personal weather stations constantly updating data bases, the mesh becomes finer and finer. As shown in the first part of figure 1, the first step consists in discretizing the studied zone around well chosen weather stations and gathering traces for these stations. In this paper, we consider that prosumers can only produce through wind turbines and photovoltaic panels (PV). On the other hand, we built their consumption patterns according to two major cycles :
 \begin{itemize}
@@ -510,6 +511,7 @@ At this point, modeling agents consists in fixing a few parameters (most of the 
 
 %Basically, the user only has to indicate the number of prosumers and the simulation dates. Prosumers are then positioned randomly on a squared lattice. Any point of this lattice is linked to a meteorological profile derived from the input traces. A few parameters individualizing the prosumers (number and kind of DER owned, consumption habits, and so on...) are also picked randomly and account for diversity.
 
+\subsection{Coalition formation model}
 More formally, we denote by $ \mathcal{A} = \{ a_{1},...a_{N} \} $ the set of agents (the prosumers) and $ P_{i}(t) $ the instantaneous power value of agent i at instant t (its instantaneous production minus consumption, meaning that $ P_{i}(t) $ represents agent i available power at instant t). During the simulation (from $t_{0} $ to $ t_{K} $), all agents record their values with an hour time interval. As expected (because we introduced them), the timeseries exhibit high seasonal patterns, but completely different from agent to agent because they depend both on the energetic mix and habits of a given prosumer. Nevertheless, these macro variations can hide the interesting information in the correlation coefficients and twist the rest of our process. Thereby, we remove these seasonal effects for all agents (see second block of figure \ref{Fig1}). We denote by $ \mathcal{T}_{i} = \{ P_{i}(t_{0}),...,P_{i}(t_{K}) \} $ the resulting timeserie for  agent i. For any agent i, we note $ \mathcal{P}_{i} $ the probability distribution drawn from $ \mathcal{T}_{i} $ and by $ P_{i} $ a random variable following $ \mathcal{P}_{i} $.
 
 We now extand these notations to any coalition $ S \subset \mathcal{A} $ : 
@@ -538,6 +540,8 @@ Basically, a coalition S is valid if and only if :
 \end{array} \right. 
 \label{rules}
 \end{equation}
+
+\subsection{Utility function}
 We now choose a very simple utility function (eq. \ref{utility}) that derives directly from the above remarks. If a coalition cannot provide a valid contract value, it receives naturally a utility of zero. Furthermore, it seems obvious that the utility should increase with the contract value. The $ 1/|S| $ term in eq. \ref{utility} indicates that we favorise small coalitions, mainly because they are easier to maintain in terms of communications.
 
 \begin{equation}

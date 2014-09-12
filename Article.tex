@@ -458,15 +458,9 @@ In this paper, we seek at optimizing this tradeoff, that is forming coalitions a
 \item Being (relatively) scalable with the number of prosumers
 \end{itemize}
 
-<<<<<<< HEAD
-In more details, and as will be explained in section \ref{sec:model}, we consider agents that depend on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled).  We used real meteorological traces (see section \ref{sec:model}) to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic geographical correlations. With these ingredients, we are able simulate the different production/consumption profiles.
-=======
 In more details, and as will be explained in section \ref{sec:model}, we consider agents that, depending on meteorological conditions, personal preferences, and their appliances (loads and generators), consume and produce more or less energy (using only wind turbines and PV as generators, which can be quite simply and efficiently modeled).  We used real meteorological traces (see section \ref{sec:model}) to account for seasonal and daily variations in the prosumers energetic output profiles as well as realistic correlations. With these ingredients, we are able to run simulations and record the different output profiles as timeseries.
->>>>>>> FETCH_HEAD
 
-As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering since \cite{Mantegna1999} (see section \ref{sec:related}). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a modified clique percolation algorithm (see section \ref{sec:results}) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements.
-
-The rest of the paper is organized as follows, section \ref{sec:related} locates our work in the related litterature. Section \ref{sec:model} explains the model we used to obtain realistic prosumers available power timeseries and introduces some notations. Section \ref{sec:forming} relates the method for building coalitions based on the agent timeseries. Finally, section \ref{sec:results} provides some results.
+As correlations play a significant role in our mechanism, we organize the prosumers in a correlation graph, a quite popular approach in market stocks clustering since \cite{Mantegna1999} (see section \ref{sec:related}). We will see that in such graphs, cliques represent structures of interest. In our settings, it means that cliques are “good” (from the utility point of view) foundations for high valued coalitions. We thereby use a modified clique percolation algorithm (see section \ref{sec:results}) that will enable us to expand the cliques as much as needed in order to form proper coalitions that fulfill grid requirements. Finally, section \ref{sec:results} provides some results.
 
 
 \section{Related Work}

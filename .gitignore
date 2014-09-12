@@ -1,3 +1,5 @@
 .texpadtmp/*
 Article.log
 Article.aux
+Article.blg
+*.gz

@@ -32,6 +32,7 @@
 \usepackage{caption}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{subcaption}
+\usepackage{array}
 
 %
 % correct bad hyphenation here
@@ -206,6 +207,35 @@ with $ \rho_{ij} $ the Pearson correlation coefficient between $ P_{i} $ and $ P
 The strategy of $ \{ij\} $ consists in maximizing its contract value as long as it respects the inequality \ref{reliability}, e.g to annonce $ P_{\phi}(ij) = \mu_{ij} - \sigma_{ij}\sqrt{2}erf^{-1}(1-2 \phi ) $. It thus appears (as it was intuitively understandable) that, for equivalent sizes, coalitions with low relative standard deviations ( $ \sigma_{ij} / \mu_{ij} $ ) are able to announce higher contract values. 
 
 What this paper investigates in the following is the developement of an algorithm that organizes prosumers such that the synergy term of the standard deviation ( $ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) is minimized. In such settings, and through the clique percolation procedure (section \ref{sec:forming}), we will show that coalitions with low relative standard deviation, e.g high utility coalitions, can be computed.
+
+\newcolumntype{h}{>{\centering}p{40mm}<{}}
+
+\begin{center}
+\begin{figure}
+\scriptsize
+\begin{tabular}{|h|h|}
+  \hline
+  \textbf{Notations} & \textbf{Meaning} \tabularnewline
+  \hline 
+  $ \mathcal{A}=\{a_{1},...,a_{N}\} $ & Set of agents \tabularnewline
+  $ P_{i}(t) \in \mathbb{R}\ \ (P_{S}(t)) $ & Instantaneous available production of agent i (coalition S) at time t \tabularnewline
+  $ \mathcal{T}_{i} = \{P_{i}(t_{0}),...,P_{i}(t_{K})\} $ & Time serie of agent i available production values \tabularnewline
+  $ \mathcal{P}_{i}\ \ (\mathcal{P}_{S}) $ & Probability distribution of agent i (coalition S) available production values \tabularnewline
+  $ \phi \in [0,1] $ & Reliability threshold (fixed by the grid operator) \tabularnewline
+  $ P^{MIN} \in \mathbb{R}^+ $ & Min value threshold (fixed by the grid operator) \tabularnewline
+  $ P_{S}^{CRCT} \in \mathbb{R}^+ $ & Contract value of coalition S \tabularnewline
+  $ P_{\phi}(S) \in \mathbb{R}^+ $ & Max contract value under $ \phi $ constraint \tabularnewline
+  $ \mathcal{U}_{\phi,\ P^{MIN}}(S) $ & Utility function \tabularnewline
+  $ \tau_{i}(S) \in \mathbb{R}$ & Descision rule for mapping overlaping into disjoint coalitions \tabularnewline
+  $ \epsilon \in [0,1] $ & Pruning threshold for the correlation graph \tabularnewline
+  $ N_{COAL} \in \mathbb{Z}^+ $ & Number of desired coalition (entry of the algorithms) \tabularnewline
+  $ CS = \{S_{1},...,S_{N_{COAL}}\} $ & Coalition structure \tabularnewline
+  \hline
+\end{tabular}
+\caption{Model main notations}
+\label{Fig89}
+\end{figure}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

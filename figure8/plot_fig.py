@@ -16,9 +16,9 @@ def matplotlib_setup(figsize_x=8.3, figsize_y=4.2):
     mpl.rcParams['figure.figsize'] = 7.3, 4.2
     mpl.rcParams['axes.labelweight'] = 'bold'
     mpl.rcParams['font.weight'] = 'bold'
-    mpl.rcParams['axes.linewidth'] = 0.75    
+    mpl.rcParams['axes.linewidth'] = 0.75
     mpl.rcParams['lines.linewidth'] = 2
-    mpl.rcParams['axes.linewidth'] = 0.75    
+    mpl.rcParams['axes.linewidth'] = 0.75
     mpl.rcParams['lines.linewidth'] = 2
     mpl.rcParams['lines.markersize'] = 8
     mpl.rcParams['legend.numpoints'] = 1
@@ -27,7 +27,7 @@ def matplotlib_setup(figsize_x=8.3, figsize_y=4.2):
     # figure dots per inch
     mpl.rcParams['figure.dpi'] = 300
     mpl.rcParams['figure.autolayout'] = True
-	
+
 #Load curve data subplot a
 perco = []; rand = []; corre = []; std_perco = []; std_rand = []; std_corre = []
 with open('fig_percentage\percentage_percolation.json', "r") as fichier:
@@ -41,8 +41,8 @@ with open('fig_percentage\std_random.json', "r") as fichier:
 with open('fig_percentage\percentage_correlated.json', "r") as fichier:
     corre = json.load(fichier)
 with open('fig_percentage\std_correlated.json', "r") as fichier:
-    std_corre = json.load(fichier)	
-	
+    std_corre = json.load(fichier)
+
 #Transform data
 perco_sup = [a+b for a,b in zip(perco,std_perco)]
 perco_inf = [a-b for a,b in zip(perco,std_perco)]
@@ -64,8 +64,8 @@ with open('fig_SW\std_random.json', "r") as fichier:
 with open('fig_SW\percentage_correlated.json', "r") as fichier:
     corre2 = json.load(fichier)
 with open('fig_SW\std_correlated.json', "r") as fichier:
-    std_corre2 = json.load(fichier)	
-	
+    std_corre2 = json.load(fichier)
+
 #Transform data
 perco_sup2 = [a+b for a,b in zip(perco2,std_perco2)]
 perco_inf2 = [a-b for a,b in zip(perco2,std_perco2)]
@@ -110,9 +110,10 @@ ax2.fill_between(range(Pmax), rand, rand_inf, facecolor='red', alpha=alph)
 ax2.fill_between(range(Pmax), corre_sup, corre, facecolor='green', alpha=alph)
 ax2.fill_between(range(Pmax), corre, corre_inf, facecolor='green', alpha=alph)
 ax2.text(1.5, 0.95, 'b', transform=ax.transAxes, fontsize=16, fontweight='bold', va='top')
-ax2.legend(loc='upper center', bbox_to_anchor=(-0.2, 1.10), ncol=3, fancybox=True, shadow=True)
+ax2.legend(bbox_to_anchor=(1.05, 1), loc=2, ncol=3, fancybox=True, shadow=False)
 ax2.set_xlabel(r" \textbf{ $ P_{\phi}^{MIN}$ }",fontsize=14)
 ax2.set_ylabel('Valid coalition percentage')
 ax2.grid()
 plt.savefig('fig8.pdf')
+plt.savefig('fig8.eps')
 plt.savefig('fig8.png')

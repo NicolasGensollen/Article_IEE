@@ -38,6 +38,7 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,9 +165,11 @@ Due to the volatile nature of DER productions or user consumptions, the availabl
 
 More formally, the rest of the paper derives a heuristic that aims at solving the following problem (Table \ref{table1} summarizes the main notations):
  \begin{equation}
-  \min_{\substack{S \subset CS\\ |S| = N_{COAL} \\ 
-     \forall s \in S,\ |s| \neq 0 \\ P_{s}^{CRCT} \geq P^{MIN}}}
-  \Bigg\{ \sum_{s \in S} Pr[P_{s} \leq P_{s}^{CRCT}] \Bigg\}
+  \argmin _{\substack{ S \subset CS \\ 
+                      |S| = N_{COAL} \\ 
+                      \forall s \in S,\ |s| \neq 0 
+                      \\ P_{s}^{CRCT} \geq P^{MIN}}}
+   \sum_{s \in S}  \Pr \bigl[ P_{s} \leq P_{s}^{CRCT} \bigr]
   \label{problem}
 \end{equation}  
 
@@ -308,15 +311,6 @@ In more details, figure \ref{Fig4}a presents the evolution of social welfare as 
 When the grid requirements are constant (figure \ref{Fig4}b), and the number of desired coalitions is low, clique percolation generally performs better than random case. Moreover, when $ N_{COAL} $ gets bigger, the performance of a random split tumble down rapidly while our clique percolation is able to maintain efficiently the social welfare of the coalitions formed.
 
 When the grid requirements vary, for very low $ P^{MIN} $, all coalitions for all algorithms are able to enter the market, yielding an acceptance percentage of $ 100 \% $. But as $ P^{MIN} $ increases, we see the percentage of the correlated coalitions is going down very quickly. After a few increases in $ P^{MIN} $, the percentage of the random procedure starts dropping while it stays almost constant for our algorithm. For $ P^{MIN} = 8 $, we see that only a little more than half of the coalitions for the random case are able to enter while approximately $ 85 \%$ of them enters for the clique percolation algorithm. Finally, when the grid requirements becomes too high, the acceptance percentage of our algorithm tends slowly to zero (not shown in this plot for readability).
-
-
-%\begin{figure}
-% \centering
-%  \subcaptionbox{Social Welfare\label{fig4:a}}{\includegraphics[width=1.6in]{figure7_with_green_curve_v1/uti5}}\hspace{1em}%
-%  \subcaptionbox{Market entering percentage\label{fig4:b}}{\includegraphics[width=1.6in]{figure4_with_green_curve/survival2_old}}
-%\caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves represent clique percolation, red curves, the random process, and the green ones, correlated coalitions.}
-%\label{Fig4}
-%\end{figure}
 
 \begin{figure}
  \centering

@@ -61,13 +61,12 @@ X.~Luan, J.~Wu, S.~Ren, and H.~Xiang, ``Cooperative power consumption in the
   Communication Technology (ICACT)}, Feb 2014, pp. 640--644.
 
 \bibitem{Europe}
-D.~Europe, ``{Integrating Wind}.''
+F.~Van~Hulle \emph{et~al.}, ``{Integrating Wind, European project report}.''
 
 \bibitem{Kota2011}
-G.~Chalkiadakis, V.~Robu, R.~Kota, A.~Rogers, and N.~R. Jennings,
-  ``Cooperatives of distributed energy resources for efficient virtual power
-  plants,'' in \emph{The 10th International Conference on Autonomous Agents and
-  Multiagent Systems}, 2011, pp. 787--794.
+G.~Chalkiadakis \emph{et~al.}, ``Cooperatives of distributed energy resources
+  for efficient virtual power plants,'' in \emph{The 10th International
+  Conference on Autonomous Agents and Multiagent Systems}, 2011, pp. 787--794.
 
 \bibitem{Garas2008}
 A.~Garas, P.~Argyrakis, and S.~Havlin, ``\BIBforeignlanguage{English}{The
@@ -76,11 +75,10 @@ A.~Garas, P.~Argyrakis, and S.~Havlin, ``\BIBforeignlanguage{English}{The
   vol.~63, no.~2, pp. 265--271, 2008.
 
 \bibitem{Onnela2004}
-J.-P. Onnela, K.~Kaski, and J.~Kert\'esz,
-  ``\BIBforeignlanguage{English}{Clustering and information in correlation
-  based financial networks},'' \emph{\BIBforeignlanguage{English}{The European
-  Physical Journal B - Condensed Matter and Complex Systems}}, vol.~38, no.~2,
-  pp. 353--362, 2004.
+J.-P. Onnela \emph{et~al.}, ``\BIBforeignlanguage{English}{Clustering and
+  information in correlation based financial networks},''
+  \emph{\BIBforeignlanguage{English}{The European Physical Journal B -
+  Condensed Matter and Complex Systems}}, vol.~38, no.~2, pp. 353--362, 2004.
 
 \bibitem{Newmanb}
 M.~E.~J. Newman, ``Modularity and community structure in networks,''

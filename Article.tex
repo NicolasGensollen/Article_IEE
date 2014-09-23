@@ -160,11 +160,11 @@ We now extend these notations to any coalition $ S \subset \mathcal{A} $ :
 \item A coalition S has the possibility to announce a contract value $ P_{S}^{CRCT} $ on the market.
 \end{itemize}
 
-Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillates around $ P_{S}^{CRCT} $. It will be the responsability of the coalition, that is the information system maintaining the coalition, to compensate for deviations. In this paper, we consider then that the smaller these deviations, the better. Based on the $ \mathcal{T}_{S} $ distribution, the probability of S value (at any instant t) being below its contract value $ Pr[P_{S}(t) \leq P_{S}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
+Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillates around $ P_{S}^{CRCT} $. It will be the responsibility of the coalition, that is the information system maintaining the coalition, to compensate for deviations. In this paper, we consider then that the smaller these deviations, the better. Based on the $ \mathcal{T}_{S} $ distribution, the probability of S value (at any instant t) being below its contract value $ Pr[P_{S}(t) \leq P_{S}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
 
 In this model, we consider that only the coalitions that have this probability value sufficiently low are acceptable. That is, we denote by $ \phi \in [0,1] $ the threshold imposed to the coalitions over this quantity, and we call it the \textbf{reliability} in the following. The reliability stipulates then that for any coalition S willing to join the market, the probability of S value (at any instant t) being below its contract value should at most be $ \phi $. That is, $ \forall S,\ \forall t,\ Pr[P_{S}(t) \leq P_{S}^{CRCT} ] \leq \phi $ ($ \phi $ being restricted to small values for consistency).
 
-We then consider another constraint denoted by $ P^{MIN} $, as the \textbf{minimum contract value}, which states that only coalitions with higher contract values ($ P_{S}^{CRCT} \geq P^{MIN} $) will be accepted. Figure \ref{Fig89} summurizes the main notations of this paper.
+We then consider another constraint denoted by $ P^{MIN} $, as the \textbf{minimum contract value}, which states that only coalitions with higher contract values ($ P_{S}^{CRCT} \geq P^{MIN} $) will be accepted. In table \ref{table1} summarizes the main notations of this paper.
 
 At this point, if a coalition S wishes to join the market, it has to choose a contract value that fulfill the two conditions. For simplification, we consider that coalitions will always apply the same economically consistent strategy of announcing the highest possible contract value that obeys the reliability rule (a value we denote by $ P_{\phi}(S) $). If $ P_{\phi}(S) \geq P^{MIN} $, meaning that it also obeys the minimum contract value rule, then S announces this value on the market : $ P_{S}^{CRCT} = P_{\phi}(S) $. Otherwise, coalition S is not able to enter.
 Basically, a coalition S is valid if and only if :
@@ -209,12 +209,9 @@ The strategy of $ \{ij\} $ consists in maximizing its contract value as long as 
 What this paper investigates in the following is the developement of an algorithm that organizes prosumers such that the synergy term of the standard deviation ( $ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) is minimized. In such settings, and through the clique percolation procedure (section \ref{sec:forming}), we will show that coalitions with low relative standard deviations, e.g high utility coalitions, can be computed.
 
 \begin{table}[!t]
-\label{Fig89}
 \centering
 \scriptsize
 \begin{tabular}{l|p{4.5cm}}
-  \hline
-  \multicolumn{2}{l}{\textbf{Symbols}} \\
   \hline 
   $ \mathcal{A}=\{a_{1},...,a_{N}\} $ & Set of agents \\
   $ P_{i}(t) \in \mathbb{R}\ \ (P_{S}(t)) $ & Instantaneous production of agent $i$ in coalition $S$ at time $t$ \\
@@ -231,7 +228,7 @@ What this paper investigates in the following is the developement of an algorith
   $ CS = \{S_{1},...,S_{N_{COAL}}\} $ & Coalition structure \\
   \hline
 \end{tabular}
-\caption{Notations}
+\caption{Notations\label{table1}}
 \end{table}
 
 

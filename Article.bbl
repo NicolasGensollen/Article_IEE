@@ -22,23 +22,23 @@
 \BIBdecl
 
 \bibitem{Ramchurn}
-S.~D. Ramchurn, P.~Vytelingum, A.~Rogers, and N.~R. Jennings, ``Putting the
-  'smarts' into the smart grid: A grand challenge for artificial
-  intelligence,'' \emph{Commun. ACM}, vol.~55, no.~4, pp. 86--97, Apr. 2012.
+S.~D. Ramchurn \emph{et~al.}, ``Putting the 'smarts' into the smart grid: A
+  grand challenge for artificial intelligence,'' \emph{Commun. ACM}, vol.~55,
+  no.~4, pp. 86--97, Apr. 2012.
 
 \bibitem{WuHamedHuangBook2011}
-C.~Wu, A.-H. Mohsenian-Rad, and J.~Huang, \emph{Smart Grid Communications and
-  Networking}, E.~Hossain, Z.~Han, and V.~Poor, Eds.\hskip 1em plus 0.5em minus
-  0.4em\relax Cambridge University Press, 2012.
+C.~Wu \emph{et~al.}, \emph{Smart Grid Communications and Networking},
+  E.~Hossain \emph{et~al.}, Eds.\hskip 1em plus 0.5em minus 0.4em\relax
+  Cambridge University Press, 2012.
 
 \bibitem{Rathnayaka2012}
-A.~J.~D. Rathnayaka, V.~Potdar, and M.~H. Ou, ``Prosumer management in
-  socio-technical smart grid,'' in \emph{Proceedings of the CUBE International
-  Information Technology Conference}, 2012, pp. 483--489.
+A.~J.~D. Rathnayaka \emph{et~al.}, ``Prosumer management in socio-technical
+  smart grid,'' in \emph{Proceedings of the CUBE International Information
+  Technology Conference}, 2012, pp. 483--489.
 
 \bibitem{Pahwa}
-S.~Pahwa, C.~Scoglio, and N.~Schulz, ``{Topological Analysis and Mitigation
-  Strategies for Cascading Failures in Power Grid Networks}.''
+S.~Pahwa \emph{et~al.}, ``{Topological Analysis and Mitigation Strategies for
+  Cascading Failures in Power Grid Networks}.''
 
 \bibitem{Braun}
 M.~Braun, ``{Virtual Power Plants in Real Applications Pilot Demonstrations in
@@ -50,15 +50,14 @@ R.~Mantegna, ``\BIBforeignlanguage{English}{Hierarchical structure in financial
   B}}, vol.~11, no.~1, pp. 193--197, 1999.
 
 \bibitem{Saad2009}
-W.~Saad, Z.~Han, M.~Debbah, and A.~Hjorungnes, ``A distributed coalition
-  formation framework for fair user cooperation in wireless networks,''
-  \emph{Wireless Communications, IEEE Transactions on}, vol.~8, no.~9, pp.
-  4580--4593, September 2009.
+W.~Saad \emph{et~al.}, ``A distributed coalition formation framework for fair
+  user cooperation in wireless networks,'' \emph{Wireless Communications, IEEE
+  Transactions on}, vol.~8, no.~9, pp. 4580--4593, September 2009.
 
 \bibitem{Luan2014}
-X.~Luan, J.~Wu, S.~Ren, and H.~Xiang, ``Cooperative power consumption in the
-  smart grid based on coalition formation game,'' in \emph{Advanced
-  Communication Technology (ICACT)}, Feb 2014, pp. 640--644.
+X.~Luan \emph{et~al.}, ``Cooperative power consumption in the smart grid based
+  on coalition formation game,'' in \emph{Advanced Communication Technology
+  (ICACT)}, Feb 2014, pp. 640--644.
 
 \bibitem{Europe}
 F.~Van~Hulle \emph{et~al.}, ``{Integrating Wind, European project report}.''
@@ -69,8 +68,8 @@ G.~Chalkiadakis \emph{et~al.}, ``Cooperatives of distributed energy resources
   Conference on Autonomous Agents and Multiagent Systems}, 2011, pp. 787--794.
 
 \bibitem{Garas2008}
-A.~Garas, P.~Argyrakis, and S.~Havlin, ``\BIBforeignlanguage{English}{The
-  structural role of weak and strong links in a financial market network},''
+A.~Garas \emph{et~al.}, ``\BIBforeignlanguage{English}{The structural role of
+  weak and strong links in a financial market network},''
   \emph{\BIBforeignlanguage{English}{The European Physical Journal B}},
   vol.~63, no.~2, pp. 265--271, 2008.
 
@@ -86,7 +85,7 @@ M.~E.~J. Newman, ``Modularity and community structure in networks,''
   8577--8582, 2006.
 
 \bibitem{Girvan2002}
-M.~Girvan and M.~E.~J. Newman, ``Community structure in social and biological
+M.~Girvan \emph{et~al.}, ``Community structure in social and biological
   networks,'' \emph{Proceedings of the National Academy of Sciences}, vol.~99,
   no.~12, pp. 7821--7826, 2002.
 
@@ -96,9 +95,9 @@ M.~E.~J. Newman, ``Finding community structure in networks using the
   2006.
 
 \bibitem{Lancichinetti}
-A.~Lancichinetti, S.~Fortunato, and J.~Kert\'esz, ``Detecting the overlapping
-  and hierarchical community structure in complex networks,'' \emph{New Journal
-  of Physics}, vol.~11, no.~3, p. 033015, 2009.
+A.~Lancichinetti \emph{et~al.}, ``Detecting the overlapping and hierarchical
+  community structure in complex networks,'' \emph{New Journal of Physics},
+  vol.~11, no.~3, p. 033015, 2009.
 
 \bibitem{Infoclimat}
 \BIBentryALTinterwordspacing
@@ -116,6 +115,6 @@ A.~Lancichinetti, S.~Fortunato, and J.~Kert\'esz, ``Detecting the overlapping
 \BIBentrySTDinterwordspacing
 
 \bibitem{Dans2007}
-G.~Dans and F.~Science, ``{Rayonnement solaire},'' vol. 360, 2007.
+G.~Dans \emph{et~al.}, ``{Rayonnement solaire},'' vol. 360, 2007.
 
 \end{thebibliography}

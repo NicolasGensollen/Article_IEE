@@ -29,7 +29,7 @@ def matplotlib_setup(figsize_x=8.3, figsize_y=4.2):
     # figure dots per inch
     mpl.rcParams['figure.dpi'] = 300
     
-matplotlib_setup(4,3)
+matplotlib_setup(4,2)
 
 
 
@@ -54,7 +54,7 @@ grid[0].contour(normalized_M.T, levels, hold='on', colors = 'k', origin='lower',
 grid[0].axis(v)
 #ax2.title("Utility", fontsize=9)
 grid[0].text(0.05, 0.95, 'a', transform=grid[0].transAxes, color='w', fontsize=16, fontweight='bold', va='top')
-grid[0].set_xlabel(r" \textbf{ $ \phi $ ( $ N_{COAL} = 10 $ ) }",fontsize=9)
+grid[0].set_xlabel(r" \textbf{ $ \phi*10 $ ( $ N_{COAL} = 10 $ ) }",fontsize=9)
 grid[0].set_ylabel(r" \textbf{ $ P^{MIN}$ }",fontsize=10)
 
 with open("Ncoal_Pmin_utility.json", "r") as fichier:

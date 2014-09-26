@@ -188,6 +188,33 @@ Basically, a coalition s is valid if and only if :
 \label{rules}
 \end{equation}
 
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{l|p{4.5cm}}
+  \hline 
+  \\
+  $ \mathcal{A}=\{a_{1},...,a_{N}\} $ & Set of agents \\
+  $ P_{i}(t) \in \mathbb{R}\ \ (P_{s}(t)) $ & Instantaneous production of agent $i$ at time $t$ \\
+  $ \mathcal{T}_{i} = \{P_{i}(t_{0}),...,P_{i}(t_{K})\} $ & Time series of agent i available production values \\
+  $ \mathcal{F}(P_{i})\ \ (\mathcal{F}(P_{S})) $ & Probability distribution of the production of the agent $i$ \\
+  $ \phi \in [0,1] $ & Reliability threshold \\
+  $ P^{MIN} \in \mathbb{R}^+ $ & Min value threshold \\
+  $ P_{s}^{CRCT} \in \mathbb{R}^+ $ & Contract value of coalition s \\
+  $ P_{\phi}(s) \in \mathbb{R}^+ $ & Max contract value under $ \phi $ constraint \\
+  $ \mathcal{U}_{\phi,\ P^{MIN}}(s) $ & Utility function \\
+  $ \tau_{i}(s) \in \mathbb{R}$ & Decision rule for mapping overlapping into disjoint coalitions \\
+  $ \epsilon \in [0,1] $ & Pruning threshold for the correlation graph \\
+  $ N_{COAL} \in \mathbb{Z}^+ $ & Number of desired coalition \\
+  $ CS $ & Set of all coalition structures \\
+  $ \Theta(G) $ & Set of non overlaping cliques in graph G \\
+  \\
+  \hline
+\end{tabular}
+
+\caption{Notations\label{table1}}
+\end{table}
+
 \subsection{Utility function}\label{subsec:UtilityFunc}
 We now choose a utility function (eq. \ref{utility}) that derives directly from the above remarks. If a coalition cannot provide a valid contract value, it receives naturally a utility of zero. Furthermore, it seems obvious that the utility should increase with the contract value. The $ 1/|s| $ term in eq. \ref{utility} indicates that we favor small coalitions, mainly because they are easier to maintain in terms of communications.
 
@@ -218,34 +245,6 @@ with $ \rho_{ij} $ the Pearson correlation coefficient between $ P_{i} $ and $ P
 The strategy of $ \{ij\} $ consists in maximizing its contract value as long as it respects the inequality \ref{reliability}, e.g to annonce $ P_{\phi}(ij) = \mu_{ij} - \sigma_{ij}\sqrt{2}erf^{-1}(1-2 \phi ) $. It thus appears (as it was intuitively understandable) that, for equivalent sizes, coalitions with low relative standard deviations ( $ \sigma_{ij} / \mu_{ij} $ ) are able to announce higher contract values. 
 
 What this paper investigates in the following is the developement of an algorithm that organizes prosumers such that the synergy term of the standard deviation ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) is minimized. In such settings, and through the clique percolation procedure (section \ref{sec:forming}), we will show that coalitions with low relative standard deviations, e.g high utility coalitions, can be computed.
-
-\begin{table}[!t]
-\centering
-\scriptsize
-\begin{tabular}{l|p{4.5cm}}
-  \hline 
-  \\
-  $ \mathcal{A}=\{a_{1},...,a_{N}\} $ & Set of agents \\
-  $ P_{i}(t) \in \mathbb{R}\ \ (P_{s}(t)) $ & Instantaneous production of agent $i$ at time $t$ \\
-  $ \mathcal{T}_{i} = \{P_{i}(t_{0}),...,P_{i}(t_{K})\} $ & Time series of agent i available production values \\
-  $ \mathcal{F}(P_{i})\ \ (\mathcal{F}(P_{S})) $ & Probability distribution of the production of the agent $i$ \\
-  $ \phi \in [0,1] $ & Reliability threshold \\
-  $ P^{MIN} \in \mathbb{R}^+ $ & Min value threshold \\
-  $ P_{s}^{CRCT} \in \mathbb{R}^+ $ & Contract value of coalition s \\
-  $ P_{\phi}(s) \in \mathbb{R}^+ $ & Max contract value under $ \phi $ constraint \\
-  $ \mathcal{U}_{\phi,\ P^{MIN}}(s) $ & Utility function \\
-  $ \tau_{i}(s) \in \mathbb{R}$ & Decision rule for mapping overlapping into disjoint coalitions \\
-  $ \epsilon \in [0,1] $ & Pruning threshold for the correlation graph \\
-  $ N_{COAL} \in \mathbb{Z}^+ $ & Number of desired coalition \\
-  $ CS $ & Set of all coalition structures \\
-  $ \Theta(G) $ & Set of non overlaping cliques in graph G \\
-  \\
-  \hline
-\end{tabular}
-
-\caption{Notations\label{table1}}
-\end{table}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -288,15 +287,14 @@ If node i belongs to  multiple coalitions, the only coalition including node i i
 
 \begin{figure}
  \centering
-  \subcaptionbox{$ (\phi, P^{MIN}) $ subspace\label{fig2:a}}{\includegraphics[width=1.7in]{./figure1/util}}
-  \subcaptionbox{$ (N_{COAL}, P^{MIN}) $ subspace\label{fig2:b}}{\includegraphics[width=1.70in]{./figure6/util2}}
-\caption{Utility function as function of the parameters space $\{\phi \in [0,1], N_{COAL}\in \mathbb{Z}^+, P^{MIN} \in \mathbb{R}^+\}$: In $ \{\phi \in [0,0.6], P^{MIN}\} $ when $ N_{COAL} $ is fixed (fig \ref{fig2:a}), and in $ \{N_{COAL}, P^{MIN}\} $ for a fixed $ \phi $ (fig \ref{fig2:b}). For readability, $ P^{MIN} $ is expressed in tenth of MW.}
+  \includegraphics[scale=0.9]{./figure9/util}
+\caption{Utility function as function of the parameters space $\{\phi \in [0,1], N_{COAL}\in \mathbb{Z}^+, P^{MIN} \in \mathbb{R}^+\}$: a) In $ \{\phi \in [0,0.6], P^{MIN}\} $ when $ N_{COAL} $ is fixed. b) in $ \{N_{COAL}, P^{MIN}\} $ for a fixed $ \phi $. For readability, $ P^{MIN} $ is expressed in tenth of MW.}
 \label{Fig2}
 \end{figure}
 
-As shown in figure \ref{fig2:a}, the parameters $\phi$ and $P^{MIN}$ shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high. Only small values of $ P^{MIN}$ could then potentially lead to valid coalitions (and positive utilities). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and more valid coalitions can arise for a larger spectrum of $ P^{MIN}$. Obviously, the highest utility values are found for high $ \phi $, because the coalitions formed are able to announce higher contract values, yielding higher utilities. 
+As shown in figure \ref{Fig2}a, the parameters $\phi$ and $P^{MIN}$ shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high. Only small values of $ P^{MIN}$ could then potentially lead to valid coalitions (and positive utilities). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and more valid coalitions can arise for a larger spectrum of $ P^{MIN}$. Obviously, the highest utility values are found for high $ \phi $, because the coalitions formed are able to announce higher contract values, yielding higher utilities. 
 
-In figure \ref{fig2:b}, we fix the reliability to a given empirical value ($\phi = 0.08 $). We can observe how the social welfare $\sum_{s \in S} \mathcal{U}_{\phi,\ P^{MIN}}(s)$ evolves according to $P^{MIN}$ and $ N_{COAL} $. In our setting we notice a maximum point around $ N_{COAL} = 3 $, followed by a decrease. There is clearly a maximum number of coalitions sustainable for a given set of parameters. After this value we will form more coalitions that would be unable to pass the grid requirements. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to denser graphs, meaning that the algorithm performance will also decrease.
+In figure \ref{Fig2}b, we fix the reliability to a given empirical value ($\phi = 0.08 $). We can observe how the social welfare $\sum_{s \in S} \mathcal{U}_{\phi,\ P^{MIN}}(s)$ evolves according to $P^{MIN}$ and $ N_{COAL} $. In our setting we notice a maximum point around $ N_{COAL} = 3 $, followed by a decrease. There is clearly a maximum number of coalitions sustainable for a given set of parameters. After this value we will form more coalitions that would be unable to pass the grid requirements. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to denser graphs, meaning that the algorithm performance will also decrease.
 
 \begin{figure}[htbp]
   \centering

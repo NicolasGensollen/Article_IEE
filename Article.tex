@@ -161,9 +161,30 @@ We extend the agent notations to any coalition $ s \subset \mathcal{A} $ :
 \item A coalition S has the possibility to announce a contract value $ P_{s}^{CRCT} $ on the market.
 \end{itemize}
 
-Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillates around $ P_{s}^{CRCT} $. It is of the responsibility of the information system that forms coalitions to select agents in order to provide a production as stable as possible. Based on the $ \mathcal{F}(P_{s}) $ distribution, the probability of s value being below its contract value $ Pr[P_{s} \leq P_{s}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
+Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillates around $ P_{s}^{CRCT} $. It is of the responsibility of the information system that forms coalitions to select agents in order to provide a production as stable as possible. The probability of s value being below its contract value $ Pr[P_{s} \leq P_{s}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
 
-More formally, the rest of the paper derives a heuristic that aims at solving the following problem (Table \ref{table1} summarizes the main notations):
+In order to illustrate what is done in the following, lets consider a very simple example with two agents, say i and j, with gaussian value probability distributions $ \mathcal{F}(P_{i}) = \mathcal{N}(\mu_{i}, \sigma_{i}) $ and $ \mathcal{F}(P_{j}) = \mathcal{N}(\mu_{j}, \sigma_{j}) $, such that the joint probability distribution  $ \mathcal{F}(P_{ij}) $ of the coalition $\{ij\}$ is also a gaussian with the following parameters :
+
+\begin{equation}
+\left\{ \begin{array}{lll}
+		\mu_{ij} = \mu_{i} + \mu_{j} \\
+		\sigma_{ij} = \sqrt{\sigma_{i}^{2} + \sigma_{j}^{2} + \rho_{ij}\sigma_{i}\sigma_{j}}
+\end{array} \right.
+\label{parameters}
+\end{equation}
+
+with $ \rho_{ij} $ the Pearson correlation coefficient between $ P_{i} $ and $ P_{j} $. We can easily write the probability $ Pr[P_{ij} \leq P_{ij}^{CRCT} ] $ as :
+
+\begin{equation}
+\dfrac{1}{2} \left[ 1+ erf \left( \dfrac{P_{ij}^{CRCT} - \mu_{ij}}{\sigma_{ij}\sqrt{2}} \right) \right]
+\label{reliability}
+\end{equation}
+
+Let $ \phi \in [0,1] $ be the \textbf{reliability} constraint imposed to the coalition $\{ij\} $. It stipulates that if $\{ij\} $ wants to join the market, the probability of $\{ij\} $ value (at any instant t) being below its contract value should at most be $ \phi $. That is, $ Pr[P_{ij} \leq P_{ij}^{CRCT} ] \leq \phi $. We also impose to $ \{ij\} $ a \textbf{minimum contract value} constraint denoted by $ P^{MIN} $, which states that the coalition should announce more than $ P^{MIN} $ to be accepted ($ P_{s}^{CRCT} \geq P^{MIN} $).
+
+Coalition $ \{ij\} $ has thus potentially a set of possible contract values that respects both rules. The strategy of $ \{ij\} $ (and all other coalitions in the paper) consists then in choosing, if it exists, the maximum value of this constrained set. We denote by $ P_{\phi}(s) $ this maximum value for a coalition s. For $ \{ij\} $, $ P_{\phi}(s) $ can be computed using eq. \ref{reliability} : $ P_{\phi}(ij) = \mu_{ij} - \sigma_{ij}\sqrt{2}erf^{-1}(1-2 \phi ) $. If  $ P_{\phi}(ij) \geq P^{MIN} $, then $ \{ij\} $ can announce $ P_{ij}^{CRCT} = P_{\phi}(ij)$ on the market, else it is not allowed to enter. It thus appears (as it was intuitively understandable) that, for equivalent sizes, coalitions with low relative standard deviations ( $ \sigma_{ij} / \mu_{ij} $ ) are able to announce higher contract values. 
+
+What this paper investigates in the following is the developement of a heuristic that organizes prosumers such that the synergy terms of the standard deviations ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) are minimized. More formally, we consider the following problem (Table \ref{table1} summarizes the main notations):
  \begin{equation}
   \argmin _{\substack{ S \subset CS \\ 
                       |S| = N_{COAL} \\ 
@@ -173,11 +194,7 @@ More formally, the rest of the paper derives a heuristic that aims at solving th
   \label{problem}
 \end{equation}  
 
-We explain now the two requirements that will help us solve this problem. Let $ \phi \in [0,1] $ be the \textbf{reliability} threshold imposed to the coalitions. It stipulates that for any coalition s willing to join the market, the probability of s value (at any instant t) being below its contract value should at most be $ \phi $. That is, $ \forall s \in 2^{N},\ Pr[P_{s} \leq P_{s}^{CRCT} ] \leq \phi $ ($ \phi $ being restricted to small values for consistency).
-
-We also consider the \textbf{minimum contract value} constraint denoted by $ P^{MIN} $, which states that only coalitions with higher contract values ($ P_{s}^{CRCT} \geq P^{MIN} $) will be accepted.
-
-At this point, if a coalition s wishes to join the market, it has to choose a contract value that fulfill the two conditions. For simplification, we consider that coalitions will always apply the same economically consistent strategy of announcing the highest possible contract value that obeys the reliability rule (a value we denote by $ P_{\phi}(s) $). If $ P_{\phi}(s) \geq P^{MIN} $, meaning that it also obeys the minimum contract value rule, then s announces this value on the market : $ P_{s}^{CRCT} = P_{\phi}(s) $. Otherwise, coalition s is not able to enter.
+As explained in the example above, if a coalition s wishes to join the market, it has to choose a contract value within a constrained set. Only coalitions whose set is not empty are able to enter the market (valid coalitions). For simplification, we consider that valid coalitions will always apply the same economically consistent strategy of announcing the highest possible contract value of this set ( $ P_{s}^{CRCT} = P_{\phi}(s) $).
 Basically, a coalition s is valid if and only if :
 \begin{equation}
 \left\{ \begin{array}{lll}
@@ -223,28 +240,7 @@ We now choose a utility function (eq. \ref{utility}) that derives directly from 
 \label{utility}
 \end{equation}
 
-Obviously, maximising this utility function amounts to maximizing the coalition contract value with the minimum possible number of agents. 
-
-In order to illustrate what is done in the following, lets consider a very simple example with two agents, say i and j, with gaussian value probability distributions $ \mathcal{F}(P_{i}) = \mathcal{N}(\mu_{i}, \sigma_{i}) $ and $ \mathcal{F}(P_{j}) = \mathcal{N}(\mu_{j}, \sigma_{j}) $, such that the joint probability distribution  $ \mathcal{F}(P_{ij}) $ of the coalition $\{ij\}$ is also a gaussian with the following parameters :
-
-\begin{equation}
-\left\{ \begin{array}{lll}
-		\mu_{ij} = \mu_{i} + \mu_{j} \\
-		\sigma_{ij} = \sqrt{\sigma_{i}^{2} + \sigma_{j}^{2} + \rho_{ij}\sigma_{i}\sigma_{j}}
-\end{array} \right.
-\label{parameters}
-\end{equation}
-
-with $ \rho_{ij} $ the Pearson correlation coefficient between $ P_{i} $ and $ P_{j} $. We can easily write the reliability condition $ Pr[P_{ij} \leq P_{\phi}(ij) ] \leq \phi $ as :
-
-\begin{equation}
-\dfrac{1}{2} \left[ 1+ erf \left( \dfrac{P_{\phi}(ij) - \mu_{ij}}{\sigma_{ij}\sqrt{2}} \right) \right] \leq \phi
-\label{reliability}
-\end{equation}
-
-The strategy of $ \{ij\} $ consists in maximizing its contract value as long as it respects the inequality \ref{reliability}, e.g to annonce $ P_{\phi}(ij) = \mu_{ij} - \sigma_{ij}\sqrt{2}erf^{-1}(1-2 \phi ) $. It thus appears (as it was intuitively understandable) that, for equivalent sizes, coalitions with low relative standard deviations ( $ \sigma_{ij} / \mu_{ij} $ ) are able to announce higher contract values. 
-
-What this paper investigates in the following is the developement of an algorithm that organizes prosumers such that the synergy term of the standard deviation ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) is minimized. In such settings, and through the clique percolation procedure (section \ref{sec:forming}), we will show that coalitions with low relative standard deviations, e.g high utility coalitions, can be computed.
+Obviously, maximising this utility function amounts to maximizing the coalition contract value with the minimum possible number of agents. In such settings, and through the clique percolation procedure (section \ref{sec:forming}), we will show that coalitions with high utilities can be computed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

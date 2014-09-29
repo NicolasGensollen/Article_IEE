@@ -80,20 +80,18 @@ J.-P. Onnela \emph{et~al.}, ``\BIBforeignlanguage{English}{Clustering and
   \emph{\BIBforeignlanguage{English}{The European Physical Journal B -
   Condensed Matter and Complex Systems}}, vol.~38, no.~2, pp. 353--362, 2004.
 
-\bibitem{Newmanb}
-M.~E.~J. Newman, ``Modularity and community structure in networks,''
-  \emph{Proceedings of the National Academy of Sciences}, vol. 103, no.~23, pp.
-  8577--8582, 2006.
+\bibitem{Newman2013}
+M.~E.~J. Newman, ``{Spectral methods for network community detection and graph
+  partitioning},'' p.~11, Jul. 2013.
 
 \bibitem{Girvan2002}
 M.~Girvan \emph{et~al.}, ``Community structure in social and biological
   networks,'' \emph{Proceedings of the National Academy of Sciences}, vol.~99,
   no.~12, pp. 7821--7826, 2002.
 
-\bibitem{Newman}
-M.~E.~J. Newman, ``Finding community structure in networks using the
-  eigenvectors of matrices,'' \emph{Phys. Rev. E}, vol.~74, p. 036104, Sep
-  2006.
+\bibitem{Newman2013_2}
+M.~E.~J. Newman, ``{Community detection and graph partitioning},'' no.~2, p.~5,
+  May 2013.
 
 \bibitem{Lancichinetti}
 A.~Lancichinetti \emph{et~al.}, ``Detecting the overlapping and hierarchical

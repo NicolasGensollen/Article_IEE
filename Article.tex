@@ -82,7 +82,7 @@ In a smart grid environment, we study coalition formation of prosumers that aim 
 
 One of the key ideas in the smart grid revolves around the introduction of communication means inside the power grids. This could enable complex improvements in the energy management and leads progressively to a greener energetic system \cite{Ramchurn} \cite{WuHamedHuangBook2011}. Distributed energy resources (DER) such as wind turbines or photovoltaic panels are not supposed to emerge only in remote farms, but also in residential areas. Together with electric vehicles, and demand side management tools, they will constitute the building blocks which will help to turn the today pure energy consumers into true actors of the grid operation \cite{Ramchurn}. Such agents that both consume and produce energy are ready to make concessions (appliances delays, V2G) to ensure grid stability, and are commonly called prosumers \cite{Rathnayaka2012} \cite{Ramchurn}.
 
-There seems to be a clear consensus on the benefit of having bidirectional communication flows between the prosumers and the grid, as demand side management relies on such an architecture \cite{WuHamedHuangBook2011}. Nevertheless as the number of active prosumers is expected to rise, it is safe to assume there is a need for more complex communication patterns (prosumers grouping together into so-called "coalitions") that will help to decrease the communication burden and satisfy the multiple requirements of the power grid management. The formation of coalitions inside the smart grid environment could be applied to various types of agents such as self sufficient micro-grids \cite{Pahwa}, sizable and adjustable virtual power plants (VPP) \cite{Braun, Ramchurn}, or fleet of electric vehicles that back up the grid in some emergency situations (V2G) \cite{Ramchurn}. These are only a few use cases where the coalition of multiple agents can enhance the grid reliability and in the mean time reduce the communication burden.
+There seems to be a clear consensus on the benefit of having bidirectional communication flows between the prosumers and the grid, as demand side management relies on such an architecture \cite{WuHamedHuangBook2011}. Nevertheless as the number of active prosumers is expected to rise, it is safe to assume there is a need for more complex communication patterns (prosumers grouping together into so-called "coalitions") that will help to decrease the communication burden and satisfy the multiple requirements of the power grid management. Formation of coalitions inside a smart grid environment could be applied to various types of agents such as self sufficient micro-grids \cite{Pahwa}, sizable and adjustable virtual power plants (VPP) \cite{Braun, Ramchurn}, or fleet of electric vehicles that back up the grid in emergency situations (V2G) \cite{Ramchurn}. These are only a few use cases where the coalition of multiple agents can enhance the grid reliability and in the mean time reduce the communication burden.
 
 In this paper, we consider the case of prosumers grouping together into coalitions to be able to produce sufficient power which may be sold to the grid. If the coalition's production is sufficiently high and stable, the coalition can negociate on a day by day basis with the grid by announcing each day an expected production for the next day. We focus on how to statistically improve the production stability by carefully forming coalitions of prosumers that have greater probabilities of staying in acceptable range of production. By using prediction techniques, we form coalitions that meet the contract values ranges proposed by the grid, enabling it to schedule its production accordingly. Meeting contract values for the prosumers is especially relevant in power trade conditions, where energy is traded based on day-ahead predictions. In this context, participants should try to minimize their prediction errors in order to maintain a stable state for the grid. They may even occur some penalties if the productions deviate from the initial contract values. However, it remains pertinent for both side to maintain the production as stable as possible : for the prosumer, the stability (with renewable energy sources) will impact its net gain, and for the power grid, it will help to maintain its reliability.
 
@@ -142,7 +142,7 @@ Consumption behaviors are characterized by a model we designed, which takes into
 
 \begin{center}
 \begin{figure}
-\includegraphics[scale=0.43]{figure2/Fig2}
+\includegraphics[scale=0.37]{figure2/Fig2}
 \caption{Process diagram}
 \label{Fig1}
 \end{figure}
@@ -210,16 +210,14 @@ Basically, a coalition s is valid if and only if :
 \begin{tabular}{l|p{4.5cm}}
   \hline 
   \\
-  $ \mathcal{A}=\{a_{1},...,a_{N}\} $ & Set of agents \\
   $ P_{i}(t) \in \mathbb{R}\ \ (P_{s}(t)) $ & Instantaneous production of agent $i$ at time $t$ \\
-  $ \mathcal{T}_{i} = \{P_{i}(t_{0}),...,P_{i}(t_{K})\} $ & Time series of agent i available production values \\
-  $ \mathcal{F}(P_{i})\ \ (\mathcal{F}(P_{S})) $ & Probability distribution of the production of the agent $i$ \\
+  $ \mathcal{F}(P_{i})\ \ (\mathcal{F}(P_{S})) $ & Probability distribution of $i$'s production \\
   $ \phi \in [0,1] $ & Reliability threshold \\
   $ P^{MIN} \in \mathbb{R}^+ $ & Min value threshold \\
   $ P_{s}^{CRCT} \in \mathbb{R}^+ $ & Contract value announced by coalition s \\
   $ P_{\phi}(s) \in \mathbb{R}^+ $ & Max contract value under $ \phi $ constraint \\
   $ \mathcal{U}_{\phi,\ P^{MIN}}(s) $ & Utility function \\
-  $ \tau_{i}(s) \in \mathbb{R}$ & Decision rule for mapping overlapping into disjoint coalitions \\
+  $ \tau_{i}(s) \in \mathbb{R}$ & Overlapping to disjoint coalitions mapping \\
   $ \epsilon \in [0,1] $ & Pruning threshold for the correlation graph \\
   $ N_{COAL} \in \mathbb{Z}^+ $ & Number of desired coalition \\
   $ CS $ & Set of all coalition structures \\
@@ -282,8 +280,8 @@ If node i belongs to  multiple coalitions, the only coalition including node i i
 
 \begin{figure}
  \centering
-  \includegraphics[scale=0.9]{./figure9/util}
-\caption{Utility function as function of the parameters space $\{\phi \in [0,1], N_{COAL}\in \mathbb{Z}^+, P^{MIN} \in \mathbb{R}^+\}$: a) In $ \{\phi \in [0,0.6], P^{MIN}\} $ when $ N_{COAL} $ is fixed. b) in $ \{N_{COAL}, P^{MIN}\} $ for a fixed $ \phi $. For readability, $ P^{MIN} $ is expressed in tenth of MW.}
+  \includegraphics[scale=0.8]{./figure9/util}
+\caption{Utility as function of the parameters space $\{\phi \in [0,1], N_{COAL}\in \mathbb{Z}^+, P^{MIN} \in \mathbb{R}^+\}$: a) In $ \{\phi, P^{MIN}\} $ when $ N_{COAL} $ is fixed. b) in $ \{N_{COAL}, P^{MIN}\} $ for a fixed $ \phi $. For readability, $ P^{MIN} $ is expressed in tenth of MW.}
 \label{Fig2}
 \end{figure}
 
@@ -293,7 +291,7 @@ In figure \ref{Fig2}b, we fix the reliability to a given empirical value ($\phi 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[scale=0.8]{./figure5/coals}
+  \includegraphics[scale=0.7]{./figure5/coals}
   \caption{Evolution of the coalitions for different values of $ P^{MIN} $ for clique percolation (blue dots) and random process (red dots). The diameters of the dots are proportional to the coalition sizes. The hatched zero utility zone corresponds to the \textit{"under-requirement space"}.}
   \label{Fig3}
 \end{figure}
@@ -310,7 +308,7 @@ When the grid requirements vary, for very low $ P^{MIN} $, all coalitions for al
 
 \begin{figure}
  \centering
-  \includegraphics[scale=0.35]{figure8/fig8.pdf}
+  \includegraphics[scale=0.3]{figure8/fig8.pdf}
   \caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves represent clique percolation, red curves, the random process, and the green ones, correlated coalitions.}
  \label{Fig4}
 \end{figure}

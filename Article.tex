@@ -154,7 +154,7 @@ Let $ P_{i}(t) $ be the instantaneous available power of agent i at instant t (h
 
 \subsection{Coalition formation model}\label{subsec:Coalition}
 
-Let us recall that our goal is to group prosumer into coalitions so that the global power production resulting of the superposition of individual prosumer's productions be sufficiently prdictible and above a minimum power level. We thus extend the agent notations to any coalition $ s \subset \mathcal{A} $ : 
+Let us recall that our goal is to group prosumers into coalitions so that the global power production resulting of the superposition of individual prosumer's productions be sufficiently predictible and above a minimum power level. We thus extend the agent notations to any coalition $ s \subset \mathcal{A} $ : 
 \begin{itemize}
 \item $ P_{s}(t) = \sum_{i \in s} P_{i}(t) $
 \item $ \mathcal{T}_{s} = \{ P_{s}(t_{0}),...,P_{s}(t_{K}) \} $ with $ \mathcal{F}(P_{s}) $ the corresponding probability distribution
@@ -162,7 +162,7 @@ Let us recall that our goal is to group prosumer into coalitions so that the glo
 
 Furthermore, we consider that a coalition S has the possibility to announce a contract value $ P_{s}^{CRCT} $ on the market. Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillate around $ P_{s}^{CRCT} $. It is of the responsibility of the information system that forms coalitions to select agents in order to provide a production as stable as possible. The probability of s value being below its contract value $ Pr[P_{s} \leq P_{s}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
 
-To illustrate what is done in the following, lets consider a very simple example with two agents, say i and j, with a production following a gaussian value probability distributions $ \mathcal{F}(P_{i}) = \mathcal{N}(\mu_{i}, \sigma_{i}) $ and $ \mathcal{F}(P_{j}) = \mathcal{N}(\mu_{j}, \sigma_{j}) $, such that the joint probability distribution  $ \mathcal{F}(P_{ij}) $ of the coalition $\{ij\}$ is also a gaussian with the following parameters :
+To illustrate what is done in the following, let us consider a very simple example with two agents, say i and j, with a production following a gaussian value probability distributions $ \mathcal{F}(P_{i}) = \mathcal{N}(\mu_{i}, \sigma_{i}) $ and $ \mathcal{F}(P_{j}) = \mathcal{N}(\mu_{j}, \sigma_{j}) $, such that the joint probability distribution  $ \mathcal{F}(P_{ij}) $ of the coalition $\{ij\}$ is also a gaussian with the following parameters :
 
 \begin{equation}
 \left\{ \begin{array}{lll}
@@ -279,7 +279,7 @@ If node i belongs to  multiple coalitions, the only coalition including node i i
 \label{Fig2}
 \end{figure}
 
-As shown in figure \ref{Fig2}a, the parameters $\phi$ and $P^{MIN}$ shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high. Only small values of $ P^{MIN}$ could then potentially lead to valid coalitions (and positive utilities). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and more valid coalitions can arise for a larger spectrum of $ P^{MIN}$. Obviously, the highest utility values are found for high $ \phi $, because the coalitions formed are able to announce higher contract values, yielding higher utilities. 
+As shown in figure \ref{Fig2}a, the parameters $\phi$ and $P^{MIN}$ shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high. Only small values of $ P^{MIN}$ could then potentially lead to valid coalitions (and positive utilities). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and more valid coalitions can arise for a larger spectrum of $ P^{MIN}$. Obviously, the highest utility values are found for high $ \phi $, because the formed coalitions are able to announce higher contract values, yielding higher utilities. 
 
 In figure \ref{Fig2}b, we fix the reliability to a given empirical value ($\phi = 0.08 $). We can observe how the social welfare $\sum_{s \in S} \mathcal{U}_{\phi,\ P^{MIN}}(s)$ evolves according to $P^{MIN}$ and $ N_{COAL} $. In our setting we notice a maximum point around $ N_{COAL} = 3 $, followed by a decrease. There is clearly a maximum number of coalitions sustainable for a given set of parameters. After that value the coalitions newly formed won't be able to pass the grid requirements. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to denser graphs, meaning that the algorithm performance will also decrease.
 

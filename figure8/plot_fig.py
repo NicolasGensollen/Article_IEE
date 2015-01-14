@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
 #matplotlib config
-def matplotlib_setup(figsize_x=15, figsize_y=5):
+def matplotlib_setup(figsize_x=12, figsize_y=5):
     import matplotlib as mpl
     cmap = cm.jet
-    mpl.rcParams['axes.labelsize'] = 9
-    mpl.rcParams['xtick.labelsize'] = 9
-    mpl.rcParams['ytick.labelsize'] = 9
-    mpl.rcParams['legend.fontsize'] = 9
+    mpl.rcParams['axes.labelsize'] = 13
+    mpl.rcParams['xtick.labelsize'] = 16
+    mpl.rcParams['ytick.labelsize'] = 16
+    mpl.rcParams['legend.fontsize'] = 14
     #rcParams['font.family'] = 'serif'
     #rcParams['font.serif'] = ['Computer Modern Roman']
     mpl.rcParams['text.usetex'] = True
@@ -78,7 +78,7 @@ matplotlib_setup()
 Pmax = 11; phi = 0.15; alph = .3
 
 fig = plt.figure()
-ax = fig.add_subplot(131)
+ax = fig.add_subplot(121)
 ax.set_ylim([0,3])
 ax.plot( range(Pmax)[1:], perco2, 'o--', color='b', label='percolation')
 ax.plot( range(Pmax)[1:], rand2, 'g^--', color='r', label='random')
@@ -91,12 +91,13 @@ ax.fill_between(range(Pmax)[1:], corre_sup2, corre2, facecolor='green', alpha=al
 ax.fill_between(range(Pmax)[1:], corre2, corre_inf2, facecolor='green', alpha=alph)
 ax.text(0.05, 0.95, 'a', transform=ax.transAxes, fontsize=16, fontweight='bold', va='top')
 ax.set_xlabel(r" \textbf{ $ N_{COAL}$ }",fontsize=14)
-ax.set_ylabel('Social Welfare')
+ax.set_ylabel('Social Welfare', fontsize = 15)
 ax.grid()
+ax.legend()
 
 Pmax = 12; phi = 0.15; nb_coal = 7; alph = .3
 
-ax2 = fig.add_subplot(132)
+ax2 = fig.add_subplot(122)
 ax2.set_ylim([0,1.2])
 ax2.set_xlim([0,11])
 ax2.plot( range(Pmax), perco, 'o--', color='b', label='percolation')
@@ -109,10 +110,11 @@ ax2.fill_between(range(Pmax), rand, rand_inf, facecolor='red', alpha=alph)
 ax2.fill_between(range(Pmax), corre_sup, corre, facecolor='green', alpha=alph)
 ax2.fill_between(range(Pmax), corre, corre_inf, facecolor='green', alpha=alph)
 ax2.text(1.25, 0.95, 'b', transform=ax.transAxes, fontsize=16, fontweight='bold', va='top')
-lgd = ax2.legend(bbox_to_anchor=(1.1, 1.02), loc=2)
+#lgd = ax2.legend(bbox_to_anchor=(1.1, 1.02), loc=2)
+#ax2.legend()
 ax2.set_xlabel(r" \textbf{ $ P_{\phi}^{MIN}$ }",fontsize=14)
-ax2.set_ylabel('Valid coalition percentage')
+ax2.set_ylabel('Valid coalition percentage', fontsize = 15)
 ax2.grid()
-plt.savefig('fig8.pdf', pad_inches=6)
-plt.savefig('fig8.eps')
+plt.savefig('fig8_bis.pdf', pad_inches=6)
+plt.savefig('fig8_bis.eps')
 #plt.savefig('fig8.png', bbox_extra_artists=(lgd,), bbox_inches='tight')

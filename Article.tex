@@ -39,6 +39,7 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,7 +143,7 @@ Consumption behaviors are characterized by a model we designed, which takes into
 
 \begin{center}
 \begin{figure}
-\includegraphics[scale=0.37]{figure2/Fig2}
+\includegraphics[scale=0.45]{figure2/Fig2}
 \caption{Process diagram}
 \label{Fig1}
 \end{figure}
@@ -150,7 +151,7 @@ Consumption behaviors are characterized by a model we designed, which takes into
 
 At this point, modeling agents consists in fixing a few parameters (most of the time drawn from random distributions) such as the geographical position, the number of wind turbines, PV, appliances, the temperature of comfort, and so on. The objective is that, depending on the weather of his zone, the DER and appliances he owns, and the way he decides to heat his home, a given prosumer is able to compute his production/consumption at any time. 
 
-Let $ P_{i}(t) $ be the instantaneous available power of agent i at instant t (his instantaneous production minus his instantaneous consumption). During the simulation (from $t_{0} $ to $ t_{K} $), all agents record their values with an hour time interval. As expected, the prosumer's time-series exhibit high seasonal patterns, but completely different from agent to agent because they depend both on the energy mix and the habits. Nevertheless, these macro variations can hide the interesting information in the correlation coefficients and twist the rest of our process. Thereby, we remove these seasonal effects for all agents (see second block of figure \ref{Fig1}). We denote by $ \mathcal{T}_{i} = \{ P_{i}(t_{0}),...,P_{i}(t_{K}) \} $ the resulting time-series for  agent i, and by $ \mathcal{F}(P_{i}) $ the corresponding probability distribution.
+Let $ P_{i}(t) $ be the instantaneous available power of agent \textit{i} at instant \textit{t} (his instantaneous production minus his instantaneous consumption). During the simulation (from $t_{0} $ to $ t_{K} $), all agents record their values with an hour time interval. As expected, the prosumer's time-series exhibit high seasonal patterns, but completely different from agent to agent because they depend both on the energy mix and the habits. Nevertheless, these macro variations can hide the interesting information in the correlation coefficients and twist the rest of our process. Thereby, we remove these seasonal effects for all agents (see second block of figure \ref{Fig1}). We denote by $ \mathcal{T}_{i} = \{ P_{i}(t_{0}),...,P_{i}(t_{K}) \} $ the resulting time-series for  agent \textit{i}, and by $ \mathcal{F}(P_{i}) $ the corresponding probability distribution.
 
 \subsection{Coalition formation model}\label{subsec:Coalition}
 
@@ -160,9 +161,9 @@ Let us recall that our goal is to group prosumers into coalitions so that the gl
 \item $ \mathcal{T}_{s} = \{ P_{s}(t_{0}),...,P_{s}(t_{K}) \} $ with $ \mathcal{F}(P_{s}) $ the corresponding probability distribution
 \end{itemize}
 
-Furthermore, we consider that a coalition S has the possibility to announce a contract value $ P_{s}^{CRCT} $ on the market. Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillate around $ P_{s}^{CRCT} $. It is of the responsibility of the information system that forms coalitions to select agents in order to provide a production as stable as possible. The probability of s value being below its contract value $ Pr[P_{s} \leq P_{s}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
+Furthermore, we consider that a coalition \textit{s} has the possibility to announce a contract value $ P_{s}^{CRCT} $ on the market. Due to the volatile nature of DER productions or user consumptions, the available power of a coalition will oscillate around $ P_{s}^{CRCT} $. It is of the responsibility of the information system that forms coalitions to select agents in order to provide a production as stable as possible. The probability of \textit{s} value being below its contract value $ Pr[P_{s} \leq P_{s}^{CRCT} ] $ appears therefore as a quantity of interest that we would want to keep as low as possible. 
 
-To illustrate what is done in the following, let us consider a very simple example with two agents, say i and j, with a production following a gaussian value probability distributions $ \mathcal{F}(P_{i}) = \mathcal{N}(\mu_{i}, \sigma_{i}) $ and $ \mathcal{F}(P_{j}) = \mathcal{N}(\mu_{j}, \sigma_{j}) $, such that the joint probability distribution  $ \mathcal{F}(P_{ij}) $ of the coalition $\{ij\}$ is also a gaussian with the following parameters :
+To illustrate what is done in the following, let us consider a very simple example with two agents, say \textit{i} and \textit{j}, with a production following a gaussian value probability distributions $ \mathcal{F}(P_{i}) = \mathcal{N}(\mu_{i}, \sigma_{i}) $ and $ \mathcal{F}(P_{j}) = \mathcal{N}(\mu_{j}, \sigma_{j}) $, such that the joint probability distribution  $ \mathcal{F}(P_{ij}) $ of the coalition $\{ij\}$ is also a gaussian with the following parameters :
 
 \begin{equation}
 \left\{ \begin{array}{lll}
@@ -179,11 +180,23 @@ $ \rho_{ij} $ the Pearson correlation coefficient between $ P_{i} $ and $ P_{j} 
 \label{reliability}
 \end{equation}
 
-Let $ \phi \in [0,1] $ be the \textbf{reliability} constraint imposed to the coalition $\{ij\} $. It stipulates that if $\{ij\} $ wants to join the market, the probability of $\{ij\} $ value (at any instant t) being below its contract value should at most be $ \phi $. That is, $ Pr[P_{ij} \leq P_{ij}^{CRCT} ] \leq \phi $. We also impose to $ \{ij\} $ a \textbf{minimum contract value} constraint denoted by $ P^{MIN} $, which states that the coalition should announce more than $ P^{MIN} $ to be accepted ($ P_{s}^{CRCT} \geq P^{MIN} $).
+Let $ \phi \in [0,1] $ be the \textbf{reliability} constraint imposed to the coalition $\{ij\} $. It stipulates that if $\{ij\} $ wants to join the market, the probability of $\{ij\} $ value (at any instant \textit{t}) being below its contract value should at most be $ \phi $. That is, $ Pr[P_{ij} \leq P_{ij}^{CRCT} ] \leq \phi $. We also impose to $ \{ij\} $ a \textbf{minimum contract value} constraint denoted by $ P^{MIN} $, which states that the coalition should announce more than $ P^{MIN} $ to be accepted ($ P_{s}^{CRCT} \geq P^{MIN} $).
 
-Coalition $ \{ij\} $ has thus potentially a set of possible contract values that respects both rules. The strategy of $ \{ij\} $ (and all other coalitions in the paper) consists then in choosing, if it exists, the maximum value of this constrained set. We denote by $ P_{\phi}(s) $ this maximum value for a coalition s. For $ \{ij\} $, $ P_{\phi}(s) $ can be computed using eq. \ref{reliability} : $ P_{\phi}(ij) = \mu_{ij} - \sigma_{ij}\sqrt{2}erf^{-1}(1-2 \phi ) $. If  $ P_{\phi}(ij) \geq P^{MIN} $, then $ \{ij\} $ can announce $ P_{ij}^{CRCT} = P_{\phi}(ij)$ on the market, else it is not allowed to enter. It thus appears (as it was intuitively understandable) that, for equivalent sizes, coalitions with low relative standard deviations ( $ \sigma_{ij} / \mu_{ij} $ ) are able to announce higher contract values. 
+Coalition $ \{ij\} $ has thus potentially a set of possible contract values that respects both rules. The strategy of $ \{ij\} $ (and all other coalitions in the paper) consists then in choosing, if it exists, the maximum value of this constrained set. We denote by $ P_{\phi}(s) $ this maximum value for a coalition \textit{s}. For $ \{ij\} $, $ P_{\phi}(s) $ can be computed using eq. \ref{reliability} : $ P_{\phi}(ij) = \mu_{ij} - \sigma_{ij}\sqrt{2}erf^{-1}(1-2 \phi ) $. If  $ P_{\phi}(ij) \geq P^{MIN} $, then $ \{ij\} $ can announce $ P_{ij}^{CRCT} = P_{\phi}(ij)$ on the market, else it is not allowed to enter. It thus appears (as it was intuitively understandable) that, for equivalent sizes, coalitions with low relative standard deviations ( $ \sigma_{ij} / \mu_{ij} $ ) are able to announce higher contract values. 
 
-What this paper investigates in the following is the developement of a heuristic that organizes prosumers such that the synergy terms of the standard deviations ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) are minimized. More formally, we consider the following problem (Table \ref{table1} summarizes the main notations):
+%What this paper investigates in the following is the developement of a heuristic that organizes prosumers such that the synergy terms of the standard deviations ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) are minimized. More formally, we consider the following problem (Table \ref{table1} summarizes the main notations):
+
+In the following, we do not make any gaussian assumption as in the previous toy example. We investigate then the developement of a heuristic that tries to find a compromise between maximizing the production sold on the market (benefits) on one hand and minimizing the probability that the coalitions fail to sustain their contract values (stability) on the other hand (Table \ref{table1} summarizes the main notations) :
+
+\begin{equation}
+  \argmax _{\substack{ S \subset CS \\ 
+                      |S| = N_{COAL} \\ 
+                      \forall s \in S,\ |s| \neq 0 
+                      \\ P_{s}^{CRCT} \geq P^{MIN}}}
+   \sum_{s \in S}  P_{s}^{CRCT}
+  \label{problem}
+\end{equation}  
+
  \begin{equation}
   \argmin _{\substack{ S \subset CS \\ 
                       |S| = N_{COAL} \\ 
@@ -193,8 +206,8 @@ What this paper investigates in the following is the developement of a heuristic
   \label{problem}
 \end{equation}  
 
-As explained in the example above, if a coalition s wishes to join the market, it has to choose a contract value within a constrained set. Only coalitions whose set is not empty are able to enter the market (valid coalitions). For simplification, we consider that valid coalitions will always apply the same economically consistent strategy of announcing the highest possible contract value of this set ( $ P_{s}^{CRCT} = P_{\phi}(s) $).
-Basically, a coalition s is valid if and only if :
+This last minimization objective is explored by organizing prosumers such that the synergy terms of the standard deviations ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) are minimized. As explained in the example above, if a coalition \textit{s} wishes to join the market, it has to choose a contract value within a constrained set. Only coalitions whose set is not empty are able to enter the market (valid coalitions). For simplification, we consider that valid coalitions will always apply the same economically consistent strategy of announcing the highest possible contract value of this set ( $ P_{s}^{CRCT} = P_{\phi}(s) $).
+Let us define a valid coalition more formally as a coalition satisfying the following rules :
 \begin{equation}
 \left\{ \begin{array}{lll}
 		Pr[ P_{s} \leq P_{\phi}(s)] \leq \phi\ \textit{{\scriptsize (reliability rule)}} \\
@@ -209,6 +222,7 @@ Basically, a coalition s is valid if and only if :
 \scriptsize
 \begin{tabular}{l|p{4.5cm}}
   \hline 
+  \\
   $ P_{i}(t) \in \mathbb{R}\ \ (P_{s}(t)) $ & Instantaneous production of agent $i$ at time $t$ \\
   $ \mathcal{F}(P_{i})\ \ (\mathcal{F}(P_{S})) $ & Probability distribution of $i$'s production \\
   $ \phi \in [0,1] $ & Reliability threshold \\
@@ -221,6 +235,7 @@ Basically, a coalition s is valid if and only if :
   $ N_{COAL} \in \mathbb{Z}^+ $ & Number of desired coalition \\
   $ CS $ & Set of all coalition structures \\
   $ \Theta(G) $ & Set of non overlaping cliques in graph G \\
+  \\
   \hline
 \end{tabular}
 
@@ -258,21 +273,21 @@ However, as seems intuitively understandable, cliques of this graph tend to exhi
 \epsilon^{\star} = \min_{\substack{ \epsilon \in [0,1] }} \Big\{ \epsilon\,\ s.t\ |\Theta(G_{\epsilon})| \geq N_{COAL} \Big\}
 \end{equation}
 
-We construct $ G_{\epsilon^{\star}} $ such that it contains at least $ N_{COAL} $ potential seeds that may or may not be above the grid requirements, but exhibit low correlations among the members. Naturally, grid requirements could eventually be reached and social welfare increased by incorporating more nodes into the seeds. For this purpose, we use a clique percolation algorithm on $ G_{\epsilon^{\star}} $ that will extend the seeds over a correlation constrained environment. The main idea behind this algorithm is to make the seeds grow by local optimization of a fitness function, usually based on internal and external degrees of the seeds \cite{Lancichinetti}. The main difference between our case study and this algorithm for community detection is that we chose the fitness function as our utility function (cf. eq.\eqref{utility}) that both maximizes the production and minimizes its volatility. As explained in section \ref{sec:related}, clique percolation leads generally to overlapping communities. For simplicity, in this paper, we wish to keep the coalitions disjoint and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that considers nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition s and a node $ i \in s $, we define :
+We construct $ G_{\epsilon^{\star}} $ such that it contains at least $ N_{COAL} $ potential seeds that may or may not be above the grid requirements, but exhibit low correlations among the members. Naturally, grid requirements could eventually be reached and social welfare increased by incorporating more nodes into the seeds. For this purpose, we use a clique percolation algorithm on $ G_{\epsilon^{\star}} $ that will extend the seeds over a correlation constrained environment. The main idea behind this algorithm is to make the seeds grow by local optimization of a fitness function, usually based on internal and external degrees of the seeds \cite{Lancichinetti}. The main difference between our case study and this algorithm for community detection is that we chose the fitness function as our utility function (cf. eq.\eqref{utility}) that both maximizes the production and minimizes its volatility. As explained in section \ref{sec:related}, clique percolation leads generally to overlapping communities. For simplicity, in this paper, we wish to keep the coalitions disjoint and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that considers nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition \textit{s} and a node $ i \in s $, we define\footnote{\label{note1}Not to be mingled with the Shapley value} :
 
 \begin{equation}
 \tau_{i}(s) = \dfrac{\mathcal{U}_{\phi,\ P^{MIN}}(s) - \mathcal{U}_{\phi,\ P^{MIN}}(s-\{i\}) }{\mathcal{U}_{\phi,\ P^{MIN}}(s)}
 \label{tau}
 \end{equation}
 
-If node i belongs to  multiple coalitions, the only coalition including node i is the one that maximizes $ \tau_{i} $. At this point, we have three degrees of freedom : the reliability ($ \phi $), the required power to enter the market ($P^{MIN}$), and the number of desired coalitions ($ N_{COAL} $). Next section shows the utility behavior within the parameters space $ \{\phi,P^{MIN},N_{COAL} \} $ and provides results of our 200 agents test.
+If node \textit{i} belongs to  multiple coalitions, the only coalition including node \textit{i} is the one that maximizes $ \tau_{i} $. At this point, we have three degrees of freedom : the reliability ($ \phi $), the required power to enter the market ($P^{MIN}$), and the number of desired coalitions ($ N_{COAL} $). Next section shows the utility behavior within the parameters space $ \{\phi,P^{MIN},N_{COAL} \} $ and provides results of our 200 agents test.
 
 \section{Results}
 \label{sec:results}
 
 \begin{figure}
  \centering
-  \includegraphics[scale=0.75]{./figure9/util}
+  \includegraphics[scale=0.9]{./figure9/util}
 \caption{Utility as function of the parameters space $\{\phi \in [0,1], N_{COAL}\in \mathbb{Z}^+, P^{MIN} \in \mathbb{R}^+\}$: a) In $ \{\phi, P^{MIN}\} $ when $ N_{COAL} $ is fixed. b) in $ \{N_{COAL}, P^{MIN}\} $ for a fixed $ \phi $. For readability, $ P^{MIN} $ is expressed in tenth of MW.}
 \label{Fig2}
 \end{figure}
@@ -283,19 +298,19 @@ In figure \ref{Fig2}b, we fix the reliability to a given empirical value ($\phi 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[scale=0.63]{./figure5/coals}
+  \includegraphics[scale=0.9]{./figure5/coals}
   \caption{Evolution of the coalitions for different values of $ P^{MIN} $ for clique percolation (blue dots) and random process (red dots). The diameters of the dots are proportional to the coalition sizes. The hatched zero utility zone corresponds to the \textit{"under-requirement space"}.}
   \label{Fig3}
 \end{figure}
 
 In fig. \ref{Fig3}, we perform a simulation with 200 prosumers, and we fix the reliability $ \phi = 0.1 $ meaning that coalitions should produce more than their contract values at least $ 90 \% $ of the time. We observe the result of our algorithm for a fixed number of coalitions of $N_{COAL} = 10$ and let the algorithm form the coalitions as the grid changes according to $ P^{MIN} $. We compare our algorithm with a random process that splits the agents in $ N_{COAL} $ coalitions. Fig. \ref{Fig3} shows this evolution for our algorithm (blue dots) and for the random process (red dots). The diameter of a dot is proportional to the number of agents in the coalition and the higher the dot, the higher its utility. The $ P^{MIN} $ values of the x axis are expressed in tenth of MW for readability and the hatched zone corresponds to the \textit{"under-requirement space"}, meaning that whenever a coalition is in this zone, it has a null utility. Looking at fig. \ref{Fig3}, we can see first that our algorithm performs better than the random formation algorithm at finding high valued coalitions. The blue dots allowed to enter the market (non hatched zone) are indeed outnumbering the red dots, especially when the grid requirements are neither too low nor too high ($ P^{MIN} = 5 $ in fig. \ref{Fig3}).
 
-In more details, figure \ref{Fig4}a presents the evolution of social welfare as the number of coalitions increases (all other parameters are kept constant) for random (red curve), clique percolation (blue curve), and correlated coalitions (green curves) that stands for a worst case scenario. As for figure \ref{Fig4}b, it shows the percentage of coalitions able to enter the market for different values of $ P^{MIN} $. For consistency, we average the results of both plots over 100 realizations (colored zones around the curves shows the standard deviations). When the grid requirements are constant (figure \ref{Fig4}b), and the number of desired coalitions is low, clique percolation generally performs better than random case. Moreover, when $ N_{COAL} $ gets bigger, the performance of a random split tumble down rapidly while our clique percolation is able to maintain efficiently the social welfare of the coalitions formed. When the grid requirements vary, for very low $ P^{MIN} $, all coalitions for all algorithms are able to enter the market, yielding an acceptance percentage of $ 100 \% $. But as $ P^{MIN} $ increases, we see the percentage of the correlated coalitions is going down very quickly. After a few increases in $ P^{MIN} $, the percentage of the random procedure starts dropping while it stays almost constant for our algorithm. For $ P^{MIN} = 8 $, we see that only a little more than half of the coalitions for the random case are able to enter while approximately $ 85 \%$ of them enters for the clique percolation algorithm. Finally, when the grid requirements becomes too high, the acceptance percentage of our algorithm tends slowly to zero (not shown in this plot for readability).
+In more details, figure \ref{Fig4}a presents the evolution of social welfare as the number of coalitions increases (all other parameters are kept constant) for random (red curve with squares), clique percolation (blue curve with circles), and correlated coalitions (green curves with triangles) that stands for a worst case scenario. As for figure \ref{Fig4}b, it shows the percentage of coalitions able to enter the market for different values of $ P^{MIN} $. For consistency, we average the results of both plots over 100 realizations (colored zones around the curves shows the standard deviations). When the grid requirements are constant (figure \ref{Fig4}b), and the number of desired coalitions is low, clique percolation generally performs better than random case. Moreover, when $ N_{COAL} $ gets bigger, the performance of a random split tumble down rapidly while our clique percolation is able to maintain efficiently the social welfare of the coalitions formed. When the grid requirements vary, for very low $ P^{MIN} $, all coalitions for all algorithms are able to enter the market, yielding an acceptance percentage of $ 100 \% $. But as $ P^{MIN} $ increases, we see the percentage of the correlated coalitions is going down very quickly. After a few increases in $ P^{MIN} $, the percentage of the random procedure starts dropping while it stays almost constant for our algorithm. For $ P^{MIN} = 8 $, we see that only a little more than half of the coalitions for the random case are able to enter while approximately $ 85 \%$ of them enters for the clique percolation algorithm. Finally, when the grid requirements becomes too high, the acceptance percentage of our algorithm tends slowly to zero (not shown in this plot for readability).
 
 \begin{figure}
  \centering
-  \includegraphics[scale=0.3]{figure8/fig8.pdf}
-  \caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves represent clique percolation, red curves, the random process, and the green ones, correlated coalitions.}
+  \includegraphics[scale=0.36]{figure8/fig8_bis.pdf}
+  \caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves with circles represent clique percolation, red curves with squares, the random process, and the green ones with triangles, correlated coalitions.}
  \label{Fig4}
 \end{figure}
 

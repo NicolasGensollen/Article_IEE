@@ -34,6 +34,9 @@
 \usepackage{subcaption}
 \usepackage{array}
 
+\usepackage{float}
+\usepackage{multicol}
+
 %
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -346,13 +349,18 @@ As for figure \ref{Fig4}b, it shows the percentage of coalitions able to enter t
 After a few increases in $ P^{MIN} $, the percentage of the random procedure starts dropping while it stays almost constant for our algorithm. For $ P^{MIN} = 8 $, we see that only a little more than half of the coalitions for the random case are able to enter while approximately $ 85 \%$ of them enters for the clique percolation algorithm. Finally, when the grid requirements become too high, the acceptance percentage of our algorithm tends slowly to zero (not shown in this plot for readability).
 
 \begin{figure}
- \centering
-  \includegraphics[scale=0.36]{figure8/fig8_bis.pdf}
-  \caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves with circles represent clique percolation, red curves with squares, the random process, and the green ones with triangles, correlated coalitions.}
- \label{Fig4}
+\begin{minipage}[c]{\textwidth}
+	\begin{center}
+  		\includegraphics[scale=0.36]{figure8/fig8_bis.pdf}
+  			\caption{Evolution of the social welfare \textbf{a)} and the percentage of coalitions able to enter the market \textbf{b)} for different values of $ P_{MIN} $. Blue curves with circles represent clique percolation, red curves with squares, the random process, and the green ones with triangles, correlated coalitions.}
+ 		\label{Fig4}
+	\end{center}
+\end{minipage}
+
 \end{figure}
 
-
+\begin{minipage}{\textwidth}
+\begin{multicols}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Section VI: Conclusion
@@ -367,8 +375,6 @@ On this basis, we proposed a simple algorithm that seeks for uncorrelated prosum
 
 Interesting leads for future works would be the use of correlated clusters to reduce the number of entities the algorithm has to deal with, or the introduction of a payoff allocation towards the prosumers such that the stability against player defection could be analyzed through game theory. Showing that maintaining the coalitions formed with our algorithm necessitates less communication and less storage capacity could also lead to a stimulating project. Besides, we believe that not restricting the algorithm to non overlapping coalitions and studying the strategies and weights of nodes with multiple options could lead to interesting research.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Bibliography
@@ -377,6 +383,11 @@ Interesting leads for future works would be the use of correlated clusters to re
  
 \bibliographystyle{IEEEtran}  
 \bibliography{Article}
+
+\end{multicols}
+
+\end{minipage}
+
 \end{document}
 
 

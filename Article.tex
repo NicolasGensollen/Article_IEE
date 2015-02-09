@@ -266,10 +266,10 @@ Normally, a valid coalition could select any value in the $ \{ P^{MIN}, P_{\phi}
 \end{table}
 
 \subsection{Utility function}\label{subsec:UtilityFunc}
-As solving the optimization problem (see eq. \ref{problem}) is considered NP-hard, we address this problem with a heuristic based on a utility function (eq. \ref{utility}) that derives directly from the problem constraints. That is, if a coalition cannot provide a valid contract value, it receives a utility of zero. Furthermore, the utility increases with the overall production (sum of the contracted values) as stated in the objective of eq.\ref{problem}. The stability of the coalitions is also present in this utility function through the $ \phi $ parameter. Finally, the $ 1/|s| $ term in eq. \ref{utility} indicates that we favor small coalitions, mainly because they are easier to maintain.
+As solving the optimization problem (see eq. \ref{problem}) is considered NP-hard, we address this problem with a heuristic based on a utility function (eq. \ref{utility}) that derives directly from the problem constraints. That is, if a coalition cannot provide a valid contract value, it receives a utility of zero. Furthermore, the utility increases with the overall production (sum of the contracted values) as stated in the objective of eq.\ref{problem}. The stability of the coalitions is also present in this utility function through the $ \phi $ parameter. Finally, the $ 1/|s|^{\alpha} $ term in eq. \ref{utility} controls the sizes of the coalitions (for simplicity, in the rest of the paper $ \alpha $ is set to one).
 
 \begin{equation}
- \mathcal{U}_{\phi,\ P^{MIN}}(s) = \mathbf{1}_{\textit{s\ valid}} \dfrac{P_{\phi}(s)}{|s|} 
+ \mathcal{U}_{\phi,\ P^{MIN}}(s) = \mathbf{1}_{\textit{s\ valid}} \dfrac{P_{\phi}(s)}{|s|^{\alpha}} 
 \label{utility}
 \end{equation}
 

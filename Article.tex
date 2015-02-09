@@ -205,28 +205,23 @@ Coalition $ \{ij\} $ has thus potentially a set of possible contract values that
 
 %What this paper investigates in the following is the developement of a heuristic that organizes prosumers such that the synergy terms of the standard deviations ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) are minimized. More formally, we consider the following problem (Table \ref{table1} summarizes the main notations):
 
-In the following, we do not make any gaussian assumption as in the previous toy example (see for instance the densities at the coalition level on figure \ref{Fig5}). We investigate then the developement of a heuristic that tries to find a compromise between maximizing the production sold on the market (benefits) on one hand (see eq. \ref{problem_1}) and minimizing the probability that the coalitions fail to sustain their contract values (stability) on the other hand (see eq. \ref{problem_2}). Table \ref{table1} summarizes the main notations.
+In the following, we do not make any gaussian assumption as in the previous toy example (see for instance the densities at the coalition level on figure \ref{Fig5}). We investigate then the developement of a heuristic that seeks to maximize the production sold on the market (sum of the contract values for all coalitions) under the \textit{reliability} and \textit{minimum contract value} constraints for every coalition (see eq. \ref{problem}). Table \ref{table1} summarizes the main notations.
 
 \begin{equation}
-  \argmax _{\substack{ S \subset CS \\ 
-                      |S| = N_{COAL} \\ 
-                      \forall s \in S,\ |s| \neq 0 
-                      \\ P_{s}^{CRCT} \geq P^{MIN}}}
-   \sum_{s \in S}  P_{s}^{CRCT}
-  \label{problem_1}
-\end{equation}  
+\begin{aligned}
+& \underset{S \subset CS}{ \text{ Maximize }}
+& & \sum_{s \in S}  P_{s}^{CRCT} \\
+& \text{subject to} 
+& &	|S| = N_{COAL} \\
+&&& \forall s \in S,\ |s| \neq 0  \\
+&&& \forall s \in S,\  P_{s}^{CRCT} \geq P^{MIN} \\
+&&& \forall s \in S,\  Pr[P_{s} \leq P_{\phi}(s)] \leq \phi
+\end{aligned}
+\label{problem}
+\end{equation}
 
- \begin{equation}
-  \argmin _{\substack{ S \subset CS \\ 
-                      |S| = N_{COAL} \\ 
-                      \forall s \in S,\ |s| \neq 0 
-                      \\ P_{s}^{CRCT} \geq P^{MIN}}}
-   \sum_{s \in S}  \Pr \bigl[ P_{s} \leq P_{s}^{CRCT} \bigr]
-  \label{problem_2}
-\end{equation}  
+As explained in the example above, if a coalition \textit{s} wishes to join the market, it has to choose a contract value within a constrained set : $ P_{s}^{CRCT} \in \{ P^{MIN}, P_{\phi}(s) \}$. Only coalitions whose set is not empty ( $ P_{\phi}(s) \geq P^{MIN} $ ) are able to enter the market. More formally, let us define a \textit{valid coalition} as a coalition satisfying the following rules :
 
-This last minimization objective is explored by organizing prosumers such that the synergy terms of the standard deviations ($ \rho_{ij}\sigma_{i}\sigma_{j} $ in the example above) are minimized. As explained in the example above, if a coalition \textit{s} wishes to join the market, it has to choose a contract value within a constrained set. Only coalitions whose set is not empty are able to enter the market (valid coalitions). For simplification, we consider that valid coalitions will always apply the same economically consistent strategy of announcing the highest possible contract value of this set ( $ P_{s}^{CRCT} = P_{\phi}(s) $).
-Let us define a valid coalition more formally as a coalition satisfying the following rules :
 \begin{equation}
 \left\{ \begin{array}{lll}
 		Pr[ P_{s} \leq P_{\phi}(s)] \leq \phi\ \textit{{\scriptsize (reliability rule)}} \\
@@ -235,6 +230,9 @@ Let us define a valid coalition more formally as a coalition satisfying the foll
 \end{array} \right. 
 \label{rules}
 \end{equation}
+
+Normally, a valid coalition could select any value in the $ \{ P^{MIN}, P_{\phi}(s) \}$ set. However, for simplification, we consider that they will always apply the same economically consistent strategy of announcing the highest possible contract value of this set. Therefore, in the following, for a valid coalition we will use the simplification : $ P_{s}^{CRCT} = P_{\phi}(s) $.
+
 
 \begin{table}[t]
 \centering
@@ -268,7 +266,7 @@ Let us define a valid coalition more formally as a coalition satisfying the foll
 \end{table}
 
 \subsection{Utility function}\label{subsec:UtilityFunc}
-Adressing the problem of eq.\ref{problem_1} and \ref{problem_2}, we choose a utility function (eq. \ref{utility}) that derives directly from the above remarks. If a coalition cannot provide a valid contract value, it receives naturally a utility of zero. Furthermore, the utility increases with the overall production (sum of the contracted values) as stated in the objective of eq.\ref{problem_1}. The stability objective described in eq.\ref{problem_2} is also present in this utility function through the $ \phi $ parameter. Finally, the $ 1/|s| $ term in eq. \ref{utility} indicates that we favor small coalitions, mainly because they are easier to maintain.
+As solving the optimization problem (see eq. \ref{problem}) is considered NP-hard, we address this problem with a heuristic based on a utility function (eq. \ref{utility}) that derives directly from the problem constraints. That is, if a coalition cannot provide a valid contract value, it receives a utility of zero. Furthermore, the utility increases with the overall production (sum of the contracted values) as stated in the objective of eq.\ref{problem}. The stability of the coalitions is also present in this utility function through the $ \phi $ parameter. Finally, the $ 1/|s| $ term in eq. \ref{utility} indicates that we favor small coalitions, mainly because they are easier to maintain.
 
 \begin{equation}
  \mathcal{U}_{\phi,\ P^{MIN}}(s) = \mathbf{1}_{\textit{s\ valid}} \dfrac{P_{\phi}(s)}{|s|} 
@@ -302,7 +300,7 @@ Despite being direct and simple, improving the sizes of the cliques by increasin
 \epsilon^{\star} = \min_{\substack{ \epsilon \in [0,1] }} \Big\{ \epsilon\,\ s.t\ |\Theta(G_{\epsilon})| \geq N_{COAL} \Big\}
 \end{equation}
 
-We construct $ G_{\epsilon^{\star}} $ such that it contains at least $ N_{COAL} $ potential seeds that may or may not be above the grid requirements, but exhibit low correlations among the members. Naturally, grid requirements could eventually be reached and social welfare increased by incorporating more nodes into the seeds. For this purpose, we use a clique percolation algorithm on $ G_{\epsilon^{\star}} $ that will extend the seeds over a correlation constrained environment. The main idea behind this algorithm is to make the seeds grow by local optimization of a fitness function, usually based on internal and external degrees of the seeds \cite{Lancichinetti}. The main difference between our case study and this algorithm for community detection is that we chose the fitness function as our utility function (see eq.\eqref{utility}) that both maximizes the production and minimizes its volatility (see eq.\ref{problem_1} and eq.\ref{problem_2}). 
+We construct $ G_{\epsilon^{\star}} $ such that it contains at least $ N_{COAL} $ potential seeds that may or may not be above the grid requirements, but exhibit low correlations among the members. Naturally, grid requirements could eventually be reached and social welfare increased by incorporating more nodes into the seeds. For this purpose, we use a clique percolation algorithm on $ G_{\epsilon^{\star}} $ that will extend the seeds over a correlation constrained environment. The main idea behind this algorithm is to make the seeds grow by local optimization of a fitness function, usually based on internal and external degrees of the seeds \cite{Lancichinetti}. The main difference between our case study and this algorithm for community detection is that we chose the fitness function as our utility function (see eq.\eqref{utility}) that both maximizes the production and minimizes its volatility (see eq.\ref{problem}). 
 
 As explained in section \ref{sec:related}, clique percolation leads generally to overlapping communities. For simplicity, in this paper, we wish to keep the coalitions disjoint and  leave the management of overlapping coalitions for future work. We thus implemented a simple heuristic that considers nodes in multiple seeds one by one and chooses its final coalition as the one that “needs it the most” in terms of utility loss. More formally, for a coalition \textit{s} and a node $ i \in s $, we define\footnote{\label{note1}Not to be mingled with the Shapley value concept} :
 

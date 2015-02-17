@@ -34,26 +34,25 @@ perc_mean_utilities_percolation = []; perc_mean_utilities_random = []; perc_mean
 perc_std_utilities_percolation = []; perc_mean_utilities_Kmeans = []; perc_std_utilities_Kmeans = []
 perc_std_utilities_random = []; perc_std_utilities_corre = []
 
-with open('./perc_percolation_mean.json', "r") as fichier:
+with open('./perc_percolation_mean_2.json', "r") as fichier:
     perc_mean_utilities_percolation = json.load(fichier)
-with open('./perc_percolation_std.json', "r") as fichier:
+with open('./perc_percolation_std_2.json', "r") as fichier:
     perc_std_utilities_percolation = json.load(fichier)
-with open('./perc_random_mean.json', "r") as fichier:
+with open('./perc_random_mean_2.json', "r") as fichier:
     perc_mean_utilities_random = json.load(fichier)
-with open('./perc_random_std.json', "r") as fichier:
+with open('./perc_random_std_2.json', "r") as fichier:
     perc_std_utilities_random = json.load(fichier)
-with open('./perc_corre_mean.json', "r") as fichier:
+with open('./perc_corre_mean_2.json', "r") as fichier:
     perc_mean_utilities_corre = json.load(fichier)
-with open('./perc_corre_std.json', "r") as fichier:
+with open('./perc_corre_std_2.json', "r") as fichier:
     perc_std_utilities_corre = json.load(fichier)
-with open('./perc_Kmeans_mean.json', "r") as fichier:
+with open('./perc_Kmeans_mean_2.json', "r") as fichier:
     perc_mean_utilities_Kmeans = json.load(fichier)
-with open('./perc_Kmeans_std.json', "r") as fichier:
+with open('./perc_Kmeans_std_2.json', "r") as fichier:
     perc_std_utilities_Kmeans = json.load(fichier)
 
-Pmax = 16
+Pmax = 21
 alph = 0.3	
-	
 
 #Load curve data subplot a
 mean_utilities_percolation = []; mean_utilities_random = []; mean_utilities_corre = [] 
@@ -64,19 +63,26 @@ with open('./percolation_mean.json', "r") as fichier:
     mean_utilities_percolation = json.load(fichier)
 with open('./percolation_std.json', "r") as fichier:
     std_utilities_percolation = json.load(fichier)
-with open('./random_mean.json', "r") as fichier:
+with open('./random_mean_2.json', "r") as fichier:
     mean_utilities_random = json.load(fichier)
-with open('./random_std.json', "r") as fichier:
+with open('./random_std_2.json', "r") as fichier:
     std_utilities_random = json.load(fichier)
 with open('./corre_mean.json', "r") as fichier:
     mean_utilities_corre = json.load(fichier)
 with open('./corre_std.json', "r") as fichier:
     std_utilities_corre = json.load(fichier)
-with open('./Kmeans_mean.json', "r") as fichier:
+with open('./Kmeans_mean_2.json', "r") as fichier:
     mean_utilities_Kmeans = json.load(fichier)
-with open('./Kmeans_std.json', "r") as fichier:
+with open('./Kmeans_std_2.json', "r") as fichier:
     std_utilities_Kmeans = json.load(fichier)
 
+	
+mean_utilities_percolation.extend([0,0,0,0,0])	
+std_utilities_percolation.extend([0,0,0,0,0])
+mean_utilities_corre.extend([0,0,0,0,0])
+std_utilities_corre.extend([0,0,0,0,0])
+	
+	
 #Transform data
 percolation_sup = [ a + b for a,b in zip( mean_utilities_percolation, std_utilities_percolation ) ]
 percolation_inf = [ a - b for a,b in zip( mean_utilities_percolation, std_utilities_percolation ) ]
@@ -91,16 +97,16 @@ fig = plt.figure()
 ax = plt.subplot2grid((1,7),(0, 0), colspan = 3)
 
 ax.plot( range(Pmax)[1:], mean_utilities_percolation, 'o--', color='b', label='percolation')
-ax.plot( range(Pmax)[1:], mean_utilities_random, 'g^--', color='r', label='random')
-ax.plot( range(Pmax)[1:], mean_utilities_Kmeans, 'bs--', color='y', label='Kmeans')
+ax.plot( range(Pmax)[2:], mean_utilities_random, 'g^--', color='r', label='random')
+ax.plot( range(Pmax)[2:], mean_utilities_Kmeans, 'bs--', color='y', label='Kmeans')
 ax.plot( range(Pmax)[1:], mean_utilities_corre, 'D', color='g', label='correlated')
 
 ax.fill_between(range(Pmax)[1:], percolation_sup, mean_utilities_percolation, facecolor='blue', alpha=alph)
 ax.fill_between(range(Pmax)[1:], mean_utilities_percolation, percolation_inf, facecolor='blue', alpha=alph)
-ax.fill_between(range(Pmax)[1:], random_sup, mean_utilities_random, facecolor='red', alpha=alph)
-ax.fill_between(range(Pmax)[1:], mean_utilities_random, random_inf, facecolor='red', alpha=alph)
-ax.fill_between(range(Pmax)[1:], Kmeans_sup, mean_utilities_Kmeans, facecolor='yellow', alpha=alph)
-ax.fill_between(range(Pmax)[1:], mean_utilities_Kmeans, Kmeans_inf, facecolor='yellow', alpha=alph)
+ax.fill_between(range(Pmax)[2:], random_sup, mean_utilities_random, facecolor='red', alpha=alph)
+ax.fill_between(range(Pmax)[2:], mean_utilities_random, random_inf, facecolor='red', alpha=alph)
+ax.fill_between(range(Pmax)[2:], Kmeans_sup, mean_utilities_Kmeans, facecolor='yellow', alpha=alph)
+ax.fill_between(range(Pmax)[2:], mean_utilities_Kmeans, Kmeans_inf, facecolor='yellow', alpha=alph)
 ax.fill_between(range(Pmax)[1:], corre_sup, mean_utilities_corre, facecolor='green', alpha=alph)
 ax.fill_between(range(Pmax)[1:], mean_utilities_corre, corre_inf, facecolor='green', alpha=alph)
 
@@ -108,7 +114,7 @@ ax.text(0.05, 0.95, 'a', transform=ax.transAxes, fontsize=16, fontweight='bold',
 ax.set_xlabel(r"  $ Nb_{COAL} $",fontsize=14)
 ax.set_ylabel('Social Welfare', fontsize = 15)
 ax.grid()
-plt.xlim((0,15))
+plt.xlim((0,20))
 plt.ylim((0,3))
 #ax.legend()
 	
@@ -122,6 +128,9 @@ perc_Kmeans_sup = [ a + b for a,b in zip( perc_mean_utilities_Kmeans, perc_std_u
 perc_Kmeans_inf = [ a - b for a,b in zip( perc_mean_utilities_Kmeans, perc_std_utilities_Kmeans)]
 perc_corre_sup = [ a + b for a,b in zip( perc_mean_utilities_corre, perc_std_utilities_corre)]
 perc_corre_inf = [ a - b for a,b in zip( perc_mean_utilities_corre, perc_std_utilities_corre)]
+
+Pmax = 21
+
 
 #ax2 = fig.add_subplot(132)
 ax2 = plt.subplot2grid((1,7),(0, 3), colspan = 3)
@@ -146,7 +155,7 @@ ax2.set_ylabel('Acceptance percentage', fontsize = 15)
 ax2.grid()
 #ax2.legend()
 ax2.text(0.05, 0.95, 'b', transform=ax2.transAxes, fontsize=16, fontweight='bold', va='top')
-plt.xlim((0,15))
+plt.xlim((0,20))
 plt.ylim((0,1.2))
 
 box = ax2.get_position()
@@ -158,4 +167,4 @@ ax2.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 ax3 = plt.subplot2grid((1,7),(0, 6), colspan = 1)
 plt.axis('off')
 plt.tight_layout()
-plt.savefig('perc2.pdf', dpi = 300 )
+plt.savefig('perc3.pdf', dpi = 300 )

@@ -133,7 +133,7 @@ Presented in this way, the time-series clustering task seems very close to graph
 
 For our purpose where decorrelation is the closeness notion, such algorithms tend to have some difficulties because only a few inclusions of very high correlations can strongly affect the stability of a coalition. Furthermore, these graphs tend to exhibit far less clustering than their correlation-based counterparts, which can increase the difficulty of finding communities. 
 
-However, we will see in the following, that a clique (a complete subgraph) in our filtered decorelation-based graph exhibit, by construction, low correlation. We indeed removed in the filtering (see $\epsilon$-graphs) all links that stand for high correlation. There exists greedy heuristics based on cliques in the litterature such as clique percolation, \cite{Lancichinetti} which realizes local optimizations of a fitness function and results in overlapping community structures. 
+However, we will see in the following, that a clique (a complete subgraph) in our filtered decorelation-based graph exhibits, by construction, low correlation. We indeed removed in the filtering (see $\epsilon$-graphs) all links that stand for high correlation. There exists greedy heuristics based on cliques in the litterature such as clique percolation, \cite{Lancichinetti} which realizes local optimizations of a fitness function and results in overlapping community structures. 
 
 Detection of overlapping communities is actually a very active field of research, especially in social networks where a person might belong to several communities. Section \ref{sec:forming} will explain how we used such techniques on the decorrelation graph in order to form coalitions of prosumers.
 
@@ -192,7 +192,7 @@ To illustrate what is done in the following, let us consider a very simple toy e
 \label{parameters}
 \end{equation}
 
-$ \rho_{ij} $ is the Pearson correlation coefficient between $ P_{i} $ and $ P_{j} $ (see table \ref{table1} for notations). Because all distributions are gaussians, we can easily write the probability $ Pr[P_{ij} \leq P_{ij}^{CRCT} ] $ as :
+$ \rho_{ij} $ is the Pearson correlation coefficient between $ P_{i} $ and $ P_{j} $ (see table \ref{table1} for notations). Because all distributions are gaussians in this example, we can easily write the probability $ Pr[P_{ij} \leq P_{ij}^{CRCT} ] $ as :
 
 \begin{equation}
 \dfrac{1}{2} \left[ 1+ erf \left( \dfrac{P_{ij}^{CRCT} - \mu_{ij}}{\sigma_{ij}\sqrt{2}} \right) \right]
@@ -266,7 +266,7 @@ Normally, a valid coalition could select any value in the $ \{ P^{MIN}, P_{\phi}
 \end{table}
 
 \subsection{Utility function}\label{subsec:UtilityFunc}
-As solving the optimization problem (see eq. \ref{problem}) is considered NP-hard, we address this problem with a heuristic based on a utility function (eq. \ref{utility}) that derives directly from the problem constraints. That is, if a coalition cannot provide a valid contract value, it receives a utility of zero. Furthermore, the utility increases with the overall production (sum of the contracted values) as stated in the objective of eq.\ref{problem}. The stability of the coalitions is also present in this utility function through the $ \phi $ parameter. Finally, the $ 1/|s|^{\alpha} $ term in eq. \ref{utility} controls the sizes of the coalitions (for simplicity, in the rest of the paper $ \alpha $ is set to one).
+As solving directly the optimization problem (see eq. \ref{problem}) is considered NP-hard, we address this problem with a heuristic based on a utility function (eq. \ref{utility}) that derives directly from the problem constraints. That is, if a coalition cannot provide a valid contract value, it receives a utility of zero. Furthermore, the utility increases with the overall production (sum of the contracted values) as stated in the objective of eq.\ref{problem}. The stability of the coalitions is also present in this utility function through the $ \phi $ parameter. Finally, the $ 1/|s|^{\alpha} $ term in eq. \ref{utility} controls the sizes of the coalitions (for simplicity, in the rest of the paper $ \alpha $ is set to one).
 
 \begin{equation}
  \mathcal{U}_{\phi,\ P^{MIN}}(s) = \mathbf{1}_{\textit{s\ valid}} \dfrac{P_{\phi}(s)}{|s|^{\alpha}} 
@@ -288,7 +288,7 @@ This section explains the process with which we form the coalitions (see the thi
 
 The model we used in order to simulate time-series of available production provides some diversity because of the combination between the energy mix (renewable generators combination) and climate vectors. Nevertheless, as the number of agents grows, the time-series tend to exhibit similar patterns. This is apparent when creating a correlation graph with similar metric such as defined in \cite{Garas2008} or \cite{Onnela2004} ($ 1 - \rho_{ij}^{2} $), where well-defined clusters appear in the $ \epsilon $-graph for any values of $ \epsilon $. 
 
-However, these clusters of strongly correlated time-series are the exact opposite of what we are seeking. We can indeed consider them directly as coalitions and compute their utilities, and the results show (see the green curves with diamonds on figure \ref{Fig4}), as expected, terrible values. We will indeed consider in section \ref{sec:results} this case as a worst case scenario, far worse than a trivial random split of the agents in the same number of coalitions (see the red curves with triangles of the random case on figure \ref{Fig4}). 
+However, these clusters of strongly correlated time-series are the exact opposite of what we are seeking. We can indeed consider them directly as coalitions and compute their utilities, and the results show (see the green curves with diamonds on figure \ref{Fig4}), as expected, terrible values. We will indeed consider in section \ref{sec:results} this case as a \textit{"worst case scenario"}, far worse than a trivial random search (see the red curves with triangles of the random case on figure \ref{Fig4}). 
 
 We thus opt for reversing the metric ($ \rho_{ij}^{2} $) such that uncorrelated time-series are close to each other in the graph and correlated time-series are distant. We defined a graph $G_\epsilon(\mathcal{A},E)$ where $\mathcal{A}$ is the set of agents and $ E $ the edge set. A given link between $ i $ and $ j $ is present if $ \rho_{ij}^{2} \leq \epsilon $, that is, $ e_{i,j} = \mathbf{1}_{\{\rho_{ij}^{2} \leq \epsilon \}}\rho_{ij}^{2} $. As expected \cite{Onnela2004}, independently of the $ \epsilon $ parameter, $ G_{\epsilon } $ exhibits henceforth much less clustering and communities seem hardly visible. Therefore, using classical clustering or community detection algorithms seem to provide poor results. 
 
@@ -323,7 +323,7 @@ If node \textit{i} belongs to  multiple coalitions, the only coalition including
 
 As shown in figure \ref{Fig2}a, the parameters $\phi$ and $P^{MIN}$ shape the utility function such that, if $ \phi $ is close to zero, the reliability requirement is very high. Only small values of $ P^{MIN}$ could then potentially lead to valid coalitions (and positive utilities). Conversely, the higher $\phi$, the less constraints are imposed to the coalitions and more valid coalitions could be formed for a larger spectrum of $ P^{MIN}$. Obviously, the highest utility values are found for high $ \phi $, because formed coalitions are able to announce higher contract values, yielding higher utilities. 
 
-In figure \ref{Fig2}b, we fix the reliability to a given empirical value ($\phi = 0.08 $). We can observe how the social welfare $\sum_{s \in S} \mathcal{U}_{\phi,\ P^{MIN}}(s)$ evolves according to $P^{MIN}$ and $ N_{COAL} $. In our setting we notice a maximum point around $ N_{COAL} = 3 $, followed by a decrease. There is clearly a maximum number of coalitions sustainable for a given set of parameters. After that value the coalitions newly formed won't be able to pass the grid requirements. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to denser graphs, meaning that the algorithm performance will also decrease.
+In figure \ref{Fig2}b, we fix the reliability to a given empirical value ($\phi = 0.08 $). We can observe how the social welfare $\sum_{s \in S} \mathcal{U}_{\phi,\ P^{MIN}}(s)$ evolves according to $P^{MIN}$ and $ N_{COAL} $. In our setting we notice a maximum point around $ N_{COAL} = 3 $, followed by a decrease. There is clearly a maximum number of coalitions sustainable for a given set of parameters. After that value the coalitions newly formed won't be able to pass the grid requirements. Moreover, reckon that increasing $ N_{COAL} $ means also increasing $ \epsilon $, leading to denser graphs and a decrease of the algorithm's performances.
 
 \begin{figure}[htbp]
   \centering
